@@ -1,0 +1,137 @@
+-- Création de la table users
+
+CREATE TABLE users(
+    id INT AUTO_INCREMENT NOT NULL UNIQUE,
+    firstname VARCHAR(255) NOT NULL,
+    secondname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    localisation VARCHAR(255) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    profilePic VARCHAR(200),
+    status INT NOT NULL DEFAULT 0,
+    PRIMARY KEY (id)
+);
+
+-- Création de la table events
+
+-- "State" peut être : - proposé - validé - en cours - terminé
+-- "Category" peut être : - manifestation - activité
+
+DROP TABLE IF EXISTS events;
+
+CREATE TABLE events(
+    id INT AUTO_INCREMENT NOT NULL UNIQUE,
+    authorId INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(500) NOT NULL,
+    datePosted DATE NOT NULL,
+    beginDate DATE,
+    endDate DATE,
+    poster VARCHAR(200),
+    category VARCHAR(50) NOT NULL,
+    likes INT NOT NULL DEFAULT 0,
+    state VARCHAR(20),
+    PRIMARY KEY (id),
+    FOREIGN KEY (authorId) REFERENCES users(id)
+);
+
+-- Création de la table event_users
+
+-- Pour gérer les inscriptions des utilisateurs aux événements 
+
+CREATE TABLE event_users (
+    eventId INT NOT NULL,
+    userId INT NOT NULL,
+    PRIMARY KEY (eventId, userId),
+    FOREIGN KEY (eventId) REFERENCES events(id),
+    FOREIGN KEY (userId) REFERENCES users(id)
+);
+
+-- Création de la table ideas
+
+CREATE TABLE ideas (
+    id INT NOT NULL AUTO_INCREMENT UNIQUE,
+    authorId INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    content VARCHAR(1000) NOT NULL,
+    datePosted DATE NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (authorId) REFERENCES users(id)
+);
+
+-- Création de la table comments
+
+CREATE TABLE comments (
+    id INT NOT NULL UNIQUE AUTO_INCREMENT,
+    authorId INT NOT NULL,
+    datePosted DATE NOT NULL,
+    likes INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (authorId) REFERENCES users(id)
+);
+
+-- Création de event_comments
+
+CREATE TABLE event_comments (
+    eventId INT,
+    commentId INT,
+    PRIMARY KEY (eventId, commentId),
+    FOREIGN KEY (eventId) REFERENCES events(id),
+    FOREIGN KEY (commentId) REFERENCES comments(id)
+);
+
+-- Création de idea_comments
+
+CREATE TABLE idea_comments (
+    ideaId INT,
+    commentId INT,
+    PRIMARY KEY (ideaId, commentId),
+    FOREIGN KEY (ideaId) REFERENCES ideas(id),
+    FOREIGN KEY (commentId) REFERENCES comments(id)
+);
+
+-- Création de la table images_related
+
+CREATE TABLE images_related(
+   id INT AUTO_INCREMENT UNIQUE NOT NULL,
+   authorId INT NOT NULL,
+   poster VARCHAR(255) NOT NULL,
+   datePosted DATE NOT NULL,
+   PRIMARY KEY (id),
+   FOREIGN KEY (authorId) REFERENCES users(id)
+);
+
+-- Création de la table events_images_related
+
+CREATE TABLE events_images_related (
+    eventId INT,
+    imageId INT,
+    PRIMARY KEY (eventId, imageId),
+    FOREIGN KEY (eventId) REFERENCES events(id),
+    FOREIGN KEY (imageId) REFERENCES images_related(id)
+);
+
+-- Création de la table products
+
+CREATE TABLE products (
+   id INT NOT NULL UNIQUE AUTO_INCREMENT,
+   poster VARCHAR(200) NOT NULL,
+   category VARCHAR(100) NOT NULL,
+   name VARCHAR(200) NOT NULL,
+   description VARCHAR(1000) NOT NULL,
+   sale BOOLEAN DEFAULT 0,
+   price INT NOT NULL,
+   grade FLOAT,
+   like INT DEFAULT 0,
+   PRIMARY KEY (id)
+);
+
+-- Création de la table product_comments
+
+CREATE TABLE product_comments (
+    productId INT,
+    commentId INT,
+    PRIMARY KEY (productId, commentId),
+    FOREIGN KEY (productId) REFERENCES products(id),
+    FOREIGN KEY (commentId) REFERENCES comments(id)
+);
