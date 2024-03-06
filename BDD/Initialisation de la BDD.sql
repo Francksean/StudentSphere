@@ -104,7 +104,7 @@ CREATE TABLE images_related(
 
 -- Création de la table image_related_comments
 
-CREATE TABLE comments (
+CREATE TABLE image_related_comments (
     id INT NOT NULL UNIQUE AUTO_INCREMENT,
     authorId INT NOT NULL,
     relatedImageId INT NOT NULL
