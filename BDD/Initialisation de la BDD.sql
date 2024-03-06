@@ -1,16 +1,17 @@
 -- Création de la table users
 
-CREATE TABLE users(
+CREATE TABLE users (
     id INT AUTO_INCREMENT NOT NULL UNIQUE,
-    firstname VARCHAR(255) NOT NULL,
-    secondname VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    localisation VARCHAR(255) NOT NULL,
-    password VARCHAR(100) NOT NULL,
+    firstname VARCHAR(100) NOT NULL,
+    secondname VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    localisation VARCHAR(100) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
     profilePic VARCHAR(200),
     status INT NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 );
+
 
 -- Création de la table events
 
