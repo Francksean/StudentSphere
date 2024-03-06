@@ -121,14 +121,14 @@ CREATE TABLE image_related_comments (
 
 CREATE TABLE products (
    id INT NOT NULL UNIQUE AUTO_INCREMENT,
+   name VARCHAR(200) NOT NULL,
    poster VARCHAR(200) NOT NULL,
    category VARCHAR(100) NOT NULL,
-   name VARCHAR(200) NOT NULL,
    description VARCHAR(1000) NOT NULL,
    sale BOOLEAN DEFAULT 0,
    price INT NOT NULL,
    grade FLOAT,
-   like INT DEFAULT 0,
+   likes INT DEFAULT 0,
    PRIMARY KEY (id)
 );
 
