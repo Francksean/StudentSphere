@@ -6,7 +6,7 @@ CREATE TABLE users (
     secondname VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     localisation VARCHAR(100) NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     profilePic VARCHAR(200),
     status INT NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
