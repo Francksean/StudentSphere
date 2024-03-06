@@ -125,6 +125,7 @@ CREATE TABLE products (
    poster VARCHAR(200) NOT NULL,
    category VARCHAR(100) NOT NULL,
    description VARCHAR(1000) NOT NULL,
+   quantity INT NOT NULL,
    sale BOOLEAN DEFAULT 0,
    price INT NOT NULL,
    grade FLOAT,
