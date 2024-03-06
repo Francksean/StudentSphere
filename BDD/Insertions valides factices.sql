@@ -4,8 +4,7 @@ INSERT INTO users (firstname, secondname, email, localisation, password, profile
 ('Jane', 'Smith', 'jane.smith@example.com', 'London', 'password456', 'profile2.jpg', 0),
 ('Michael', 'Johnson', 'michael.johnson@example.com', 'Los Angeles', 'password789', 'profile3.jpg', 1),
 ('Emily', 'Davis', 'emily.davis@example.com', 'Paris', 'password987', 'profile4.jpg', 0),
-('Jessica', 'Brown', 'jessica.brown@example.com', 'Berlin', 'password321', 'profile5.jpg', 1),
-('Johmerry', 'Green', 'Johnmerry.Green@example.com', 'Douala', 'password435', 'profile6.jpg', 2),
+('Johmerry', 'Green', 'Johnmerry.Green@example.com', 'Douala', 'password435', 'profile5.jpg', 2);
 
 
 -- insertions de la tables events
