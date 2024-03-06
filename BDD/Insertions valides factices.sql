@@ -32,21 +32,22 @@ VALUES
 -- insertions de la table product_comments
 INSERT INTO product_comments (authorId, productId, datePosted, content, likes)
 VALUES
-(1, 1, '2024-03-06', 'Excellent produit, je l'adore!', 10),
-(3, 2, '2024-03-05', 'Très bon produit, je le recommande.', 5),
-(2, 3, '2024-03-04', 'Super qualité, je suis satisfait.', 8),
-(5, 4, '2024-03-03', 'Je suis déçu, la qualité n'est pas au rendez-vous.', 2),
-(4, 5, '2024-03-02', 'Produit génial, je l'utilise tous les jours.', 12),
-(1, 1, '2024-03-01', 'Je regrette mon achat, je m'attendais à mieux.', 3),
-(2, 2, '2024-02-29', 'Je suis agréablement surpris par ce produit.', 7),
-(3, 3, '2024-02-28', 'Le meilleur produit que j'ai jamais acheté!', 15),
-(4, 4, '2024-02-27', 'Je ne recommande pas ce produit, mauvaise expérience.', 1),
-(5, 5, '2024-02-26', 'Très satisfait de mon achat, merci beaucoup!', 9),
-(1, 3, '2024-02-25', 'Je pense acheter ce produit à nouveau.', 6),
-(2, 4, '2024-02-24', 'Je suis totalement fan de ce produit.', 11),
-(3, 5, '2024-02-23', 'Je suis très déçu, le produit ne correspond pas à la description.', 4),
-(4, 1, '2024-02-22', 'Produit de qualité moyenne, je m'attendais à mieux.', 2),
-(5, 2, '2024-02-21', 'Excellent service clientèle, merci!', 8);
+(1, 1, '2024-03-06', 'Super produit, je le recommande vivement!', 150),
+(3, 3, '2024-03-06', 'Très satisfait de cet achat.', 180),
+(2, 2, '2024-03-05', 'Produit de qualité, livraison rapide.', 170),
+(4, 5, '2024-03-05', 'J'adore ce t-shirt, il est très confortable.', 190),
+(5, 4, '2024-03-04', 'Excellent rapport qualité-prix.', 160),
+(3, 1, '2024-03-04', 'Les tomates étaient un peu abîmées à l'arrivée.', 140),
+(1, 3, '2024-03-03', 'Je suis déçu de la pâte à tartiner, trop sucrée à mon goût.', 200),
+(4, 2, '2024-03-03', 'Je recommande vivement ce café, il est délicieux!', 180),
+(2, 5, '2024-03-02', 'Le t-shirt est un peu petit, pensez à prendre une taille au-dessus.', 150),
+(5, 4, '2024-03-02', 'Je suis satisfait de cet achat, merci!', 170),
+(3, 1, '2024-03-01', 'Les tomates étaient fraîches et bien emballées.', 160),
+(1, 2, '2024-03-01', 'La pâte à tartiner est délicieuse, je la rachèterai.', 190),
+(4, 3, '2024-02-29', 'Très bon café, je le recommande.', 180),
+(2, 5, '2024-02-29', 'Le t-shirt est de bonne qualité.', 150),
+(5, 4, '2024-02-28', 'Bon rapport qualité-prix pour ce produit.', 170);
+
 
 
 
