@@ -17,6 +17,22 @@ VALUES
 (3, 'Event 4', 'Description of Event 4', '2024-03-01', '2024-03-20', '2024-03-22', 'poster4.jpg', 'Webinar', 15, 'Active'),
 (4, 'Event 5', 'Description of Event 5', '2024-03-05', '2024-03-25', '2024-03-27', 'poster5.jpg', 'Exhibition', 12, 'Active');
 
+-- insertions de la table event_comments
+INSERT INTO event_comments (authorId, eventId, datePosted, content, likes)
+VALUES
+(1, 1, '2024-03-06', 'Super événement, j'ai passé un bon moment!', 200),
+(3, 3, '2024-03-06', 'Très bien organisé, merci aux organisateurs.', 180),
+(2, 2, '2024-03-05', 'J'ai adoré cet événement, à refaire!', 250),
+(4, 5, '2024-03-05', 'Très intéressant, j'ai beaucoup appris.', 280),
+(5, 4, '2024-03-04', 'Ambiance géniale, je recommande.', 210),
+(3, 1, '2024-03-04', 'C'était sympa, mais un peu trop de monde.', 190),
+(1, 3, '2024-03-03', 'Bonne ambiance, mais les prix étaient un peu élevés.', 170),
+(4, 2, '2024-03-03', 'Excellent événement, j'ai passé un moment inoubliable.', 300),
+(2, 5, '2024-03-02', 'Je suis ravi d'avoir participé, à l'année prochaine!', 220),
+(5, 4, '2024-03-02', 'Très belle expérience, je recommande.', 260);
+
+
+
 -- insertions de la table products
 INSERT INTO products (name, poster, category, description, quantity, sale, price, grade, likes)
 VALUES
