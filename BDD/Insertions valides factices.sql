@@ -56,16 +56,49 @@ VALUES
 (1, 3, '2024-03-03', 'Je suis déçu de la pâte à tartiner, trop sucrée à mon goût.', 200),
 (4, 2, '2024-03-03', 'Je recommande vivement ce café, il est délicieux!', 180),
 (2, 5, '2024-03-02', 'Le t-shirt est un peu petit, pensez à prendre une taille au-dessus.', 150),
-(5, 4, '2024-03-02', 'Je suis satisfait de cet achat, merci!', 170),
+(5, 4, '2024-03-02', 'Je suis satisfait de cet achtat, merci!', 170),
 (3, 1, '2024-03-01', 'Les tomates étaient fraîches et bien emballées.', 160),
 (1, 2, '2024-03-01', 'La pâte à tartiner est délicieuse, je la rachèterai.', 190),
 (4, 3, '2024-02-29', 'Très bon café, je le recommande.', 180),
 (2, 5, '2024-02-29', 'Le t-shirt est de bonne qualité.', 150),
 (5, 4, '2024-02-28', 'Bon rapport qualité-prix pour ce produit.', 170);
 
+-- insertions de la table ideas
 
+INSERT INTO ideas (authorId, title, content, datePosted) VALUES
+(4, 'Initiation à la programmation', 'Proposer des ateliers d''initiation à la programmation pour les étudiants intéressés par l''informatique.', '2024-03-03'),
+(5, 'Club de cinéma universitaire', 'Créer un club de cinéma pour visionner et discuter des films cultes chaque semaine.', '2024-03-02'),
+(6, 'Journée de la diversité culturelle', 'Organiser une journée spéciale pour célébrer la diversité culturelle sur le campus avec des stands de nourriture, des performances artistiques et des présentations culturelles.', '2024-03-01'),
+(7, 'Amélioration de la bibliothèque universitaire', 'Proposer des suggestions pour améliorer les services de la bibliothèque, tels que l''extension des heures d''ouverture et l''ajout de nouvelles ressources.', '2024-02-29'),
+(8, 'Projet de jardin communautaire', 'Créer un jardin communautaire où les étudiants peuvent cultiver des légumes biologiques et se détendre en plein air.', '2024-02-28');
 
+-- insertions de la table idea_comments
+
+INSERT INTO idea_comments (authorId, ideaId, datePosted, content) VALUES
+
+(1, 4, '2024-03-04', 'Je pense que c''est une excellente initiative pour encourager la pensée informatique.'),
+(2, 5, '2024-03-03', 'Je suis passionné par le cinéma et je soutiens cette proposition.'),
+(3, 6, '2024-03-02', 'C''est une idée fantastique pour promouvoir la diversité et l''inclusion.'),
+(4, 7, '2024-03-01', 'Je suis d''accord. La bibliothèque pourrait également offrir plus de salles d''étude.'),
+(5, 8, '2024-02-29', 'Un jardin communautaire serait un excellent moyen de promouvoir le bien-être et la durabilité.');
 
 -- insertions de la table images_related
 
+INSERT INTO images_related (authorId, eventId, poster, datePosted) 
+VALUES
+(4, 4, 'coding_workshop.jpg', '2024-03-04'),
+(5, 5, 'movie_night.jpg', '2024-03-03'),
+(6, 6, 'cultural_day.jpg', '2024-03-02'),
+(7, 7, 'library_improvement.jpg', '2024-03-01'),
+(8, 8, 'community_garden.jpg', '2024-02-29');
+
+-- insertions de la table image_related_comments
+
+INSERT INTO image_related_comments (authorId, relatedImageId, datePosted, content) 
+VALUES
+(6, 4, '2024-03-04', 'J''ai hâte de participer à cet atelier de programmation!'),
+(7, 5, '2024-03-03', 'Je suis prêt pour une soirée cinéma incroyable.'),
+(8, 6, '2024-03-02', 'Les performances culturelles seront-elles ouvertes à tous?'),
+(9, 7, '2024-03-01', 'J''espère voir des améliorations dans la bibliothèque bientôt.'),
+(10, 8, '2024-02-29', 'Cela semble être un endroit paisible pour se détendre entre les cours.');
 
