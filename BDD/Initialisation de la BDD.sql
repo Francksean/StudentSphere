@@ -71,9 +71,10 @@ CREATE TABLE event_comments (
     content VARCHAR(1000) NOT NULL,
     likes INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (authorId) REFERENCES users(id)
-    FOREIGN KEY (eventId) REFERENCES events(id),
+    FOREIGN KEY (authorId) REFERENCES users(id),
+    FOREIGN KEY (eventId) REFERENCES events(id) -- Correction : virgule manquante après la déclaration de la première clé étrangère
 );
+
 
 -- Création de idea_comments
 
@@ -108,14 +109,15 @@ CREATE TABLE images_related(
 CREATE TABLE image_related_comments (
     id INT NOT NULL UNIQUE AUTO_INCREMENT,
     authorId INT NOT NULL,
-    relatedImageId INT NOT NULL
+    relatedImageId INT NOT NULL, -- Correction : virgule manquante après la déclaration de la colonne relatedImageId
     datePosted DATE NOT NULL,
     content VARCHAR(1000) NOT NULL,
     likes INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (authorId) REFERENCES users(id)
+    FOREIGN KEY (authorId) REFERENCES users(id),
     FOREIGN KEY (relatedImageId) REFERENCES images_related(id)
 );
+
 
 
 -- Création de la table products
