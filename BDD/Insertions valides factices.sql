@@ -62,3 +62,10 @@ VALUES
 (4, 3, '2024-02-29', 'Très bon café, je le recommande.', 180),
 (2, 5, '2024-02-29', 'Le t-shirt est de bonne qualité.', 150),
 (5, 4, '2024-02-28', 'Bon rapport qualité-prix pour ce produit.', 170);
+
+
+
+
+-- insertions de la table images_related
+
+
