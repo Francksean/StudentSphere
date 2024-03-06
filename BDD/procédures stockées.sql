@@ -1,44 +1,43 @@
 -- Procédure inscription d'un étudiant 
-
-
-CREATE PROCEDURE inscriptionEtudiant (nom, prenom, localisation, email, password)
+DELIMITER //
+CREATE PROCEDURE inscriptionEtudiant (nom VARCHAR(100), prenom VARCHAR(100), localisation VARCHAR(100), email VARCHAR(100), password VARCHAR(255))
 BEGIN
-	INSERT INTO (firstname, secondname,localisation,email,password) users
-	VALUES(nom,prenom,localisation,email,password);
-END
-DELIMITER;
+    INSERT INTO users (firstname, secondname, localisation, email, password_hash)
+    VALUES (nom, prenom, localisation, email, password);
+END //
+DELIMITER ;
 
 -- Inscription d'un étudiant à un événement 
-
-CREATE PROCEDURE inscriptionEvent (userId, eventID)
+DELIMITER //
+CREATE PROCEDURE inscriptionEvent (userId INT, eventID INT)
 BEGIN
-	INSERT INTO event_users(userId, eventId)
-	VALUES (userId, eventId);
-END
-DELIMITER;
+    INSERT INTO event_users (userId, eventId)
+    VALUES (userId, eventId);
+END //
+DELIMITER ;
 
--- Icrémenter le nombre de votes/likes sur un évènement 
-
-CREATE PROCEDURE ajouterVote (eventId)
+-- Incrémenter le nombre de votes/likes sur un évènement 
+DELIMITER //
+CREATE PROCEDURE ajouterVote (eventId INT)
 BEGIN
-	UPDATE events SET likes = likes + 1 WHERE id = eventId;
-END
-DELIMITER;
+    UPDATE events SET likes = likes + 1 WHERE id = eventId;
+END //
+DELIMITER ;
 
 -- Proposer un évènement 
-
-CREATE PROCEDURE suggestEvent (userId, name, description, poster )
+DELIMITER //
+CREATE PROCEDURE suggestEvent (userId INT, name VARCHAR(255), description VARCHAR(500), poster VARCHAR(200) )
 BEGIN
-	INSERT INTO events (authorId, name, description, poster)
-	VALUES (userId,name,description,poster);
-END
-DELIMITER;
+    INSERT INTO events (authorId, name, description, poster)
+    VALUES (userId, name, description, poster);
+END //
+DELIMITER ;
 
 -- Ajouter une photo à un événement passé
-
-CREATE PROCEDURE addPhoto (authorId,eventId,poster,date)
+DELIMITER //
+CREATE PROCEDURE addPhoto (authorId INT, eventId INT, poster VARCHAR(255), datePosted DATE)
 BEGIN
-	INSERT INTO images_related (authorId, eventId,poster,datePosted)
-	VALUES (authorId,eventId,poster,date)
-END
-DELIMITER;
+    INSERT INTO images_related (authorId, eventId, poster, datePosted)
+    VALUES (authorId, eventId, poster, datePosted);
+END //
+DELIMITER ;
