@@ -137,6 +137,7 @@ CREATE TABLE products (
 CREATE TABLE product_comments (
     id INT NOT NULL UNIQUE AUTO_INCREMENT,
     authorId INT NOT NULL,
+    productId INT NOT NULL,
     datePosted DATE NOT NULL,
     content VARCHAR(1000) NOT NULL,
     likes INT,
