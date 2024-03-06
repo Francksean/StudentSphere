@@ -59,35 +59,33 @@ CREATE TABLE ideas (
     FOREIGN KEY (authorId) REFERENCES users(id)
 );
 
--- Création de la table comments
-
-CREATE TABLE comments (
-    id INT NOT NULL UNIQUE AUTO_INCREMENT,
-    authorId INT NOT NULL,
-    datePosted DATE NOT NULL,
-    likes INT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (authorId) REFERENCES users(id)
-);
 
 -- Création de event_comments
 
 CREATE TABLE event_comments (
-    eventId INT,
-    commentId INT,
-    PRIMARY KEY (eventId, commentId),
+    id INT NOT NULL UNIQUE AUTO_INCREMENT,
+    authorId INT NOT NULL,
+    eventId INT NOT NULL,
+    datePosted DATE NOT NULL,
+    content VARCHAR(1000) NOT NULL,
+    likes INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (authorId) REFERENCES users(id)
     FOREIGN KEY (eventId) REFERENCES events(id),
-    FOREIGN KEY (commentId) REFERENCES comments(id)
 );
 
 -- Création de idea_comments
 
 CREATE TABLE idea_comments (
+    id INT NOT NULL UNIQUE AUTO_INCREMENT,
+    authorId INT NOT NULL,
     ideaId INT,
-    commentId INT,
-    PRIMARY KEY (ideaId, commentId),
+    datePosted DATE NOT NULL,
+    content VARCHAR(1000) NOT NULL,
+    likes INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (authorId) REFERENCES users(id)
     FOREIGN KEY (ideaId) REFERENCES ideas(id),
-    FOREIGN KEY (commentId) REFERENCES comments(id)
 );
 
 -- Création de la table images_related
@@ -95,21 +93,29 @@ CREATE TABLE idea_comments (
 CREATE TABLE images_related(
    id INT AUTO_INCREMENT UNIQUE NOT NULL,
    authorId INT NOT NULL,
+   eventId INT NOT NULL,
    poster VARCHAR(255) NOT NULL,
    datePosted DATE NOT NULL,
    PRIMARY KEY (id),
    FOREIGN KEY (authorId) REFERENCES users(id)
+   FOREIGN KEY (eventId) REFERENCES events(id)
 );
 
--- Création de la table events_images_related
 
-CREATE TABLE events_images_related (
-    eventId INT,
-    imageId INT,
-    PRIMARY KEY (eventId, imageId),
-    FOREIGN KEY (eventId) REFERENCES events(id),
-    FOREIGN KEY (imageId) REFERENCES images_related(id)
+-- Création de la table image_related_comments
+
+CREATE TABLE comments (
+    id INT NOT NULL UNIQUE AUTO_INCREMENT,
+    authorId INT NOT NULL,
+    relatedImageId INT NOT NULL
+    datePosted DATE NOT NULL,
+    content VARCHAR(1000) NOT NULL,
+    likes INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (authorId) REFERENCES users(id)
+    FOREIGN KEY (relatedImageId) REFERENCES images_related(id)
 );
+
 
 -- Création de la table products
 
@@ -129,9 +135,12 @@ CREATE TABLE products (
 -- Création de la table product_comments
 
 CREATE TABLE product_comments (
-    productId INT,
-    commentId INT,
-    PRIMARY KEY (productId, commentId),
+    id INT NOT NULL UNIQUE AUTO_INCREMENT,
+    authorId INT NOT NULL,
+    datePosted DATE NOT NULL,
+    content VARCHAR(1000) NOT NULL,
+    likes INT,
+    PRIMARY KEY (id),
     FOREIGN KEY (productId) REFERENCES products(id),
-    FOREIGN KEY (commentId) REFERENCES comments(id)
+    FOREIGN KEY (authorId) REFERENCES users(id)
 );
