@@ -86,8 +86,8 @@ CREATE TABLE idea_comments (
     content VARCHAR(1000) NOT NULL,
     likes INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (authorId) REFERENCES users(id)
-    FOREIGN KEY (ideaId) REFERENCES ideas(id),
+    FOREIGN KEY (authorId) REFERENCES users(id),
+    FOREIGN KEY (ideaId) REFERENCES ideas(id) -- Ajout d'une virgule après la première clé étrangère
 );
 
 -- Création de la table images_related
@@ -99,8 +99,8 @@ CREATE TABLE images_related(
    poster VARCHAR(255) NOT NULL,
    datePosted DATE NOT NULL,
    PRIMARY KEY (id),
-   FOREIGN KEY (authorId) REFERENCES users(id)
-   FOREIGN KEY (eventId) REFERENCES events(id)
+   FOREIGN KEY (authorId) REFERENCES users(id),
+   FOREIGN KEY (eventId) REFERENCES events(id) -- Ajout d'une virgule après la première clé étrangère
 );
 
 
