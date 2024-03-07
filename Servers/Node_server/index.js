@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
-const articleRouter = require('./routes/usersRouter');
+const articleRouter = require('./routes/articlesRouter');
 
 const app = express();
 
