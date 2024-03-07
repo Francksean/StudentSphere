@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
-const userRouter = require('./routes/usersRouter');
+const articleRouter = require('./routes/usersRouter');
 
 const app = express();
 
@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
   database: "studentspherebdd"
 });
 
-app.use('/users', userRouter(connection));
+app.use('/shop', articleRouter(connection));
 
 app.listen(3000, () => {
   console.log("\n\n\n\n server started on port 3000");
