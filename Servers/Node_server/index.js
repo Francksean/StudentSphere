@@ -18,10 +18,10 @@ const connection = mysql.createConnection({
 app.use('/shop', articleRouter(connection));
 
 app.listen(3000, () => {
-  console.log("\n\n\n\n server started on port 3000");
+  console.log("\n\n\n\nserver started on port 3000");
   connection.connect(function(err) {
     if (err) throw err;
-    console.log("Connected to the database!");
+    console.log("\n\n\n\nConnected to the database!");
   });
 });
 
