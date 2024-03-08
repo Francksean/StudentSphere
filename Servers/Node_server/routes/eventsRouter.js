@@ -1,10 +1,10 @@
 const express = require('express');
-const connection = require('../index');
+const router = express.Router();
 
 const eventsRouter = ( connection ) =>{
-  
 
 
+  return router
 }
 
 module.exports = eventsRouter;

@@ -69,7 +69,7 @@ CREATE TABLE event_comments (
     eventId INT NOT NULL,
     datePosted DATE NOT NULL,
     content VARCHAR(1000) NOT NULL,
-    likes INT,
+    likes INT DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (authorId) REFERENCES users(id),
     FOREIGN KEY (eventId) REFERENCES events(id) -- Correction : virgule manquante après la déclaration de la première clé étrangère
@@ -84,7 +84,7 @@ CREATE TABLE idea_comments (
     ideaId INT,
     datePosted DATE NOT NULL,
     content VARCHAR(1000) NOT NULL,
-    likes INT,
+    likes INT DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (authorId) REFERENCES users(id),
     FOREIGN KEY (ideaId) REFERENCES ideas(id) -- Ajout d'une virgule après la première clé étrangère
@@ -112,7 +112,7 @@ CREATE TABLE image_related_comments (
     relatedImageId INT NOT NULL, -- Correction : virgule manquante après la déclaration de la colonne relatedImageId
     datePosted DATE NOT NULL,
     content VARCHAR(1000) NOT NULL,
-    likes INT,
+    likes INT DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (authorId) REFERENCES users(id),
     FOREIGN KEY (relatedImageId) REFERENCES images_related(id)
@@ -144,7 +144,7 @@ CREATE TABLE product_comments (
     productId INT NOT NULL,
     datePosted DATE NOT NULL,
     content VARCHAR(1000) NOT NULL,
-    likes INT,
+    likes INT DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (productId) REFERENCES products(id),
     FOREIGN KEY (authorId) REFERENCES users(id)
