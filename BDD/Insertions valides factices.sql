@@ -17,6 +17,17 @@ VALUES
 (3, 'Event 4', 'Description of Event 4', '2024-03-01', '2024-03-20', '2024-03-22', 'poster4.jpg', 'Webinar', 15, 'Active'),
 (4, 'Event 5', 'Description of Event 5', '2024-03-05', '2024-03-25', '2024-03-27', 'poster5.jpg', 'Exhibition', 12, 'Active');
 
+-- Insertions de la table event_users
+-- Insertions dans la table event_users
+INSERT INTO event_users (eventId, userId) 
+VALUES
+(1, 2), -- Jane Smith s'inscrit à l'événement 1
+(1, 3), -- Michael Johnson s'inscrit à l'événement 1
+(2, 1), -- John Doe s'inscrit à l'événement 2
+(3, 4), -- Emily Davis s'inscrit à l'événement 3
+(4, 1), -- John Doe s'inscrit à l'événement 4
+(5, 2); -- Jane Smith s'inscrit à l'événement 5
+
 -- Insertions de la table event_comments
 INSERT INTO event_comments (authorId, eventId, datePosted, content, likes)
 VALUES
