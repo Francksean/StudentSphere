@@ -21,9 +21,9 @@ const connection = mysql.createConnection({
 });
 
 // mon "contrôlleur" pour les différentes routes
-app.use('/events', ()=>eventsRouter(connection))
-app.use('/shop', ()=>productsRouter(connection));
-app.use('/comments', ()=>commentsRouter(connection))
+app.use('/events', () => eventsRouter(connection))
+app.use('/shop', () => productsRouter(connection));
+app.use('/comments', () => commentsRouter(connection))
 
 app.listen(3000, () => {
   console.log("\n\n\n\nServer started on port 3000");
