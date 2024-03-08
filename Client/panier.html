@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+		 header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .logout-button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+		  
+		.logout-button:hover {
+            background-color: #c82333;
+        }
+
+        .cart-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .item-image {
+            width: 100px;
+            margin-right: 10px;
+        }
+
+        .item-description {
+            flex: 1;
+        }
+
+        .item-quantity {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .quantity-label {
+            margin-right: 10px;
+        }
+
+        .quantity-select {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .item-price {
+            font-weight: bold;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+		
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Panier</h1>
+        <button id="logout-button">Déconnexion</button>
+    </header>
+    <div class="cart-container">
+        <div class="cart-item">
+            <img src="product1.jpg" alt="Product 1" class="item-image">
+            <div class="item-description">
+                <h3>Nom du produit 1</h3>
+                <p>Description du produit 1</p>
+                <div class="item-quantity">
+                    <label for="quantity1" class="quantity-label">Quantité:</label>
+                    <select id="quantity1" class="quantity-select" onchange="updatePrice('quantity1', 'price1')">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <p class="item-price">Prix: <span id="price1">$10</span></p>
+            </div>
+            <button class="delete-button">Supprimer</button>
+        </div>
+
+        <div class="cart-item">
+            <img src="product2.jpg" alt="Product 2" class="item-image">
+            <div class="item-description">
+                <h3>Nom du produit 2</h3>
+                <p>Description du produit 2</p>
+                <div class="item-quantity">
+                    <label for="quantity2" class="quantity-label">Quantité:</label>
+                    <select id="quantity2" class="quantity-select" onchange="updatePrice('quantity2', 'price2')">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <p class="item-price">Prix: <span id="price2">$15</span></p>
+            </div>
+            <button class="delete-button">Supprimer</button>
+        </div>
+
+        <div class="cart-item">
+            <img src="product3.jpg" alt="Product 3" class="item-image">
+            <div class="item-description">
+                <h3>Nom du produit 3</h3>
+                <p>Description du produit 3</p>
+                <div class="item-quantity">
+                    <label for="quantity3" class="quantity-label">Quantité:</label>
+                    <select id="quantity3" class="quantity-select" onchange="updatePrice('quantity3', 'price3')">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <optionvalue="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <p class="item-price">Prix: <span id="price3">$20</span></p>
+            </div>
+            <button class="delete-button">Supprimer</button>
+        </div>
+    </div>
+
+    <script>
+        function updatePrice(quantityId, priceId) {
+            const quantitySelect = document.getElementById(quantityId);
+            const priceElement = document.getElementById(priceId);
+            const price = parseInt(priceElement.innerText.slice(1)); // Récupère le prix en supprimant le signe dollar ($)
+            const quantity = parseInt(quantitySelect.value);
+            const totalPrice = price * quantity;
+            priceElement.innerText = '$' + totalPrice;
+			
+	  // Ajouter une action au bouton de déconnexion
+        const logoutButton = document.getElementById('logout-button');
+        logoutButton.addEventListener('click', () => {
+            // Code de déconnexion ici
+        }
+    </script>
+</body>
+
+</html>
