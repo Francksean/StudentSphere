@@ -1,0 +1,140 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header {
+    background-image:linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url(études.jpg);
+    height: 100vh;
+    background-size: cover;
+    transform: 15px;
+    width: 100%;
+    display: flex;
+    align-items: top;
+} 
+
+.nav-item{
+    margin-left: 1em;
+    color: #000;
+}
+
+.nav-item :hover{
+    color: #000;
+}
+
+/*Stylisation du texte de la page principale*/
+.titre {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; /* Pour centrer horizontalement le texte */
+}
+
+.titre ul {
+    color: #fff;
+    font-size: 70px;
+    font-family: "Bell MT", serif; /* Applique la police d'écriture Bell MT */
+    width: 90%; /* Pour étendre le texte sur toute la largeur */
+    text-align: center;
+    bottom: 50;
+}
+/*Stylisation des boutons de la page principale*/
+.bouton{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bouton a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    margin: 10px;
+    font-weight: 500;
+    transition: 0.6s ease;
+}
+
+.bouton a:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/*Stylisation des logos du footer*/
+.black-band {
+    background-color: #000; /* Couleur de la bande noire */
+    padding: 20px 0; /* Espacement intérieur de la bande */
+    width: 100%;
+}
+footer {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0; /* Élimine toute marge */
+    padding: 0; /* Élimine tout rembourrage */
+}
+.container{
+    display: flex;
+    flex-wrap: wrap; /* Ajout de flex-wrap pour gérer les éléments en cas de redimensionnement */
+    justify-content: center; /* Ajout de la justification pour centrer horizontalement */
+}
+.icon_content{
+    margin-left: 1rem;
+    
+}
+.icon_content .icon{
+    font-size: 20px;
+    background: #fff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon_content:hover .name{
+    opacity: 1;
+    pointer-events: auto;
+    top: -70px;
+}
+.icon_content:nth-child(1) .icon:hover,
+.icon_content:nth-child(1) .name,
+.icon_content:nth-child(1) .name::before{
+    background: #4266b4;
+    color: white;
+}
+.icon_content:nth-child(2) .icon:hover,
+.icon_content:nth-child(2) .name,
+.icon_content:nth-child(2) .name::before{
+    background: rgb(228, 21, 66);
+    color: white;
+}
+.icon_content:nth-child(3) .icon:hover,
+.icon_content:nth-child(3) .name,
+.icon_content:nth-child(3) .name::before{
+    background: #00acee;
+    color: white;
+}
+.icon_content:nth-child(4) .icon:hover,
+.icon_content:nth-child(4) .name,
+.icon_content:nth-child(4) .name::before{
+    background: #ee030f;
+    color: white;
+}
+.icon_content a {
+    text-decoration: none; /* Supprime le soulignement du lien */
+    color: inherit; /* Utilise la couleur par défaut du texte parent */
+}
+
+.icon_content a:hover {
+    color: inherit; /* Garde la couleur du texte parent au survol */
+}
