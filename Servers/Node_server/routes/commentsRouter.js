@@ -1,4 +1,5 @@
 const express = require('express');
+const date = require('../dateProvider');
 const router = express.Router();
 
 const commentsRouter = ( connection ) => {
@@ -6,10 +7,9 @@ const commentsRouter = ( connection ) => {
 
   router.post("/add", (req, res) => {
     const { table, relativeIdName, authorId, relativeId, content } = req.body;
-    const datePosted = new Date().toISOString().split("T")[0];
 
     const newComment = connection.query(    
-      `INSERT INTO ${table} (authorId, ${relativeIdName}, content, datePosted) VALUES (${authorId}, ${relativeId}, '${content}', '${datePosted}')`,
+      `INSERT INTO ${table} (authorId, ${relativeIdName}, content, datePosted) VALUES (${authorId}, ${relativeId}, '${content}', '${date}')`,
       (error, results) => {
         if (error) {
           console.error(`Error: ${error}`);
