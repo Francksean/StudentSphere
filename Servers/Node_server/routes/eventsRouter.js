@@ -15,7 +15,7 @@ const eventsRouter = ( connection ) =>{
           console.error(`Error: ${error}`);
           res.status(500).json({ message: "An error occurred while registering the event" });
         } else {
-          res.status(200).json({ message: "event proposed successfully", isOk : true, results: results });
+          res.status(200).json({ message: "event proposed successfully", success : true, results: results });
         }
       }
     );
@@ -32,7 +32,7 @@ const eventsRouter = ( connection ) =>{
           console.error(`Error: ${error}`);
           res.status(500).json({ message: "An error occurred while validating the event" });
         } else {
-          res.status(200).json({ message: "event validate successfully", isOk : true, results: results });
+          res.status(200).json({ message: "event validate successfully", success : true, results: results });
         }
       }
     )
@@ -46,7 +46,7 @@ const eventsRouter = ( connection ) =>{
           console.error(`Error: ${error}`);
           res.status(500).json({ message: "An error occurred while fetching past events" });
         } else {
-          res.status(200).json({ message: "past events are available", isOk : true, results: results });
+          res.status(200).json({ message: "past events are available", success : true, results: results });
         }
       }
     )

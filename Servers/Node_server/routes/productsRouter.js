@@ -11,7 +11,11 @@ const productsRouter = (connection) => {
   // gestion de la requête get sur l'url http://localhost:3000/shop/feed (récupérer tous les produits)
   router.get("/feed", (req, res) => {
     const feed = connection.query('SELECT * FROM products', (error, results) => {
-      res.send(results);
+      if(error){
+        res.json({ success : false, message : "Problème lors du chargement des produits ",error : error });
+      }else{
+        res.json({ success : true, results : results });
+      }
     });
   });
 
@@ -20,19 +24,17 @@ const productsRouter = (connection) => {
   router.post("/feed_by_category", (req, res) => {
 
     const { category } = req.body;
-
-    console.log(category)
-    res.json("Ok")
     
-    // une alternaive serait :
-    // const feed = connection.query(`SELECT * FROM products WHERE category = ?`, [category], (error, results) => {
+    /* 
+      une alternaive serait :
+      const feed = connection.query(`SELECT * FROM products WHERE category = ?`, [category], (error, results) => {
+    */
     const feed = connection.query(`SELECT * FROM products WHERE category = '${category}'`, (error, results) => {
       if(error){
-        console.log("erreur")
-        res.send("erreur")
+        res.json({ success : false, error : error})
       }else{
         // console.log(results)
-        res.send(results);
+        res.json({ success : false, results : results });
       }
     })
   })

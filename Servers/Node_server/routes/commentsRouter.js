@@ -13,18 +13,20 @@ const commentsRouter = ( connection ) => {
       (error, results) => {
         if (error) {
           console.error(`Error: ${error}`);
-          res.status(500).json({ message: "An error occurred while inserting the comment" });
+          res.status(500).json({ message: "An error occurred while inserting the comment", success : false, error : error });
         } else {
-          res.status(200).json({ message: "Comment inserted successfully", isOk : true, results: results });
+          res.status(200).json({ message: "Comment inserted successfully", success : true, results: results });
         }
       }
     );
   });
 
-  //table est la table dans laquelle la requête sera effectuée
-  //relativeIdName est le nom dans la table manipulée, du paramètre ID de la table référencé
-  //Vu que le commentaire est posté à la même date que la requête est lancéé (en principe)
-  //on peut se permettre de juste créer un nouvel objet date et le passer en paramètre de la requête
+  /*
+    table est la table dans laquelle la requête sera effectuée
+    relativeIdName est le nom dans la table manipulée, du paramètre ID de la table référencé
+    Vu que le commentaire est posté à la même date que la requête est lancéé (en principe)
+    on peut se permettre de juste créer un nouvel objet date et le passer en paramètre de la requête
+  */
 
   router.post("/delete", (req, res) => {
     const { table, commentId } = req.body;
@@ -33,9 +35,9 @@ const commentsRouter = ( connection ) => {
     (error, results) => {
       if(error){
         console.log(`${error}`)
-        res.send({ message : "une erreur s'est produite lors de la suppression" })
+        res.send({ message : "une erreur s'est produite lors de la suppression", success : false, error : error })
       }else{
-        res.send({isOk : true, results: results})
+        res.send({ message : "commentaire supprimé avec succès", success : true, results: results})
       }
     })
 
