@@ -5,11 +5,11 @@ const router = express.Router();
 const eventsRouter = ( connection ) =>{
 
   router.post('/add', (req, res)=>{
-    const { authorId, eventName, eventDesc, poster, category  } = req.body;
+    const { authorId, eventName, eventDescription, poster, category  } = req.body;
 
     const newEvent = connection.query(
-      `INSERT INTO events (authorId, name, description, datePosted, poster, category) 
-      VALUES (${authorId}, ${eventName}, '${eventDesc}', '${date}', '${poster}', ${category}', 'proposed')`,
+      `INSERT INTO events (authorId, name, description, datePosted, poster, category, state) 
+      VALUES (${authorId}, "${eventName}", "${eventDescription}", '${date}', '${poster}', '${category}', 'proposed')`,
       (error, results) => {
         if (error) {
           console.error(`Error: ${error}`);
@@ -18,7 +18,8 @@ const eventsRouter = ( connection ) =>{
           res.status(200).json({ message: "event proposed successfully", isOk : true, results: results });
         }
       }
-    )
+    );
+    
   })
 
   router.post('/validate', (req, res) => {
@@ -29,7 +30,7 @@ const eventsRouter = ( connection ) =>{
       (error, results) => {
         if (error) {
           console.error(`Error: ${error}`);
-          res.status(500).json({ message: "An error occurred while inserting the comment" });
+          res.status(500).json({ message: "An error occurred while validating the event" });
         } else {
           res.status(200).json({ message: "event validate successfully", isOk : true, results: results });
         }
@@ -39,7 +40,15 @@ const eventsRouter = ( connection ) =>{
 
   router.get('/all_past_events', (req, res) => {
     const allPastEvents = connection.query(
-      `SELECT * from events WHERE endDate < '${date}'`
+      `SELECT * from events WHERE endDate < '${date}'`,
+      (error, results) => {
+        if (error) {
+          console.error(`Error: ${error}`);
+          res.status(500).json({ message: "An error occurred while fetching past events" });
+        } else {
+          res.status(200).json({ message: "past events are available", isOk : true, results: results });
+        }
+      }
     )
   })
 

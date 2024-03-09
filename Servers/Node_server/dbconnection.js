@@ -17,7 +17,5 @@
 //  });
 // }
 
-// initConnection()
-
 // module.exports = initConnection;
 // module.exports = connection;
