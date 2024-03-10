@@ -4,9 +4,16 @@ const eventsController = require('../controllers/events-controllers')
 
 const eventsRouter = () =>{
 
+  console.log('ok routing')
+
+  router.get('/all_past_events', eventsController.get_all_past_events);
+
+  router.put('/:id',eventsController.validateEvent);
+
+  router.delete('/:id', eventsController.deleteEvent)
+
   router.post('/add', eventsController.addEvent);
   
-  router.get('/all_past_events', eventsController.get_all_past_events);
   
   // router.get('/event_of_month', 
   //   setter.setParams, 
@@ -14,9 +21,6 @@ const eventsRouter = () =>{
   //   setter.closeDBConnection
   // );
 
-  router.put('/:id',eventsController.validateEvent);
-
-  router.delete('/:id', eventsController.deleteEvent)
 
   return router
 

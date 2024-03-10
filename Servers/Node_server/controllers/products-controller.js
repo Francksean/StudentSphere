@@ -17,9 +17,10 @@ exports.get_product_by_category = (req, res) => {
 
   const { category } = req.body;
 
+  console.log(category)
+
   const connection = res.locals.currentConnection
-  
-  /* 
+  /*
     une alternaive serait :
     const feed = connection.query(`SELECT * FROM products WHERE category = ?`, [category], (error, results) => {
   */

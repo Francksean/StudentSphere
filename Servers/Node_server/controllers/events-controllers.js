@@ -1,6 +1,4 @@
 const date = require('../utils/dateProvider');
-const db = require('../utils/dbconnector')
-
 
 
 exports.addEvent = (req, res)=>{
@@ -47,6 +45,8 @@ exports.validateEvent = (req, res) => {
 
 exports.get_all_past_events = (req, res) => {
 
+  console.log ("ok control")
+  
   const connection = res.locals.currentConnection
 
   const allPastEvents = connection.query(
