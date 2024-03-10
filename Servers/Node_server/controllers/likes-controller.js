@@ -3,7 +3,8 @@ const dbconnector = require('../utils/dbconnector')
 
 exports.addLike = (req, res) => {
 
-  const { table, elementId } = req.body;
+  const { elementId } = req.params.id;
+  const { table } = req.body;
 
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
@@ -22,7 +23,8 @@ exports.addLike = (req, res) => {
 
 exports.removeLike = (req, res) => {
 
-  const { table, elementId } = req.body;  
+  const { elementId } = req.params.id;
+  const { table } = req.body;  
 
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
@@ -37,4 +39,22 @@ exports.removeLike = (req, res) => {
       }
     }
   )
+}
+
+exports.getLikeNumber = (req, res) => {
+
+  const { table, elementId } = req.body;
+
+  const connection = dbconnector.createConnection()
+  dbconnector.initConnection
+
+  const numberOfUser = connection.query(
+    `SELECT likes FROM ${table} WHERE name = '${elementId}'`,
+    (error, resuslts) => {
+    if (error) {
+      res.status(500).json({ message: "An error occurred while fetching number of like" });
+    } else {
+      res.status(200).json({ message: "number of like fetched successfully", success : true, results: results });
+    }
+  })
 }

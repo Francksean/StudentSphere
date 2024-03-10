@@ -16,7 +16,6 @@ exports.addEvent = (req, res)=>{
     VALUES (${authorId}, "${eventName}", "${eventDescription}", '${date}', '${poster}', '${category}', 'proposed')`,
     (error, results) => {
       if (error) {
-        console.error(`Error: ${error}`);
         res.status(500).json({ message: "An error occurred while registering the event" });
       } else {
         res.status(200).json({ message: "event proposed successfully", success : true, results: results });
@@ -35,7 +34,7 @@ exports.validateEvent = (req, res) => {
   dbconnector.initConnection
 
   const validateEvent = connection.query(
-    `UPDATE events SET beginDate = '${beginDate}',endDate = '${endDate}'WHERE id = '${id}'`,
+    `UPDATE events SET beginDate = '${beginDate}',endDate = '${endDate}', state = 'scheduled' WHERE id = '${id}'`,
     (error, results) => {
       if (error) {
         console.error(`Error: ${error}`);
