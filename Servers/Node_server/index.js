@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const setter = require('./middlewares/setter')
+
 
 //import des routers des différentes entités
 const eventsRouter = require('./routes/eventsRouter')
@@ -12,9 +14,9 @@ app.use(express.json())
 app.use(cors());
 
 // mon "contrôlleur" pour les différentes routes
-app.use('/comments', commentsRouter());
-app.use('/shop', productsRouter());
-app.use('/events', eventsRouter());
+app.use('/comments', setter.set, commentsRouter());
+app.use('/shop', setter.set, productsRouter());
+app.use('/events', setter.set, eventsRouter());
 
 app.listen(3000, () => {
   console.log("\n\n\n\nServer started on port 3000");
