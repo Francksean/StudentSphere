@@ -10,6 +10,5 @@ exports.setParams = (req, res, next ) => {
 }
 
 exports.closeDBConnection = ( req, res, next ) => {
-  // connection.end()
-  next();
+  connection.end()
 }
