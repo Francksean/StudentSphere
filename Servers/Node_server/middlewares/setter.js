@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+//HEAD
 
-exports.set = (req, res, next ) => {
-  res.header('Content-Type', 'application/json');
+// exports.set = (req, res, next ) => {
+//   res.header('Content-Type', 'application/json');
   
-  next()
-}
-=======
+//   next()
+// }
+//
 const dbconnector = require('../utils/dbconnector');
 
 exports.setParams = (req, res, next) => {
@@ -29,4 +29,3 @@ exports.closeDBConnection = (req, res, next) => {
   connection.end();
   next();
 };
->>>>>>> 917331285ecb52be47948c71dc801d67976791e7
