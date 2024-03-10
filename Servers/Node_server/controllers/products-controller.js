@@ -1,12 +1,10 @@
 const dbconnector = require('../utils/dbconnector')
 
-const connection = dbconnector.createConnection
+const connection = dbconnector.createConnection()
 
 exports.get_all_products = (req, res) => {
 
-  dbconnector.initConnection()
-
-  console.log('ok control')
+  dbconnector.initConnection
 
   const feed = connection.query('SELECT * FROM products', (error, results) => {
     if(error){
@@ -21,9 +19,7 @@ exports.get_product_by_category = (req, res) => {
 
   const { category } = req.body;
 
-  console.log(category)
-
-  const connection = res.locals.currentConnection
+  dbconnector.initConnection
   /*
     une alternaive serait :
     const feed = connection.query(`SELECT * FROM products WHERE category = ?`, [category], (error, results) => {
