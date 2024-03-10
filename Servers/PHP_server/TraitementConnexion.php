@@ -1,4 +1,7 @@
 <?php
+//Démarrage de la session d'utilisateur
+session_start();
+
 // Connexion à la base de données
 $bdd = new PDO('mysql:host=localhost;dbname=studentspherebdd; charset=utf8', 'root', 'BredouilleMYADMA');
 
@@ -15,10 +18,10 @@ if(isset($_POST['email']) && isset($_POST['motDePasse'])) {
 
     if ($utilisateur) {
         // Les informations de connexion sont correctes, l'utilisateur est connecté
-        echo "Connexion réussie ! Bienvenue, " . $utilisateur['prenom'] . ".";
+        $_SESSION['utilisateur'] = $utilisateur;
         
         // Redirection vers une page spécifique après la connexion réussie
-        header("Location: #");
+        header("Location: Profil_étudiant.html");
         exit(); 
     } else {
         // Les informations de connexion sont incorrectes
