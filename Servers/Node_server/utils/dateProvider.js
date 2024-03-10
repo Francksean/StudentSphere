@@ -3,6 +3,9 @@
   routes du serveur
 */
 
-const date = new Date().toISOString().split("T")[0];
+const fullDate = new Date()
 
-module.exports = date;
+const date = fullDate.toISOString().split("T")[0];
+const actualMonth = fullDate.getMonth
+
+module.exports = { date, actualMonth };

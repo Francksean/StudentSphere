@@ -1,19 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const eventsController = require('../controllers/events-controllers')
+const eventsController = require('../controllers/events-controller')
 
-const eventsRouter = () =>{
-
-  console.log('ok routing')
-
-  router.get('/all_past_events', eventsController.get_all_past_events);
-
-  router.put('/:id',eventsController.validateEvent);
-
-  router.delete('/:id', eventsController.deleteEvent)
-
-  router.post('/add', eventsController.addEvent);
   
+router.put('/:id',eventsController.validateEvent);
+  
+router.delete('/:id', eventsController.deleteEvent)
+  
+router.post('/add', eventsController.addEvent);
+  
+router.get('/all_past_events', eventsController.getAllPastEvents);
   
   // router.get('/event_of_month', 
   //   setter.setParams, 
@@ -22,8 +18,4 @@ const eventsRouter = () =>{
   // );
 
 
-  return router
-
-}
-
-module.exports = eventsRouter;
+module.exports = router;

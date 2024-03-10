@@ -1,6 +1,5 @@
-const express = require('express')
 const date = require('../utils/dateProvider');
-const db = require('../utils/dbconnector')
+const dbconnector = require('../utils/dbconnector')
 
 
 
@@ -9,7 +8,8 @@ exports.addComment = (req, res) => {
 
   const { table, relativeIdName, authorId, relativeId, content } = req.body;
 
-  const connection = res.locals.currentConnection
+  const connection = dbconnector.createConnection()
+  dbconnector.initConnection
 
   const newComment = connection.query(    
     `INSERT INTO ${table} (authorId, ${relativeIdName}, content, datePosted) VALUES (${authorId}, ${relativeId}, '${content}', '${date}')`,
@@ -33,7 +33,8 @@ exports.showComments = (req, res) => {
   const { elemId } = req.params.id;
   const { table } = req.body;
 
-  const connection = res.locals.currentConnection
+  const connection = dbconnector.createConnection()
+  dbconnector.initConnection
 
   const comments = connection.query(
     `SELECT * FROM ${table} WHERE id = '${elemId}'`

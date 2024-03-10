@@ -1,13 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-<<<<<<< HEAD
-const setter = require('./middlewares/setter')
-=======
+
 const jwt = require('jsonwebtoken')
 
 const setter = require('./middlewares/setter')
 const auth = require('./middlewares/auth')
->>>>>>> 917331285ecb52be47948c71dc801d67976791e7
 
 
 //import des routers des différentes entités
@@ -21,14 +18,9 @@ app.use(express.json())
 app.use(cors());
 
 // mon "contrôlleur" pour les différentes routes
-<<<<<<< HEAD
-app.use('/comments', setter.set, commentsRouter());
-app.use('/shop', setter.set, productsRouter());
-app.use('/events', setter.set, eventsRouter());
-=======
-app.use('/comments', auth.verifyToken, setter.setParams, commentsRouter, setter.closeDBConnection );
-app.use('/shop', auth.verifyToken, setter.setParams, productsRouter, setter.closeDBConnection);
-app.use('/events', auth.verifyToken, setter.setParams, eventsRouter, setter.closeDBConnection);
+app.use('/comments', auth.verifyToken, commentsRouter );
+app.use('/shop', auth.verifyToken, productsRouter);
+app.use('/events', auth.verifyToken, eventsRouter);
 
 app.post("/getToken", (req, res) => {
   const { userId } = req.body;
@@ -36,7 +28,6 @@ app.post("/getToken", (req, res) => {
   res.json(token)
 
 })
->>>>>>> 917331285ecb52be47948c71dc801d67976791e7
 
 app.listen(3000, () => {
   console.log("\n\n\n\nServer started on port 3000");
