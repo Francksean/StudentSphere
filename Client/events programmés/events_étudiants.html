@@ -128,22 +128,22 @@
     </div>
 
     <script>
-        // Récupérer les données envoyées par events_BDE.html depuis le stockage local
+  // Retrieve the event data sent from events_BDE.html from local storage
         const eventData = JSON.parse(localStorage.getItem('eventData'));
 
-        // Vérifier si les données existent
+        // Check if the data exists
         if (eventData) {
-            // Créer un nouvel élément de container d'événement
+            // Create a new event container element
             const eventContainer = document.createElement('div');
             eventContainer.classList.add('event-container');
 
-            // Créer l'élément pour le nombre de participants
+            // Create the element for the participant count
             const participantCountElement = document.createElement('div');
             participantCountElement.classList.add('participant-count');
             participantCountElement.textContent = `${eventData.participants} participants`;
             eventContainer.appendChild(participantCountElement);
 
-            // Créer l'élément pour l'image de l'événement
+            // Create the element for the event image
             const eventImageElement = document.createElement('div');
             eventImageElement.classList.add('event-image');
             const eventImage = document.createElement('img');
@@ -152,45 +152,63 @@
             eventImageElement.appendChild(eventImage);
             eventContainer.appendChild(eventImageElement);
 
-            // Créer l'élément pour les détails de l'événement
+            // Create the element for the event details
             const eventDetailsElement = document.createElement('div');
             eventDetailsElement.classList.add('event-details');
 
-            // Créer l'élément pour le nom de l'événement
+            // Create the element for the event name
             const eventNameElement = document.createElement('h2');
             eventNameElement.classList.add('event-name');
             eventNameElement.textContent = eventData.name;
             eventDetailsElement.appendChild(eventNameElement);
 
-            // Créer l'élément pour la description de l'événement
+            // Create the element for the event description
             const eventDescriptionElement = document.createElement('p');
             eventDescriptionElement.classList.add('event-description');
             eventDescriptionElement.textContent = eventData.description;
             eventDetailsElement.appendChild(eventDescriptionElement);
 
-            // Créer l'élément pour la date de l'événement
+            // Create the element for the event date
             const eventDateElement = document.createElement('p');
             eventDateElement.classList.add('event-date');
             eventDateElement.textContent = `Date : ${eventData.date}`;
             eventDetailsElement.appendChild(eventDateElement);
 
-            // Créer l'élément pour le prix de l'événement
+            // Create the element for the event price
             const eventPriceElement = document.createElement('p');
             eventPriceElement.classList.add('event-price');
             eventPriceElement.textContent = `Prix : ${eventData.price}`;
             eventDetailsElement.appendChild(eventPriceElement);
 
-            // Créer l'élément pour le bouton de participation
+            // Create the element for the participate button
             const participateButtonElement = document.createElement('a');
             participateButtonElement.classList.add('participate-button');
             participateButtonElement.href = '#';
             participateButtonElement.textContent = 'Participer';
             eventDetailsElement.appendChild(participateButtonElement);
 
-            // Ajouter l'élément des détails de l'événement au container d'événement
-            eventContainer.appendChild(eventDetailsElement);
+            // Add an event listener to the participate button
+            participateButtonElement.addEventListener('click', function() {
+                // Create the registration form dynamically
+                const registrationForm = document.createElement('form');
+                registrationForm.innerHTML = `
+                    <h3>Formulaire d'inscription</h3>
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" required>
+                    <input type="submit" value="S'inscrire">
+                `;
 
-            // Ajouter le container d'événement au conteneur principal
+                // Append the registration form to the event details element
+                eventDetailsElement.appendChild(registrationForm);
+            });
+
+            // Add the event details element to the event container
+            eventContainer.appendChild(eventDetailsElement);
+			
+
+            // Add the event container to the main container
             const eventContainerElement = document.getElementById('event-container');
             eventContainerElement.appendChild(eventContainer);
         }
