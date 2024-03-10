@@ -6,68 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+	
+	   body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
             padding: 0;
         }
 
-        .header {
+        .container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            background-color: #f2f2f2;
             padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            z-index: 1;
-        }
-
-        .footer {
-            background-color: #808080;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            font-size: 14px;
-            z-index: 1;
-        }
-
-        .content {
-            background-image: url('./Assets/agenda.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            min-height: calc(100vh - 120px);
-            padding-top: 120px;
-            padding-bottom: 60px;
-        }
-
-        .logo {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .profile-button,
-        .logout-button {
-            background-color: #808080;
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
             border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-left: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
         }
-
-        .profile-button:hover,
-        .logout-button:hover {
-            background-color: #DCDCDC;
-        }
-
+        
         .event-container {
             position: relative;
             display: flex;
@@ -133,74 +93,109 @@
             text-decoration: none;
             font-weight: bold;
             transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
         }
 
         .participate-button:hover {
             background-color: #DCDCDC;
         }
 
-      
+        /* Media queries pour rendre le design réactif */
+
+        @media (max-width: 600px) {
+            .event-container {
+                max-width: 100%;
+            }
+
+            .event-image {
+                max-width: 100%;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .event-details {
+                flex: 1;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <div>
-            <img src="logo.png" alt="Logo" class="logo">
-            <span class="title">Évènements programmés</span>
-        </div>
-        <div>
-            <a href="#" class="profile-button">Profil</a>
-            <a href="#" class="logout-button">Déconnexion</a>
-        </div>
+    <div class="content" id="event-container">
+        <!-- Les containers d'événements seront ajoutés ici dynamiquement -->
     </div>
 
-    <div class="content">
-        <div class="event-container">
-            <div class="participant-count">25 participants | 5 places disponibles </div>
-            <div class="event-image">
-                <img src="event1.jpg" alt="Event 1">
-            </div>
-            <div class="event-details">
-                <h2 class="event-name">Nom de l'évènement 1</h2>
-                <p class="event-description">Description de l'évènement 1</p>
-                <p class="event-date">Date : </p>
-                <p class="event-price">Prix : </p>
-                <a href="#" class="participate-button">Participer</a>
-            </div>
-        </div>
+    <script>
+        // Récupérer les données envoyées par events_BDE.html depuis le stockage local
+        const eventData = JSON.parse(localStorage.getItem('eventData'));
 
-        <div class="event-container">
-            <div class="participant-count">15 participants | COMPLET</div>
-            <div class="event-image">
-                <img src="event2.jpg" alt="Event 2">
-            </div>
-            <div class="event-details">
-                <h2 class="event-name">Nom de l'évènement 2</h2>
-                <p class="event-description">Description de l'évènement 2</p>
-                <p class="event-date">Date : </p>
-                <p class="event-price">Prix : </p>
-                <a href="#" class="participate-button">Participer</a>
-            </div>
-        </div>
-    </div>
-<script>
-	 // Sélectionner le bouton "Participer"
-var participateButton = document.querySelector(".participate-button");
+        // Vérifier si les données existent
+        if (eventData) {
+            // Créer un nouvel élément de container d'événement
+            const eventContainer = document.createElement('div');
+            eventContainer.classList.add('event-container');
 
-// Ajouter un gestionnaire d'évènement au clic sur le bouton
-participateButton.addEventListener("click", function() {
-    // Vérifier le texte actuel du bouton
-    if (participateButton.innerHTML === "Participer") {
-        // Modifier le texte du bouton en "Je participe"
-        participateButton.innerHTML = "Je participe";
-    } else {
-        // Modifier le texte du bouton en "Participer"
-        participateButton.innerHTML = "Participer";
-    }
-});
-</script>
-   
+            // Créer l'élément pour le nombre de participants
+            const participantCountElement = document.createElement('div');
+            participantCountElement.classList.add('participant-count');
+            participantCountElement.textContent = `${eventData.participants} participants`;
+            eventContainer.appendChild(participantCountElement);
+
+            // Créer l'élément pour l'image de l'événement
+            const eventImageElement = document.createElement('div');
+            eventImageElement.classList.add('event-image');
+            const eventImage = document.createElement('img');
+            eventImage.src = eventData.imageSrc;
+            eventImage.alt = eventData.imageAlt;
+            eventImageElement.appendChild(eventImage);
+            eventContainer.appendChild(eventImageElement);
+
+            // Créer l'élément pour les détails de l'événement
+            const eventDetailsElement = document.createElement('div');
+            eventDetailsElement.classList.add('event-details');
+
+            // Créer l'élément pour le nom de l'événement
+            const eventNameElement = document.createElement('h2');
+            eventNameElement.classList.add('event-name');
+            eventNameElement.textContent = eventData.name;
+            eventDetailsElement.appendChild(eventNameElement);
+
+            // Créer l'élément pour la description de l'événement
+            const eventDescriptionElement = document.createElement('p');
+            eventDescriptionElement.classList.add('event-description');
+            eventDescriptionElement.textContent = eventData.description;
+            eventDetailsElement.appendChild(eventDescriptionElement);
+
+            // Créer l'élément pour la date de l'événement
+            const eventDateElement = document.createElement('p');
+            eventDateElement.classList.add('event-date');
+            eventDateElement.textContent = `Date : ${eventData.date}`;
+            eventDetailsElement.appendChild(eventDateElement);
+
+            // Créer l'élément pour le prix de l'événement
+            const eventPriceElement = document.createElement('p');
+            eventPriceElement.classList.add('event-price');
+            eventPriceElement.textContent = `Prix : ${eventData.price}`;
+            eventDetailsElement.appendChild(eventPriceElement);
+
+            // Créer l'élément pour le bouton de participation
+            const participateButtonElement = document.createElement('a');
+            participateButtonElement.classList.add('participate-button');
+            participateButtonElement.href = '#';
+            participateButtonElement.textContent = 'Participer';
+            eventDetailsElement.appendChild(participateButtonElement);
+
+            // Ajouter l'élément des détails de l'événement au container d'événement
+            eventContainer.appendChild(eventDetailsElement);
+
+            // Ajouter le container d'événement au conteneur principal
+            const eventContainerElement = document.getElementById('event-container');
+            eventContainerElement.appendChild(eventContainer);
+        }
+    </script>
+    
 </body>
 
 </html>
