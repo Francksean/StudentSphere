@@ -19,7 +19,7 @@ app.use(cors());
 // mon "contrôlleur" pour les différentes routes
 app.use('/comments', auth.verifyToken, setter.setParams, commentsRouter, setter.closeDBConnection );
 app.use('/shop', auth.verifyToken, setter.setParams, productsRouter, setter.closeDBConnection);
-app.use('/events', setter.setParams, eventsRouter);
+app.use('/events', auth.verifyToken, setter.setParams, eventsRouter, setter.closeDBConnection);
 
 app.post("/getToken", (req, res) => {
   const { userId } = req.body;

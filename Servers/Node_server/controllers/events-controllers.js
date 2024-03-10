@@ -29,6 +29,8 @@ exports.validateEvent = (req, res) => {
   
   const connection = res.locals.currentConnection
 
+  console.log(connection)
+
   const validateEvent = connection.query(
     `UPDATE events SET beginDate = '${beginDate}',endDate = '${endDate}'WHERE id = '${id}'`,
     (error, results) => {
