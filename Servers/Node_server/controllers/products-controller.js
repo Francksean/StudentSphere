@@ -1,8 +1,12 @@
+const dbconnector = require('../utils/dbconnector')
+
+const connection = dbconnector.createConnection
+
 exports.get_all_products = (req, res) => {
 
-  console.log('ok fin')
+  dbconnector.initConnection()
 
-  const connection = res.locals.currentConnection
+  console.log('ok control')
 
   const feed = connection.query('SELECT * FROM products', (error, results) => {
     if(error){

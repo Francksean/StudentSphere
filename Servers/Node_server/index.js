@@ -25,9 +25,9 @@ app.use(cors());
 // app.use('/shop', setter.set, productsRouter());
 // app.use('/events', setter.set, eventsRouter());
 
-app.use('/comments', auth.verifyToken, setter.setParams, commentsRouter, setter.closeDBConnection );
-app.use('/shop', auth.verifyToken, setter.setParams, productsRouter, setter.closeDBConnection);
-app.use('/events', auth.verifyToken, setter.setParams, eventsRouter, setter.closeDBConnection);
+app.use('/comments', auth.verifyToken, setter.setParams, commentsRouter);
+app.use('/shop', auth.verifyToken, setter.setParams, productsRouter);
+app.use('/events', auth.verifyToken, setter.setParams, eventsRouter);
 
 app.post("/getToken", (req, res) => {
   const { userId } = req.body;
