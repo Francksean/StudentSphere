@@ -7,10 +7,9 @@ const db = require('../utils/dbconnector')
 
 exports.addComment = (req, res) => {
 
-  const connection = db.createConnection();
-  db.initConnection(connection)
-
   const { table, relativeIdName, authorId, relativeId, content } = req.body;
+
+  const connection = res.locals.currentConnection
 
   const newComment = connection.query(    
     `INSERT INTO ${table} (authorId, ${relativeIdName}, content, datePosted) VALUES (${authorId}, ${relativeId}, '${content}', '${date}')`,
@@ -28,22 +27,29 @@ exports.addComment = (req, res) => {
       Vu que le commentaire est posté à la même date que la requête est lancéé (en principe)
       on peut se permettre de juste créer un nouvel objet date et le passer en paramètre de la requête
     */
+}
 
-  connection.end()
+exports.showComments = (req, res) => {
+  const { elemId } = req.params.id;
+  const { table } = req.body;
+
+  const connection = res.locals.currentConnection
+
+  const comments = connection.query(
+    `SELECT * FROM ${table} WHERE id = '${elemId}'`
+  )
 
 }
 
-
-
-
 exports.deleteComment = (req, res) => {
 
-  const connection = db.createConnection();
-  db.initConnection(connection)
+  const { id } = req.params.id
+  const { table } = req.body;
 
-  const { table, commentId } = req.body;
+  const connection = res.locals.currentConnection
 
-  const deletedComment = connection.query(`DELETE FROM ${table} WHERE id = '${commentId}'`, 
+
+  const deletedComment = connection.query(`DELETE FROM ${table} WHERE id = '${id}'`, 
   (error, results) => {
     if(error){
       console.log(`${error}`)
@@ -52,7 +58,4 @@ exports.deleteComment = (req, res) => {
       res.send({ message : "commentaire supprimé avec succès", success : true, results: results})
     }
   })
-
-  connection.end()
-
 }

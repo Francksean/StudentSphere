@@ -7,7 +7,9 @@ const commentsRouter = () => {
   
   router.post("/add", commentsController.addComment);
 
-  router.post("/delete", commentsController.deleteComment)
+  router.post("/show_comments", commentsController.showComments)
+
+  router.delete("/:id", commentsController.deleteComment)
   
   return router;
 }
