@@ -1,11 +1,8 @@
-const express = require('express')
-
-const db = require('../utils/dbconnector')
-
 exports.get_all_products = (req, res) => {
 
-  const connection = db.createConnection();
-  db.initConnection(connection)
+  console.log('ok fin')
+
+  const connection = res.locals.currentConnection
 
   const feed = connection.query('SELECT * FROM products', (error, results) => {
     if(error){
@@ -14,16 +11,13 @@ exports.get_all_products = (req, res) => {
       res.json({ success : true, results : results });
     }
   });
-
-  connection.end()
 }
 
 exports.get_product_by_category = (req, res) => {
 
-  const connection = db.createConnection();
-  db.initConnection(connection)
-
   const { category } = req.body;
+
+  const connection = res.locals.currentConnection
   
   /* 
     une alternaive serait :
@@ -37,7 +31,4 @@ exports.get_product_by_category = (req, res) => {
       res.json({ success : false, results : results });
     }
   })
-
-  connection.end()
-
 }
