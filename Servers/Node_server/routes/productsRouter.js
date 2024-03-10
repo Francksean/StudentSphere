@@ -1,43 +1,18 @@
 const express = require('express');
-const mysql = require('mysql');
-
+const productsController = require('../controllers/products-controller')
 
 const router = express.Router();
 
 
 // constante qui contient la route (importée et utilisée dans index.js)
-const productsRouter = (connection) => {
+const productsRouter = () => {
 
   // gestion de la requête get sur l'url http://localhost:3000/shop/feed (récupérer tous les produits)
-  router.get("/feed", (req, res) => {
-    const feed = connection.query('SELECT * FROM products', (error, results) => {
-      if(error){
-        res.json({ success : false, message : "Problème lors du chargement des produits ",error : error });
-      }else{
-        res.json({ success : true, results : results });
-      }
-    });
-  });
+  router.get("/feed", productsController.get_all_products );
 
 
   // gestion de la requête get sur l'url http://localhost:3000/shop/feed_by_category (récupérer les produits par catégorie)
-  router.post("/feed_by_category", (req, res) => {
-
-    const { category } = req.body;
-    
-    /* 
-      une alternaive serait :
-      const feed = connection.query(`SELECT * FROM products WHERE category = ?`, [category], (error, results) => {
-    */
-    const feed = connection.query(`SELECT * FROM products WHERE category = '${category}'`, (error, results) => {
-      if(error){
-        res.json({ success : false, error : error})
-      }else{
-        // console.log(results)
-        res.json({ success : false, results : results });
-      }
-    })
-  })
+  router.post("/feed_by_category", productsController.get_product_by_category )
 
 
   return router;

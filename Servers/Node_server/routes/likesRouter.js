@@ -2,7 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 
-const likesRouter = (connection) =>{
+const likesRouter = () =>{
 
   router.post('/add', (req, res) => {
     const { table, elementId } = req.body;
