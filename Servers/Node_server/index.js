@@ -26,8 +26,8 @@ app.use('/events', auth.verifyToken, multer, eventsRouter);
 app.use('/likes', auth.verifyToken, likesRouter)
 
 // toute première requête lancée par le client pour récupérer son token
-app.post("/getToken", (req, res) => {
-  const { userId } = req.body;
+app.get("/getToken/:userId", (req, res) => {
+  const { userId } = req.params;
   const token = jwt.sign({ userId : userId },'your-secret-key', {
     "expiresIn" : "1d"
   })

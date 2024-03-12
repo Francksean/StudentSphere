@@ -21,27 +21,27 @@ exports.addComment = (req, res) => {
 
 exports.showComments = (req, res) => {
   
-  const { id } = req.params;
+  const { comentId } = req.params;
   const { table } = req.body;
 
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
 
   const comments = connection.query(
-    `SELECT * FROM ${table} WHERE id = '${id}'`
+    `SELECT * FROM ${table} WHERE comentId = '${comentId}'`
   )
 
 }
 
 exports.deleteComment = (req, res) => {
 
-  const { id } = req.params
+  const { comentId } = req.params
   const { table } = req.body;
 
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
 
-  const deletedComment = connection.query(`DELETE FROM ${table} WHERE id = '${id}'`, 
+  const deletedComment = connection.query(`DELETE FROM ${table} WHERE comentId = '${comentId}'`, 
   (error, results) => {
     if(error){
       console.log(`${error}`)
@@ -51,3 +51,4 @@ exports.deleteComment = (req, res) => {
     }
   })
 }
+

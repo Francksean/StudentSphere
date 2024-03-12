@@ -8,6 +8,6 @@ router.post("/add", commentsController.addComment);
 
 router.post("/show_comments", commentsController.showComments);
 
-router.delete("/:id", commentsController.deleteComment);
+router.delete("/:commentId", commentsController.deleteComment);
 
 module.exports = router;
