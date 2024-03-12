@@ -6,6 +6,17 @@ BEGIN
     VALUES (nom, prenom, localisation, email, password);
 END //
 DELIMITER ;
+-- Procédure Connexion d'un étudiant
+DELIMITER //
+
+CREATE PROCEDURE authenticateUser (IN p_email VARCHAR(100), IN p_password VARCHAR(255))
+BEGIN
+    DECLARE users_id INT;
+    SELECT id INTO users_id FROM users WHERE email = p_email AND password = p_password;
+    SELECT users_id;
+END//
+
+DELIMITER ;
 
 -- Inscription d'un étudiant à un événement 
 DELIMITER //
