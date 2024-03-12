@@ -2,30 +2,22 @@ const date = require('../utils/dateProvider');
 const dbconnector = require('../utils/dbconnector')
 
 exports.addComment = (req, res) => {
-
   const { table, relativeIdName, authorId, relativeId, content } = req.body;
 
-  const connection = dbconnector.createConnection()
-  dbconnector.initConnection
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(connection, () => {
+    const query = `CALL InsertComment(${authorId}, ${relativeId}, '${content}', '${date}')`;
 
-  const newComment = connection.query(    
-    `INSERT INTO ${table} (authorId, ${relativeIdName}, content, datePosted) VALUES (${authorId}, ${relativeId}, '${content}', '${date}')`,
-    (error, results) => {
+    connection.query(query, (error, results) => {
       if (error) {
         console.error(`Error: ${error}`);
-        res.status(500).json({ message: "An error occurred while inserting the comment", success : false, error : error });
+        res.status(500).json({ message: "An error occurred while inserting the comment", success: false, error: error });
       } else {
-        res.status(200).json({ message: "Comment inserted successfully", success : true, results: results });
+        res.status(200).json({ message: "Comment inserted successfully", success: true, results: results });
       }
-    }
-  );
-  /*
-    table est la table dans laquelle la requête sera effectuée
-    relativeIdName est le nom dans la table manipulée, du paramètre ID de la table référencé
-    Vu que le commentaire est posté à la même date que la requête est lancéé (en principe)
-    on peut se permettre de juste créer un nouvel objet date et le passer en paramètre de la requête
-  */
-}
+    });
+  });
+};
 
 exports.showComments = (req, res) => {
   
