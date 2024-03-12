@@ -20,18 +20,21 @@ exports.addComment = (req, res) => {
 };
 
 exports.showComments = (req, res) => {
-  
   const { id } = req.params;
   const { table } = req.body;
 
-  const connection = dbconnector.createConnection()
-  dbconnector.initConnection
-
-  const comments = connection.query(
-    `SELECT * FROM ${table} WHERE id = '${id}'`
-  )
-
-}
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(() => {
+    connection.query('CALL ShowComments(?, ?)', [table, id], (err, results) => {
+      if (err) {
+        console.error('Error executing stored procedure:', err);
+        res.status(500).json({ error: 'An error occurred while fetching comments.' });
+      } else {
+        res.json(results[0]);
+      }
+    });
+  });
+};
 
 exports.deleteComment = (req, res) => {
 

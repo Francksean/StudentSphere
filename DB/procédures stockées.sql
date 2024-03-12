@@ -61,3 +61,16 @@ BEGIN
     VALUES (authorId, relativeId, content, datePosted);
 END //
 DELIMITER ;
+
+--Affichage des commentaires
+DELIMITER //
+
+CREATE PROCEDURE ShowComments(IN tableName VARCHAR(255), IN recordId VARCHAR(255))
+BEGIN
+  SET @query = CONCAT('SELECT * FROM ', tableName, ' WHERE id = ''', recordId, '''');
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
+
+DELIMITER ;
