@@ -9,7 +9,7 @@ DELIMITER ;
 -- Procédure Connexion d'un étudiant
 DELIMITER //
 
-CREATE PROCEDURE authenticateUser (IN p_email VARCHAR(100), IN p_password VARCHAR(255))
+CREATE PROCEDURE authenticateUser (IN p_email VARCHAR(255), IN p_password VARCHAR(255))
 BEGIN
     DECLARE users_id INT;
     SELECT id INTO users_id FROM users WHERE email = p_email AND password = p_password;
@@ -60,4 +60,30 @@ BEGIN
     INSERT INTO comments (authorId, relativeId, content, datePosted)
     VALUES (authorId, relativeId, content, datePosted);
 END //
+DELIMITER ;
+
+--Affichage des commentaires
+DELIMITER //
+
+CREATE PROCEDURE ShowComment(IN tableName VARCHAR(255), IN recordId VARCHAR(255))
+BEGIN
+  SET @query = CONCAT('SELECT * FROM ', tableName, ' WHERE id = ''', recordId, '''');
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
+
+DELIMITER ;
+
+--Suppression d'un commentaire
+DELIMITER //
+
+CREATE PROCEDURE DeleteComment(IN tableName VARCHAR(255), IN recordId VARCHAR(255))
+BEGIN
+  SET @query = CONCAT('DELETE FROM ', tableName, ' WHERE id = ''', recordId, '''');
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
+
 DELIMITER ;

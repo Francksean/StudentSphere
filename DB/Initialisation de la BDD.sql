@@ -178,20 +178,17 @@ CREATE TABLE product_likes (
 CREATE TABLE idea_likes (
     likerId INT NOT NULL,
     ideaId INT NOT NULL,
-    PRIMARY KEY (likerId,ideaId),
+    PRIMARY KEY (likerId, ideaId),
     FOREIGN KEY (likerId) REFERENCES users(id),
-    FOREIGN KEY (ideasId) REFERENCES ideas(id) 
+    FOREIGN KEY (ideaId) REFERENCES ideas(id) 
 );
-
 
 --Création de la table image_related_likes
 
-CREATE TABLE event_likes (
+CREATE TABLE image_related_likes (
     likerId INT NOT NULL,
     image_relatedId INT NOT NULL,
     PRIMARY KEY (likerId,image_relatedId),
     FOREIGN KEY (likerId) REFERENCES users(id),
     FOREIGN KEY (image_relatedId) REFERENCES images_related(id) 
 );
-
-

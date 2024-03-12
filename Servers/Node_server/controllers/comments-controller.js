@@ -6,49 +6,52 @@ exports.addComment = (req, res) => {
 
   const connection = dbconnector.createConnection();
   dbconnector.initConnection(connection, () => {
+    const currentDate = date();
     const query = `CALL InsertComment(${authorId}, ${relativeId}, '${content}', '${date}')`;
 
     connection.query(query, (error, results) => {
       if (error) {
         console.error(`Error: ${error}`);
-        res.status(500).json({ message: "An error occurred while inserting the comment", success: false, error: error });
+        res.status(500).json({ message: "Une erreur s'est produite lors de l'ajout du commentaire", success: false, error: error });
       } else {
-        res.status(200).json({ message: "Comment inserted successfully", success: true, results: results });
+        res.status(200).json({ message: "Commentaire ajouté avec succès", success: true, results: results });
       }
     });
   });
 };
 
 exports.showComments = (req, res) => {
-  
-  const { comentId } = req.params;
+  const { commentId } = req.params;
   const { table } = req.body;
 
-  const connection = dbconnector.createConnection()
-  dbconnector.initConnection
-
-  const comments = connection.query(
-    `SELECT * FROM ${table} WHERE comentId = '${comentId}'`
-  )
-
-}
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(() => {
+    const currentDate = date();
+    connection.query('CALL ShowComments(?, ?)', [table, commentId], (error, results) => {
+      if (error) {
+        console.log(`${error}`);
+        res.send({ message: "Une erreur s'est produite lors de la récupération des commentaires", success: false, error: error });
+      } else {
+        res.send({ message: "Commentaires récupérés avec succès", success: true, results: results });
+      }
+    });
+  });
+};
 
 exports.deleteComment = (req, res) => {
-
-  const { comentId } = req.params
+  const { commentId } = req.params;
   const { table } = req.body;
 
-  const connection = dbconnector.createConnection()
-  dbconnector.initConnection
-
-  const deletedComment = connection.query(`DELETE FROM ${table} WHERE comentId = '${comentId}'`, 
-  (error, results) => {
-    if(error){
-      console.log(`${error}`)
-      res.send({ message : "une erreur s'est produite lors de la suppression", success : false, error : error })
-    }else{
-      res.send({ message : "commentaire supprimé avec succès", success : true, results: results})
-    }
-  })
-}
-
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(() => {
+    const currentDate = date();
+    connection.query('CALL DeleteComment(?, ?)', [table, commentId], (error, results) => {
+      if (error) {
+        console.log(`${error}`);
+        res.send({ message: "Une erreur s'est produite lors de la suppression du commentaire", success: false, error: error });
+      } else {
+        res.send({ message: "Commentaire supprimé avec succès", success: true, results: results });
+      }
+    });
+  });
+};

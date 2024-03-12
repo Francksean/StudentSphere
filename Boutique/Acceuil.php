@@ -25,13 +25,21 @@
       </nav>
 
       <div class="icons">
-         <a href="index2.php" class="fas fa-search"></a>
+         <!--<a href="" class="fas fa-search"></a>-->
          <a href="index4.php" class="fas fa-bell"></a>
          <a href="index4.php" class="fas fa-shopping-cart"></a>
          <a href="index2.php" class="fas fa-user"></a>
       </div>
-
    </header>
+
+   <div class="content"> 
+      <img src="Images/shop.png" alt="">
+
+      <h3>Order and have it delivered</h3>
+      <span> The only one on campus </span>
+      <p></p>
+      <a href="produits.php" class="btn">Order now</a>
+   </div>
 
 </body>
 </html>
