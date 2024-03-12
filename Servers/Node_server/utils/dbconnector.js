@@ -14,11 +14,15 @@ exports.createConnection = () => {
 
 // fonction de connexion à la bd
 exports.initConnection = (connection, next) =>  {
-  connection.connect(function(err) {
+  connection.connect((err) => {
     if (err) throw err;
     console.log("\n\n\n\nConnected to the database!");
     next()
   });
+}
+
+exports.endConnection = (connection) => {
+  connection.end()
 }
 
 

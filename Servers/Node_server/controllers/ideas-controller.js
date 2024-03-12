@@ -56,3 +56,21 @@ exports.getAllIdeas = (req, res) => {
   })
 }
 
+
+exports.removeIdeById = (req, res) => {
+
+  const { ideaId } = req.params;
+
+  const connection = dbconnector.createConnection()
+  dbconnector.initConnection
+
+  const selectedIdea = connection.query(
+    `DELETE FROM ideas WHERE id = ${ideaId}`,
+    (error, resuslts) => {
+    if (error) {
+      res.status(500).json({ message: "An error occurred while deleting the idea" });
+    } else {
+      res.status(200).json({ message: "idea deleted successfully", success : true, results: results });
+    }
+  })
+}
