@@ -18,15 +18,17 @@ exports.addComment = (req, res) => {
         res.status(200).json({ message: "Comment inserted successfully", success : true, results: results });
       }
     }
-  );/*
-      table est la table dans laquelle la requête sera effectuée
-      relativeIdName est le nom dans la table manipulée, du paramètre ID de la table référencé
-      Vu que le commentaire est posté à la même date que la requête est lancéé (en principe)
-      on peut se permettre de juste créer un nouvel objet date et le passer en paramètre de la requête
-    */
+  );
+  /*
+    table est la table dans laquelle la requête sera effectuée
+    relativeIdName est le nom dans la table manipulée, du paramètre ID de la table référencé
+    Vu que le commentaire est posté à la même date que la requête est lancéé (en principe)
+    on peut se permettre de juste créer un nouvel objet date et le passer en paramètre de la requête
+  */
 }
 
 exports.showComments = (req, res) => {
+  
   const { id } = req.params;
   const { table } = req.body;
 
@@ -44,8 +46,8 @@ exports.deleteComment = (req, res) => {
   const { id } = req.params
   const { table } = req.body;
 
-  const connection = res.locals.currentConnection
-
+  const connection = dbconnector.createConnection()
+  dbconnector.initConnection
 
   const deletedComment = connection.query(`DELETE FROM ${table} WHERE id = '${id}'`, 
   (error, results) => {
