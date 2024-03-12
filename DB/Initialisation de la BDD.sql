@@ -75,6 +75,18 @@ CREATE TABLE event_comments (
     FOREIGN KEY (eventId) REFERENCES events(id) -- Correction : virgule manquante après la déclaration de la première clé étrangère
 );
 
+-- Création de event_likes
+
+CREATE TABLE event_likes (
+    id INT NOT NULL UNIQUE AUTO_INCREMENT,
+    authorId INT NOT NULL,
+    eventId INT NOT NULL,
+    dateLiked DATE NOT NULL,
+    likes INT DEFAULT 0,
+    PRIMARY KEY (id),
+    FOREIGN KEY (authorId) REFERENCES users(id),
+    FOREIGN KEY (eventId) REFERENCES events(id) 
+);
 
 -- Création de idea_comments
 
