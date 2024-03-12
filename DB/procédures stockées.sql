@@ -104,6 +104,7 @@ END //
 
 DELIMITER ;
 
+
 --Afficher les évènements passés
 DELIMITER //
 
