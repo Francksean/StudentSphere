@@ -281,6 +281,7 @@ postCommentButtons.forEach(button => {
     button.addEventListener('click', posterCommentaire);
 });
 
+
 // Fonction pour poster un commentaire
 function posterCommentaire() {
     const commentaireInput = this.parentNode.previousElementSibling.previousElementSibling;
@@ -290,9 +291,30 @@ function posterCommentaire() {
         const listeDeCommentaires = this.parentNode.nextElementSibling.querySelector('.comments-list');
         const nouvelElementCommentaire = document.createElement('li');
         nouvelElementCommentaire.textContent = commentaire;
+
+        // Créer le bouton de suppression
+        const boutonSupprimer = document.createElement('button');
+        boutonSupprimer.textContent = 'Supprimer';
+        boutonSupprimer.classList.add('delete-comment-button');
+
+        // Ajouter un écouteur d'événement de clic au bouton de suppression
+        boutonSupprimer.addEventListener('click', supprimerCommentaire);
+
+        // Ajouter le bouton de suppression au commentaire
+        nouvelElementCommentaire.appendChild(boutonSupprimer);
+
+        // Ajouter le commentaire à la liste des commentaires
         listeDeCommentaires.appendChild(nouvelElementCommentaire);
+
         commentaireInput.value = '';
     }
+}
+
+// Fonction pour supprimer un commentaire
+function supprimerCommentaire() {
+    const commentaire = this.parentNode;
+    const listeDeCommentaires = commentaire.parentNode;
+    listeDeCommentaires.removeChild(commentaire);
         }
     </script>
 </body>
