@@ -1,7 +1,7 @@
 const date = require('../utils/dateProvider');
 
 const dbconnector = require('../utils/dbconnector')
-
+const multer = require('../middlewares/multer-config')
 
 
 exports.addEvent = (req, res) => {
