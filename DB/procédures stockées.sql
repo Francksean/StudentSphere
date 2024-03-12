@@ -87,3 +87,32 @@ BEGIN
 END //
 
 DELIMITER ;
+
+--Validation d'un évènement
+DELIMITER //
+
+CREATE PROCEDURE ValidateEvent(
+  IN eventId INT,
+  IN beginDate DATE,
+  IN endDate DATE
+)
+BEGIN
+  UPDATE events
+  SET beginDate = beginDate, endDate = endDate, state = 'scheduled'
+  WHERE id = eventId;
+END //
+
+DELIMITER ;
+
+
+--Afficher les évènements passés
+DELIMITER //
+
+CREATE PROCEDURE GetAllPastEvents()
+BEGIN
+  SELECT *
+  FROM events
+  WHERE endDate < CURDATE();
+END //
+
+DELIMITER ;
