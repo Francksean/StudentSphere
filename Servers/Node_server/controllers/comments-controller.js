@@ -1,9 +1,6 @@
 const date = require('../utils/dateProvider');
 const dbconnector = require('../utils/dbconnector')
 
-
-
-
 exports.addComment = (req, res) => {
 
   const { table, relativeIdName, authorId, relativeId, content } = req.body;
@@ -30,21 +27,21 @@ exports.addComment = (req, res) => {
 }
 
 exports.showComments = (req, res) => {
-  const { elemId } = req.params.id;
+  const { id } = req.params;
   const { table } = req.body;
 
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
 
   const comments = connection.query(
-    `SELECT * FROM ${table} WHERE id = '${elemId}'`
+    `SELECT * FROM ${table} WHERE id = '${id}'`
   )
 
 }
 
 exports.deleteComment = (req, res) => {
 
-  const { id } = req.params.id
+  const { id } = req.params
   const { table } = req.body;
 
   const connection = res.locals.currentConnection

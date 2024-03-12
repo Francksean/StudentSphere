@@ -3,14 +3,14 @@ const dbconnector = require('../utils/dbconnector')
 
 exports.addLike = (req, res) => {
 
-  const { elementId } = req.params.id;
+  const { id } = req.params;
   const { table } = req.body;
 
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
 
   const addLike = connection.query(
-    `UPDATE TABLE ${table} SET likes = likes + 1 WHERE id = ${elementId}`,
+    `UPDATE ${table} SET likes = likes + 1 WHERE id = ${id}`,
     (error, results) => {
       if(error){
         res.status(401).json({ success : false, message : "problem while adding the like", results : results, error : error })
@@ -23,14 +23,14 @@ exports.addLike = (req, res) => {
 
 exports.removeLike = (req, res) => {
 
-  const { elementId } = req.params.id;
+  const { id } = req.params;
   const { table } = req.body;  
 
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
 
   const addLike = connection.query(
-    `UPDATE TABLE ${table} SET likes = likes - 1 WHERE id = ${elementId}`,
+    `UPDATE TABLE ${table} SET likes = likes - 1 WHERE id = ${id}`,
     (error, results) => {
       if(error){
         res.status(401).json({ success : false, message : "problem while deleting the like", results : results, error : error })
@@ -43,13 +43,14 @@ exports.removeLike = (req, res) => {
 
 exports.getLikeNumber = (req, res) => {
 
-  const { table, elementId } = req.body;
+  const { id } = req.params;
+  const { table } = req.body;
 
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
 
   const numberOfUser = connection.query(
-    `SELECT likes FROM ${table} WHERE name = '${elementId}'`,
+    `SELECT likes FROM ${table} WHERE name = '${id}'`,
     (error, resuslts) => {
     if (error) {
       res.status(500).json({ message: "An error occurred while fetching number of like" });

@@ -23,13 +23,13 @@ exports.addIdea = (req, res) => {
 
 exports.getIdeaById = (req, res) => {
 
-  const { ideaId } = req.params;
+  const { id } = req.params;
 
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
 
   const selectedIdea = connection.query(
-    `SELECT * FROM ideas WHERE id = ${ideaId}`,
+    `SELECT * FROM ideas WHERE id = ${id}`,
     (error, resuslts) => {
     if (error) {
       res.status(500).json({ message: "An error occurred while fetchig the idea" });

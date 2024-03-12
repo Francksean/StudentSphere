@@ -54,15 +54,15 @@ exports.getProductsByName = (req, res) => {
   })
 }
 
-exports.getProductsByName = (req, res) => {
+exports.getProductsById = (req, res) => {
 
-  const { productId } = req.body;
+  const { id } = req.params;
 
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
 
   const newIdea = connection.query(
-    `SELECT * FROM products WHERE id = ${productId}`,
+    `SELECT * FROM products WHERE id = ${id}`,
   (error, resuslts) => {
     if (error) {
       res.status(500).json({ message: "An error occurred while fetching the product" });

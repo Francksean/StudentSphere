@@ -27,7 +27,7 @@ exports.addEvent = (req, res)=>{
 
 exports.validateEvent = (req, res) => {
 
-  const { id } = req.params.id  
+  const { id } = req.params
   const { beginDate, endDate } = req.body;
   
   const connection = dbconnector.createConnection()
@@ -70,7 +70,7 @@ exports.deleteEvent = (req, res) => {
   const connection = dbconnector.createConnection()
   dbconnector.initConnection
 
-  const { id } = req.params.id
+  const { id } = req.params
   
   const deletedEvent = connection.query(
     `DELETE FROM events WHERE id = '${id}'`
