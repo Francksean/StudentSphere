@@ -164,3 +164,13 @@ BEGIN
 END
 
 DELIMITER ;
+
+--Suppression d'une idée
+DELIMITER //
+
+CREATE PROCEDURE RemoveIdeaById (IN ideaId INT)
+BEGIN
+  DELETE FROM ideas WHERE id = ideaId;
+END //
+
+DELIMITER ;
