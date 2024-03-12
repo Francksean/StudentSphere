@@ -13,7 +13,7 @@ exports.addEvent = (req, res) => {
       `CALL InsertEvent(${authorId}, "${name}", "${description}", "${poster}", "${category}")`,
       (error, results) => {
         if (error) {
-          res.status(500).json({ message: 'Un problème est survenu' });
+          res.status(500).json({ message: 'An error occurred while registering the event' });
         } else {
           res.status(200).json({ message: 'Event proposed successfully', success: true, results: results });
         }
