@@ -1,144 +1,232 @@
 :root{
     --blanche: #ffff;
+    --brow:#rgb(237, 147, 1);
     --noire: #222;
-    --primaire: #3790c4;
-    --gris: #888;
-
+    --brown:#89260d;
+    --red:#ff0000;
+    --gris:#635e5e;
 }
-
-::before,
-::after{
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
+*{
+    margin:0; padding:0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
 }
 
 html{
-    box-sizing: border-box;
-    font-size: 65%;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
 }
 
-body{
-    font-family: 'Arial';
-    font-size: 15.5px;
-    color: var(--noire);
-    background-color: var(--blanche);
+section{
+    padding:2rem 9%;
 }
 
-ul , li{
-    list-style: none;
-}
-
-a{
-    text-decoration: none;
-    color: inherit;
-}
-
-img{
-    max-width: 100%;
-}
-
-.promo{
-    background-color: var(--primaire);
+.heading{
     text-align: center;
-    color: var(--blanche);
-    padding: 5px 0;
-}
-.container{
-    max-width: 114rem;
-    margin: 0 auto;
-}
-@media only screen and (max-width: 1200px){
-    .container{
-        padding: 0 3rem;
-    }
+    font-size: 4rem;
+    color:var(--noire);
+    padding:1rem;
+    margin:2rem 0;
+    background:var(--blanche) ;
 }
 
-.navigation{
-    height: 7rem;
-    justify-content: space-between;
+.heading span{
+    color:var(--brown);
 }
 
-.d-flex{
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background:#333;
+    color:var(--blanche);
+    padding:.9rem 3.5rem;
+    cursor: pointer;
+    font-size: 1.7rem;
+    filter: drop-shadow(2px 2px 2px black);
+}
+
+.btn:hover{
+    background:var(--brown);
+}
+
+header{
+    position: fixed;
+    top:0; left:0; right:0;
+    background:#89260d;
+    padding:2rem 9%;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    max-height: 90px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+header .logo{
+width: 100px ;
+height: 100px;
+}
+
+
+header .navbar a{
+    font-size: 2rem;
+    padding:0 1.5rem;
+    color:var(--blanche);
+    margin-left: 20px;
+}
+
+header .navbar a:hover{
+    color:var(--brow);
+}
+
+header .icons a{
+    font-size: 2.5rem;
+    color:var(--blanche);
+    margin-left: 1.5rem;
+}
+
+header .icons a:hover{
+    color:var(--red);
+}
+
+header #toggler{
+    display: none;
+}
+
+header .fa-bars{
+    font-size: 3rem;
+    color:#333;
+    border-radius: .5rem;
+    padding:.5rem 1.5rem;
+    cursor: pointer;
+    border:.1rem solid rgba(0,0,0,.3);
+    display: none;
+}
+
+.Acceuil{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.vid-b{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.Acceuil .content{
+    max-width: 50rem;
+}
+
+.Acceuil .content h3{
+    font-size: 6rem;
+    color:rgb(0, 0, 0);
+}
+
+.Acceuil .content span{
+    font-size: 3.5rem;
+    color:var(--brown);
+    padding:1rem 0;
+    line-height: 1.5;
+}
+
+.Acceuil .content p{
+    font-size: 1.5rem;
+    color:var(--blanche);
+    padding:1rem 0;
+    line-height: 1.5;
+}
+
+.icons-container{
+    background:var(--blanche);
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.icons-container .icons{
+    background:var(--blanche);
+    border:.1rem solid rgba(0,0,0,.1);
+    padding:2rem;
+    display: flex;
+    align-items: center;
+    flex:1 1 25rem;
+}
+
+.icons-container .icons img{
+    height:5rem;
+    margin-right: 2rem;
+}
+
+.icons-container .icons h3{
+    color:var(--gris);
+    padding-bottom: .5rem;
+    font-size: 1.5rem;
+}
+
+.icons-container .icons span{
+    color:var(--gris);
+    font-size: 1.3rem;
+}
+
+
+.contact .row{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap:1.5rem;
     align-items: center;
 }
 
-.icons1{
-    display: none;
+.Contact .row form{
+    flex:1 1 40rem;
+    padding:2rem 2.5rem;
+    box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+    border:.1rem solid rgba(0,0,0,.1);
+    background: var(--blanche);
+    border-radius: .5rem;
 }
 
-.menu .top{
-    display: none;
+.Contact .row .image{
+    flex:1 1 40rem;
 }
 
-.logo{
-    font-weight: 700;
-    font-size: 20px;
-    padding: 0px 15px;
+.Contact .row .image img{
+    width: 100%;
 }
 
-.logo span{
-    font-size: 30;
-    color: var(--primaire);
+.Contact .row form .box{
+    padding:1rem;
+    font-size: 1.7rem;
+    color:var(--gris);
+    text-transform: none;
+    border:.1rem solid rgba(0,0,0,.1);
+    border-radius: .5rem;
+    margin:.7rem 0;
+    width: 100%;
 }
 
-.nav-item:not(:last-child){
-    margin: 5px
+.Contact .row form .box:focus{
+    border-color: var(--brown);
 }
 
-.nav-item:first-child .nav-link{
-    color: var(--primaire);
+.Contact .row form textarea{
+    height: 15rem;
+    resize: none;
 }
 
-.nav-link{
-    padding: 0 10px;
-    transition: all 300ms ease-in-out;
-}
-
-.nav-link:hover{
-    color: var(--primaire);
-}
-
-.nav .icons div{
-    font-size: 20px;
-    padding: 5px;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-}
-
-.nav .icons div .nav-item:not(:last-child){
-    margin-right: 5px;
-}
-
-.nav .icons div:hover{
-    color: var(--primaire);
-}
- 
-.nav .icons div:last-child{
-    position: relative;
-}
-
-.nav .icons div span{
-    position: absolute;
-    top: -5px;
-    right: -12px;
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--blanche);
-    background-color: var(--primaire);
-    height: 22px;
-    width: 22px;
-    border-radius: 50%;
-}
-
-.align-center{
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-
-@media only screen and(max-width: 768px){
+/*@media only screen and(max-width: 768px){
     .navigation{
         padding: 10px 0;
     }
@@ -167,14 +255,14 @@ img{
     .logo span{
         color: var(--primaire);
     }
-/*/modifier la taille du logo
+modifier la taille du logo
     .logo a{
         font-size: 16px;
         font-weight: 400;
     }
-*/
+
     .menu.top{
         display: block;
     }
 
-}
+}*/

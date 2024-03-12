@@ -72,8 +72,7 @@ CREATE TABLE event_comments (
     likes INT DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (authorId) REFERENCES users(id),
-    FOREIGN KEY (eventId) REFERENCES events(id) -- Correction : virgule manquante après la déclaration de la première clé étrangère
-);
+    FOREIGN KEY (eventId) REFERENCES events(id) 
 
 -- Création de event_likes
 
