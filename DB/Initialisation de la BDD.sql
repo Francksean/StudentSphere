@@ -73,6 +73,7 @@ CREATE TABLE event_comments (
     PRIMARY KEY (id),
     FOREIGN KEY (authorId) REFERENCES users(id),
     FOREIGN KEY (eventId) REFERENCES events(id) 
+)
 
 -- Création de event_likes
 

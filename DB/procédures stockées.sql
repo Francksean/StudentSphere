@@ -52,3 +52,12 @@ BEGIN
     VALUES (authorId, eventId, poster, datePosted);
 END //
 DELIMITER ;
+
+--Ajout d'un commentaire
+DELIMITER //
+CREATE PROCEDURE InsertComment(authorId INT, relativeId INT, content VARCHAR(255), datePosted DATE)
+BEGIN
+    INSERT INTO comments (authorId, relativeId, content, datePosted)
+    VALUES (authorId, relativeId, content, datePosted);
+END //
+DELIMITER ;
