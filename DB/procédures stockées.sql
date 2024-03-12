@@ -116,3 +116,13 @@ BEGIN
 END //
 
 DELIMITER ;
+
+--Effacer un évènement
+DELIMITER //
+
+CREATE PROCEDURE DeleteEvent(IN eventId INT)
+BEGIN
+  DELETE FROM events WHERE id = eventId;
+END //
+
+DELIMITER ;
