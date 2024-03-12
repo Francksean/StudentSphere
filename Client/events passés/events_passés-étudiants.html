@@ -273,27 +273,26 @@ body {
             sectionCommentaires.style.display = 'block';
         }
 
-        // Récupérer tous les boutons de poster un commentaire
-        const postCommentButtons = document.querySelectorAll('.post-comment-button');
+       // Récupérer tous les boutons de poster un commentaire
+const postCommentButtons = document.querySelectorAll('.post-comment-button');
 
-        // Ajouter un écouteur d'événement de clic à chaque bouton de poster un commentaire
-        postCommentButtons.forEach(button => {
-            button.addEventListener('click', posterCommentaire);
-        });
+// Ajouter un écouteur d'événement de clic à chaque bouton de poster un commentaire
+postCommentButtons.forEach(button => {
+    button.addEventListener('click', posterCommentaire);
+});
 
-        // Fonction pour poster un commentaire
-        function posterCommentaire() {
-            const commentaireInput = this.parentNode.previousElementSibling.previousElementSibling;
-            const commentaire = commentaireInput.value;
+// Fonction pour poster un commentaire
+function posterCommentaire() {
+    const commentaireInput = this.parentNode.previousElementSibling.previousElementSibling;
+    const commentaire = commentaireInput.value;
 
-            if (commentaire !== '') {
-                const listedeCommentaires = this.parentNode.nextElementSibling.querySelector('.comments-list');
-                const nouvelElementCommentaire = document.createElement('li');
-                nouvelElementCommentaire.textContent = commentaire;
-                listeDeCommentaires.appendChild(nouvelElementCommentaire);
-
-                commentaireInput.value = '';
-            }
+    if (commentaire !== '') {
+        const listeDeCommentaires = this.parentNode.nextElementSibling.querySelector('.comments-list');
+        const nouvelElementCommentaire = document.createElement('li');
+        nouvelElementCommentaire.textContent = commentaire;
+        listeDeCommentaires.appendChild(nouvelElementCommentaire);
+        commentaireInput.value = '';
+    }
         }
     </script>
 </body>
