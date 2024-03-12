@@ -1,9 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
-const auth = require('./middlewares/auth')
+const auth = require('./middlewares/auth');
+
+const multer = require ('./middlewares/multer-config');
 
 //import des routers des différentes entités
 const eventsRouter = require('./routes/events-router')
@@ -20,7 +22,7 @@ app.use(cors());
 
 app.use('/comments', auth.verifyToken, commentsRouter);
 app.use('/shop', auth.verifyToken, productsRouter);
-app.use('/events', auth.verifyToken, eventsRouter);
+app.use('/events', auth.verifyToken, multer, eventsRouter);
 app.use('/likes', auth.verifyToken, likesRouter)
 
 // toute première requête lancée par le client pour récupérer son token
