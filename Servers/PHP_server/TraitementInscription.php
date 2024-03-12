@@ -1,9 +1,8 @@
 <?php
-//Démarrage de la session d'utilisateur
+// Démarrage de la session d'utilisateur
 session_start();
 
-//Connexion à la base de données 
-
+// Connexion à la base de données 
 $bdd = new PDO('mysql:host=localhost; dbname=studentspherebdd; charset=utf8', 'root', 'BredouilleMYADMA');
 
 // Récupération des données du formulaire
@@ -13,18 +12,14 @@ $prenom = $_POST['prenom'];
 $localisation = $_POST['localisation'];
 $email = $_POST['email'];
 
-// Requête préparée pour empêcher les injections SQL
-$requete = $bdd->prepare("INSERT INTO utilisateurs (motDePasse, nom, prenom, localisation, email) VALUES(:motDePasse, :nom, :prenom, :localisation, :email)");
-
-// Liaison des valeurs aux paramètres de la requête
-$requete->bindValue(':motDePasse', $motDePasse, PDO::PARAM_STR);
-$requete->bindValue(':nom', $nom, PDO::PARAM_STR);
-$requete->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-$requete->bindValue(':localisation', $localisation, PDO::PARAM_STR);
-$requete->bindValue(':email', $email, PDO::PARAM_STR);
-
-// Exécution de la requête
-$requete->execute();
+// Appel de la procédure stockée pour inscrire un nouvel étudiant
+$stmt = $bdd->prepare("CALL inscriptionEtudiant(:nom, :prenom, :localisation, :email, :motDePasse)");
+$stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+$stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+$stmt->bindParam(':localisation', $localisation, PDO::PARAM_STR);
+$stmt->bindParam(':email', $email, PDO::PARAM_STR);
+$stmt->bindParam(':motDePasse', $motDePasse, PDO::PARAM_STR);
+$stmt->execute();
 
 // Création d'un tableau contenant les informations de l'utilisateur
 $utilisateur = [

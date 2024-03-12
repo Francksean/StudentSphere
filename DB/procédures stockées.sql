@@ -10,7 +10,7 @@ DELIMITER ;
 -- Inscription d'un étudiant à un événement 
 DELIMITER //
 CREATE PROCEDURE inscriptionEvent (userId INT, eventID INT)
-BEGIN
+BEGINss
     INSERT INTO event_users (userId, eventId)
     VALUES (userId, eventId);
 END //
