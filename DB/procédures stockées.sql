@@ -145,7 +145,22 @@ END //
 DELIMITER ;
 
 --Retrouver l'idée par son ID
+DELIMITER //
+
 CREATE PROCEDURE GetIdeaById (IN ideaId INT)
 BEGIN
   SELECT * FROM ideas WHERE id = ideaId;
 END
+
+DELIMITER //
+
+
+--Afficher toutes les idées 
+DELIMITER //
+
+CREATE PROCEDURE GetAllIdeas ()
+BEGIN
+  SELECT * FROM ideas;
+END
+
+DELIMITER ;
