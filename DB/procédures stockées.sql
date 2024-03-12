@@ -126,3 +126,26 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+--Ajout d'une idée
+DELIMITER //
+
+CREATE PROCEDURE InsertIdea (
+  IN authorId INT,
+  IN title VARCHAR(255),
+  IN content VARCHAR(1000),
+  IN datePosted DATE
+)
+BEGIN
+  INSERT INTO ideas (authorId, title, content, datePosted)
+  VALUES (authorId, title, content, datePosted);
+END //
+
+DELIMITER ;
+
+--Retrouver l'idée par son ID
+CREATE PROCEDURE GetIdeaById (IN ideaId INT)
+BEGIN
+  SELECT * FROM ideas WHERE id = ideaId;
+END
