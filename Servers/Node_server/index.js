@@ -17,7 +17,8 @@ app.use(express.json())
 app.use(cors());
 
 // mon "contrôlleur" pour les différentes routes
-app.use('/comments', auth.verifyToken, commentsRouter );
+
+app.use('/comments', auth.verifyToken, commentsRouter);
 app.use('/shop', auth.verifyToken, productsRouter);
 app.use('/events', auth.verifyToken, eventsRouter);
 app.use('/likes', auth.verifyToken, likesRouter)
