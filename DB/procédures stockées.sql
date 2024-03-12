@@ -65,9 +65,22 @@ DELIMITER ;
 --Affichage des commentaires
 DELIMITER //
 
-CREATE PROCEDURE ShowComments(IN tableName VARCHAR(255), IN recordId VARCHAR(255))
+CREATE PROCEDURE ShowComment(IN tableName VARCHAR(255), IN recordId VARCHAR(255))
 BEGIN
   SET @query = CONCAT('SELECT * FROM ', tableName, ' WHERE id = ''', recordId, '''');
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
+
+DELIMITER ;
+
+--Suppression d'un commentaire
+DELIMITER //
+
+CREATE PROCEDURE DeleteComment(IN tableName VARCHAR(255), IN recordId VARCHAR(255))
+BEGIN
+  SET @query = CONCAT('DELETE FROM ', tableName, ' WHERE id = ''', recordId, '''');
   PREPARE stmt FROM @query;
   EXECUTE stmt;
   DEALLOCATE PREPARE stmt;
