@@ -13,7 +13,7 @@ $localisation = $_POST['localisation'];
 $email = $_POST['email'];
 
 // Appel de la procédure stockée pour enregistrer un nouvel étudiant
-$stmt = $bdd->prepare("CALL registerStudent(:firstname, :secondname, :localisation, :email, :password)");
+$stmt = $bdd->prepare("CALL inscriptionEtudiant(:firstname, :secondname, :localisation, :email, :password)");
 $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR);
 $stmt->bindParam(':secondname', $secondname, PDO::PARAM_STR);
 $stmt->bindParam(':localisation', $localisation, PDO::PARAM_STR);
