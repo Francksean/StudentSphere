@@ -117,34 +117,63 @@ header .fa-bars{
     background-size: cover;
     background-position: center;
 }
-.vid-b{
+
+@keyframes moveImage {
+    0% {
+       transform: translateX(0);
+    }
+    50% {
+       transform: translateY(25px);
+    }
+    100% {
+       transform: translateX(0)
+    }
+}
+
+.content {
+    position: relative;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.content img {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
     z-index: -1;
+    animation: moveImage 5s linear infinite;
 }
 
-.Acceuil .content{
-    max-width: 50rem;
-}
-
-.Acceuil .content h3{
-    font-size: 6rem;
+.content h3{
+    font-size: 5rem;
     color:rgb(0, 0, 0);
+    z-index: 1;
+
 }
 
-.Acceuil .content span{
-    font-size: 3.5rem;
+.content span{
+    font-size: 3rem;
     color:var(--brown);
     padding:1rem 0;
     line-height: 1.5;
+    z-index: 1;
+
 }
 
-.Acceuil .content p{
-    font-size: 1.5rem;
+.content p{
+    word-wrap: break-word;
+    font-size: 15px;
     color:var(--blanche);
-    padding:1rem 0;
+    justify-content: flex-end;
     line-height: 1.5;
+    z-index: 1;
 }
 
 .icons-container{
@@ -180,51 +209,20 @@ header .fa-bars{
     color:var(--gris);
     font-size: 1.3rem;
 }
-
-
-.contact .row{
+.icons {
     display: flex;
-    flex-wrap: wrap-reverse;
-    gap:1.5rem;
-    align-items: center;
+    justify-content: flex-start;
 }
 
-.Contact .row form{
-    flex:1 1 40rem;
-    padding:2rem 2.5rem;
-    box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
-    border:.1rem solid rgba(0,0,0,.1);
-    background: var(--blanche);
-    border-radius: .5rem;
+.icons a {
+    margin-right: 20px; 
 }
 
-.Contact .row .image{
-    flex:1 1 40rem;
+.icons a:last-child {
+    margin-right: 0; 
 }
 
-.Contact .row .image img{
-    width: 100%;
-}
 
-.Contact .row form .box{
-    padding:1rem;
-    font-size: 1.7rem;
-    color:var(--gris);
-    text-transform: none;
-    border:.1rem solid rgba(0,0,0,.1);
-    border-radius: .5rem;
-    margin:.7rem 0;
-    width: 100%;
-}
-
-.Contact .row form .box:focus{
-    border-color: var(--brown);
-}
-
-.Contact .row form textarea{
-    height: 15rem;
-    resize: none;
-}
 
 /*@media only screen and(max-width: 768px){
     .navigation{
