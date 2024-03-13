@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('../middlewares/profils-multer-config');
 
 const app = express();
-const upload = multer({ dest: '../Images' }).single('Image');
+const upload = multer({ dest: '../ImagesProfils' }).single('Image');
 
 app.set('view engine', 'ejs');
 
@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
     res.render('upload');
 });
 
-app.post('/upload', (req, res) => {
+app.post('/ImagesProfils', (req, res) => {
     upload(req, res, function (err) {
         if (err instanceof multer.MulterError) {
             console.log('Une erreur Multer s\'est produite :', err);
