@@ -1,4 +1,5 @@
-//pour paramétrer les headers des requêtes
+//pour paramétrer les headers des requêtes  console.log('middleware 1')
+
 
 exports.setReqHeader = (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

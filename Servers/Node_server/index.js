@@ -7,8 +7,6 @@ const setter = require('./middlewares/setter')
 
 const auth = require('./middlewares/auth');
 
-const multer = require ('./middlewares/multer-config');
-
 //import des routers des différentes entités
 const eventsRouter = require('./routes/events-router')
 const productsRouter = require('./routes/products-router');
@@ -22,9 +20,10 @@ app.use(cors());
 
 // mon "contrôlleur" pour les différentes routes
 
+
+app.use('/events', setter.setReqHeader, auth.verifyToken, eventsRouter);
+app.use('/products', setter.setReqHeader, auth.verifyToken, productsRouter);
 app.use('/comments', setter.setReqHeader, auth.verifyToken, commentsRouter);
-app.use('/shop', setter.setReqHeader, auth.verifyToken, productsRouter);
-app.use('/events', setter.setReqHeader, auth.verifyToken, multer, eventsRouter);
 app.use('/likes', setter.setReqHeader, auth.verifyToken, likesRouter)
 
 // toute première requête lancée par le client pour récupérer son token
