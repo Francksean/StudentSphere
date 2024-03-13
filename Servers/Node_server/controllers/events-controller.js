@@ -1,7 +1,6 @@
-const date = require('../utils/dateProvider');
+const dateProvider = require('../utils/dateProvider');
 
 const dbconnector = require('../utils/dbconnector')
-const multer = require('../middlewares/multer-config')
 
 
 exports.addEvent = (req, res) => {
@@ -10,9 +9,8 @@ exports.addEvent = (req, res) => {
   const connection = dbconnector.createConnection();
   dbconnector.initConnection(connection,
   async () => {
-    console.log('insertion')
     await connection.query(
-      `CALL InsertEvent(${authorId}, "${eventName}", "${eventDescription}", "${poster}", "${category}")`,
+      `CALL InsertEvent(${authorId}, "${eventName}", "${eventDescription}", "${dateProvider.date()}", "${poster}", "${category}")`,
       (error, results) => {
         if (error) {
           console.log(error)
@@ -34,7 +32,7 @@ exports.addBdeEvent = (req, res)=>{
   async () => {
     await connection.query(
       `INSERT INTO events (authorId, name, description, datePosted, poster, beginDate, endDate category, state) 
-      VALUES (${authorId}, "${eventName}", "${eventDescription}", '${date}', '${poster}', '${beginDate}', '${endDate}', '${category}', 'proposed')`,
+      VALUES (${authorId}, "${eventName}", "${eventDescription}", '${dateProvider.date()}', '${poster}', '${beginDate}', '${endDate}', '${category}', 'proposed')`,
       (error, results) => {
         if (error) {
           res.status(500).json({ message: "An error occurred while registering the event" });

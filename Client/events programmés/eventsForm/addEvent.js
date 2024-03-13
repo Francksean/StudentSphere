@@ -3,7 +3,7 @@ console.log("test test")
 // on récupère le statut de l'utilisateur
 
 // const userStatus = localStorage.getItem('status') --Djissou
-const userStatus = 1;
+const userStatus = 0;
 const eventDateElems = []
 
 //récuperer les éléments à affichage conditionnel --Djissou
@@ -11,22 +11,20 @@ document.addEventListener("DOMContentLoaded", function() {
   const eventDateElems = Array.from(document.querySelectorAll(".input_date"));
   console.log(eventDateElems);
   
-  const userStatus = 1;
-
   switch(userStatus){
     case 0 :
       eventDateElems.forEach((item) => {
-        item.hidden = false;
+        item.hidden = true;
       });
     break;
-    case 1 :true
+    case 1 :
       eventDateElems.forEach((item) => {
         item.hidden = false;
       });
     break;
     case 2 :
       eventDateElems.forEach((item) => {
-        item.hidden = false;
+        item.hidden = true;
       });
     break;
   }
@@ -49,7 +47,7 @@ function addEvent(e) {
     authorId : 2,
     eventName: eventName,
     eventDescription: eventDescription,
-    poster : "posterTest.png",
+    poster : eventPoster,
     category : eventCategory
   };
 
@@ -62,7 +60,7 @@ function addEvent(e) {
   const fetchData = async () => {
     console.log(eventData)
     try {
-      const sendDatas = await fetch('http://localhost:3001/events/add', {
+      const sendDatas = await fetch('http://localhost:3000/events/add', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

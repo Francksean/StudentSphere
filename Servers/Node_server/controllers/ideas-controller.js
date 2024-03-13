@@ -4,12 +4,12 @@ const dbconnector = require('../utils/dbconnector');
 
 exports.addIdea = (req, res) => {
   const { authorId, title, content } = req.body;
-  const datePosted = new Date().toISOString().slice(0, 10);
 
   const connection = dbconnector.createConnection();
-  dbconnector.initConnection(connection, () => {
-    const newIdea = connection.query(
-      `CALL InsertIdea(${authorId}, '${title}', '${content}', '${datePosted}')`,
+  dbconnector.initConnection(connection, 
+  async () => {
+    await connection.query(
+      `CALL InsertIdea(${authorId}, '${title}', '${content}', '${date}')`,
       (error, results) => {
         if (error) {
           res.status(500).json({ message: "An error occurred while registering the idea" });
@@ -25,8 +25,9 @@ exports.getIdeaById = (req, res) => {
   const { ideaId } = req.params;
 
   const connection = dbconnector.createConnection();
-  dbconnector.initConnection(connection, () => {
-    const selectedIdea = connection.query(
+  dbconnector.initConnection(connection, 
+  async () => {
+    await connection.query(
       `CALL GetIdeaById(${ideaId})`,
       (error, results) => {
         if (error) {
@@ -42,8 +43,9 @@ exports.getIdeaById = (req, res) => {
 
 exports.getAllIdeas = (req, res) => {
   const connection = dbconnector.createConnection();
-  dbconnector.initConnection(connection, () => {
-    const newIdea = connection.query(
+  dbconnector.initConnection(connection, 
+  async () => {
+    await connection.query(
       `CALL GetAllIdeas()`,
       (error, results) => {
         if (error) {
@@ -61,8 +63,9 @@ exports.removeIdeById = (req, res) => {
   const { ideaId } = req.params;
 
   const connection = dbconnector.createConnection();
-  dbconnector.initConnection(connection, () => {
-    const selectedIdea = connection.query(
+  dbconnector.initConnection(connection,
+  async () => {
+    await connection.query(
       `CALL RemoveIdeaById(${ideaId})`,
       (error, results) => {
         if (error) {

@@ -109,17 +109,19 @@ DELIMITER //
 
 CREATE PROCEDURE InsertEvent(
   IN authorId INT,
-  IN eventName VARCHAR (255),
-  IN eventDescription VARCHAR (1000),
-  IN poster VARCHAR (255),
-  IN category VARCHAR (255),
+  IN eventName VARCHAR(255),
+  IN eventDescription VARCHAR(1000),
+  IN datePosted DATE,
+  IN poster VARCHAR(255),
+  IN category VARCHAR(255)
 )
 BEGIN
-  INSERT INTO events (authorId, name, description, poster, category)
-  VALUES (authorId, eventName, eventDescription, poster, category)
-END
+  INSERT INTO events (authorId, name, description, datePosted, poster, category)
+  VALUES (authorId, eventName, eventDescription, datePosted, poster, category);
+END //
 
-DELIMITER;
+DELIMITER ;
+
 
 
 --Afficher les évènements passés

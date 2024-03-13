@@ -7,8 +7,6 @@ const setter = require('./middlewares/setter')
 
 const auth = require('./middlewares/auth');
 
-const multer = require ('./middlewares/multer-config');
-
 //import des routers des différentes entités
 const eventsRouter = require('./routes/events-router')
 const productsRouter = require('./routes/products-router');
@@ -22,9 +20,10 @@ app.use(cors());
 
 // mon "contrôlleur" pour les différentes routes
 
-app.use('/comments', setter.setReqHeader, auth.verifyToken, commentsRouter);
-app.use('/shop', setter.setReqHeader, auth.verifyToken, productsRouter);
+
 app.use('/events', setter.setReqHeader, auth.verifyToken, eventsRouter);
+app.use('/products', setter.setReqHeader, auth.verifyToken, productsRouter);
+app.use('/comments', setter.setReqHeader, auth.verifyToken, commentsRouter);
 app.use('/likes', setter.setReqHeader, auth.verifyToken, likesRouter)
 
 // toute première requête lancée par le client pour récupérer son token
@@ -37,7 +36,7 @@ app.get("/getToken/:userId", (req, res) => {
 
 })
 
-app.listen(3001, () => {
-  console.log("\n\n\n\nServer started on port 3001");
+app.listen(3000, () => {
+  console.log("\n\n\n\nServer started on port 3000");
 });
 

@@ -7,6 +7,5 @@ exports.setReqHeader = (req, res, next) => {
     'Access-Control-Allow-Methods',
     'OPTIONS, GET, POST, PUT, PATCH, DELETE'
   );
-  console.log('middleware 1')
   next()
 }

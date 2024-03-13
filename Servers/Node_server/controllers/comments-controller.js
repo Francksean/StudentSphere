@@ -10,7 +10,7 @@ exports.addComment = (req, res) => {
     const currentDate = date();
     const query = `CALL InsertComment(${authorId}, ${relativeId}, '${content}', '${date}')`;
 
-    connection.query(query, (error, results) => {
+    await connection.query(query, (error, results) => {
       if (error) {
         console.error(`Error: ${error}`);
         res.status(500).json({ message: "Une erreur s'est produite lors de l'ajout du commentaire", success: false, error: error });

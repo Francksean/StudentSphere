@@ -7,7 +7,6 @@ exports.verifyToken = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, 'your-secret-key');
     req.userId = decoded.userId;
-    console.log('middleware 2')
     next();
   } catch (error) {
     res.status(401).json({ error: 'token invalid' });
