@@ -3,6 +3,8 @@ const cors = require('cors');
 
 const jwt = require('jsonwebtoken');
 
+const setter = require('./middlewares/setter')
+
 const auth = require('./middlewares/auth');
 
 const multer = require ('./middlewares/multer-config');
@@ -20,10 +22,10 @@ app.use(cors());
 
 // mon "contrôlleur" pour les différentes routes
 
-app.use('/comments', auth.verifyToken, commentsRouter);
-app.use('/shop', auth.verifyToken, productsRouter);
-app.use('/events', auth.verifyToken, multer, eventsRouter);
-app.use('/likes', auth.verifyToken, likesRouter)
+app.use('/comments', setter.setReqHeader, auth.verifyToken, commentsRouter);
+app.use('/shop', setter.setReqHeader, auth.verifyToken, productsRouter);
+app.use('/events', setter.setReqHeader, auth.verifyToken, multer, eventsRouter);
+app.use('/likes', setter.setReqHeader, auth.verifyToken, likesRouter)
 
 // toute première requête lancée par le client pour récupérer son token
 app.get("/getToken/:userId", (req, res) => {
