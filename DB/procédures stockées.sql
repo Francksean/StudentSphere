@@ -216,3 +216,34 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+--Affichage de tout les produits
+DELIMITER //
+
+CREATE PROCEDURE GetAllProducts()
+BEGIN
+  SELECT * FROM products;
+END //
+
+DELIMITER ;
+
+--Afficher les produits par catégorie
+DELIMITER //
+
+CREATE PROCEDURE GetProductsByCategory(IN categoryParam VARCHAR(255))
+BEGIN
+  SELECT * FROM products WHERE category = categoryParam;
+END //
+
+DELIMITER ;
+
+--Afficher les produits par Nom
+DELIMITER //
+
+CREATE PROCEDURE GetProductsByName(IN productNameParam VARCHAR(255))
+BEGIN
+  SELECT * FROM products WHERE name = productNameParam;
+END //
+
+DELIMITER ;
