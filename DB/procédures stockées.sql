@@ -187,3 +187,18 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+--Compter le nombre de likes
+DELIMITER //
+
+CREATE PROCEDURE GetLikeNumber(IN tableName VARCHAR(255), IN itemName VARCHAR(255), OUT likeCount INT)
+BEGIN
+  SET @query = CONCAT('SELECT likes INTO @likeCount FROM ', tableName, ' WHERE name = ''', itemName, '''');
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+  SET likeCount = @likeCount;
+END //
+
+DELIMITER ;
