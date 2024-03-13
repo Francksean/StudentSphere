@@ -216,3 +216,14 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+--Affichage de tout les produits
+DELIMITER //
+
+CREATE PROCEDURE GetAllProducts()
+BEGIN
+  SELECT * FROM products;
+END //
+
+DELIMITER ;
