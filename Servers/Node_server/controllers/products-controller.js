@@ -1,5 +1,4 @@
-const dbconnector = require('../utils/dbconnector')
-
+const dbconnector = require('../utils/dbconnector');
 
 exports.getAllProducts = (req, res) => {
   const connection = dbconnector.createConnection();
@@ -32,7 +31,6 @@ exports.getProductsByCategory = (req, res) => {
   });
 };
 
-
 exports.getProductsByName = (req, res) => {
   const { productName } = req.body;
   const connection = dbconnector.createConnection();
@@ -50,19 +48,17 @@ exports.getProductsByName = (req, res) => {
 };
 
 exports.getProductsById = (req, res) => {
-
   const { id } = req.params;
-
-  const connection = dbconnector.createConnection()
-  dbconnector.initConnection
-
-  const newIdea = connection.query(
-    `SELECT * FROM products WHERE id = ${id}`,
-  (error, resuslts) => {
-    if (error) {
-      res.status(500).json({ message: "An error occurred while fetching the product" });
-    } else {
-      res.status(200).json({ message: "product proposed successfully", success : true, results: results });
-    }
-  })
-}
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(connection, () => {
+    const query = 'CALL GetProductById(?)';
+    connection.query(query, [id], (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, error: error });
+      } else {
+        res.status(200).json({ success: true, results: results[0] });
+      }
+      dbconnector.endConnection(connection);
+    });
+  });
+};

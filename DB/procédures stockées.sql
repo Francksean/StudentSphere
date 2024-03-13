@@ -247,3 +247,13 @@ BEGIN
 END //
 
 DELIMITER ;
+
+--Aficher les produits par leurs ID
+DELIMITER //
+
+CREATE PROCEDURE GetProductById(IN idParam INT)
+BEGIN
+  SELECT * FROM products WHERE id = idParam;
+END //
+
+DELIMITER ;
