@@ -60,34 +60,6 @@ CREATE TABLE ideas (
     FOREIGN KEY (authorId) REFERENCES users(id)
 );
 
-
--- Création de event_comments
-
-CREATE TABLE event_comments (
-    id INT NOT NULL UNIQUE AUTO_INCREMENT,
-    authorId INT NOT NULL,
-    eventId INT NOT NULL,
-    datePosted DATE NOT NULL,
-    content VARCHAR(1000) NOT NULL,
-    likes INT DEFAULT 0,
-    PRIMARY KEY (id),
-    FOREIGN KEY (authorId) REFERENCES users(id),
-    FOREIGN KEY (eventId) REFERENCES events(id) 
-)
-
--- Création de event_likes
-
-CREATE TABLE event_likes (
-    id INT NOT NULL UNIQUE AUTO_INCREMENT,
-    authorId INT NOT NULL,
-    eventId INT NOT NULL,
-    dateLiked DATE NOT NULL,
-    likes INT DEFAULT 0,
-    PRIMARY KEY (id),
-    FOREIGN KEY (authorId) REFERENCES users(id),
-    FOREIGN KEY (eventId) REFERENCES events(id) 
-);
-
 -- Création de idea_comments
 
 CREATE TABLE idea_comments (
@@ -162,33 +134,56 @@ CREATE TABLE product_comments (
     FOREIGN KEY (authorId) REFERENCES users(id)
 );
 
---Création de la table product_likes
-
+-- Création de la table product_likes
 CREATE TABLE product_likes (
-    likerId INT NOT NULL,
-    productId INT NOT NULL,
-    PRIMARY KEY (likerId,productId),
-    FOREIGN KEY (likerId) REFERENCES users(id),
-    FOREIGN KEY (productId) REFERENCES products(id) 
+  likerId INT NOT NULL,
+  productId INT NOT NULL,
+  PRIMARY KEY (likerId, productId),
+  FOREIGN KEY (likerId) REFERENCES users(id),
+  FOREIGN KEY (productId) REFERENCES products(id)
 );
 
 
---Création de la table Idea_likes
-
+-- Création de la table Idea_likes
 CREATE TABLE idea_likes (
-    likerId INT NOT NULL,
-    ideaId INT NOT NULL,
-    PRIMARY KEY (likerId, ideaId),
-    FOREIGN KEY (likerId) REFERENCES users(id),
-    FOREIGN KEY (ideaId) REFERENCES ideas(id) 
+  likerId INT NOT NULL,
+  ideaId INT NOT NULL,
+  PRIMARY KEY (likerId, ideaId),
+  FOREIGN KEY (likerId) REFERENCES users(id),
+  FOREIGN KEY (ideaId) REFERENCES ideas(id)
 );
 
---Création de la table image_related_likes
 
+-- Création de la table image_related_likes
 CREATE TABLE image_related_likes (
-    likerId INT NOT NULL,
-    image_relatedId INT NOT NULL,
-    PRIMARY KEY (likerId,image_relatedId),
-    FOREIGN KEY (likerId) REFERENCES users(id),
-    FOREIGN KEY (image_relatedId) REFERENCES images_related(id) 
+  likerId INT NOT NULL,
+  image_relatedId INT NOT NULL,
+  PRIMARY KEY (likerId, image_relatedId),
+  FOREIGN KEY (likerId) REFERENCES users(id),
+  FOREIGN KEY (image_relatedId) REFERENCES images_related(id)
+);
+
+-- Création de event_comments
+CREATE TABLE event_comments (
+  id INT NOT NULL UNIQUE AUTO_INCREMENT,
+  authorId INT NOT NULL,
+  eventId INT NOT NULL,
+  datePosted DATE NOT NULL,
+  content VARCHAR(1000) NOT NULL,
+  likes INT DEFAULT 0,
+  PRIMARY KEY (id),
+  FOREIGN KEY (authorId) REFERENCES users(id),
+  FOREIGN KEY (eventId) REFERENCES events(id)
+);
+
+-- Création de event_likes
+CREATE TABLE event_likes (
+  id INT NOT NULL UNIQUE AUTO_INCREMENT,
+  authorId INT NOT NULL,
+  eventId INT NOT NULL,
+  dateLiked DATE NOT NULL,
+  likes INT DEFAULT 0,
+  PRIMARY KEY (id),
+  FOREIGN KEY (authorId) REFERENCES users(id),
+  FOREIGN KEY (eventId) REFERENCES events(id)
 );
