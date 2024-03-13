@@ -157,6 +157,9 @@ h1 {
         </div>
     </section>
 
+    <p id="total-price" class="item-price">Total: $0</p>
+    
+
     <button id="checkout-button">Commander</button>
 
     <script>
@@ -175,6 +178,37 @@ h1 {
             const totalPrice = price * quantity;
             priceSpan.innerText = '$' + totalPrice;
         }
+        // Fonction pour mettre à jour le prix total lorsque la quantité change
+function updatePrice(quantityId, priceId) {
+    const quantitySelect = document.getElementById(quantityId);
+    const priceSpan = document.getElementById(priceId);
+    const price = parseInt(priceSpan.innerText.slice(1)); // Supprime le signe dollar et convertit en nombre entier
+    const quantity = parseInt(quantitySelect.value);
+    const totalPrice = price * quantity;
+    priceSpan.innerText = '$' + totalPrice;
+
+    // Mettre à jour le prix total
+    updateTotalPrice();
+}
+
+// Fonction pour mettre à jour le prix total
+function updateTotalPrice() {
+    const priceSpans = document.querySelectorAll('.item-price span');
+    let totalPrice = 0;
+
+    priceSpans.forEach((priceSpan) => {
+        const price = parseInt(priceSpan.innerText.slice(1)); // Supprime le signe dollar et convertit en nombre entier
+        totalPrice += price;
+    });
+
+    const totalPriceSpan = document.getElementById('total-price');
+    totalPriceSpan.innerText = '$' + totalPrice;
+}
+
+
+
+// Appeler la fonction updateTotalPrice au chargement de la page
+window.addEventListener('load', updateTotalPrice);
     </script>
 </body>
 
