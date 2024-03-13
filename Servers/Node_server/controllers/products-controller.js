@@ -17,24 +17,20 @@ exports.getAllProducts = (req, res) => {
 };
 
 exports.getProductsByCategory = (req, res) => {
-
   const { category } = req.body;
-
-  const connection = dbconnector.createConnection()
-  dbconnector.initConnection
-  /*
-    une alternaive serait :
-    const feed = connection.query(`SELECT * FROM products WHERE category = ?`, [category], (error, results) => {
-  */
-  const feed = connection.query(`SELECT * FROM products WHERE category = '${category}'`, 
-  (error, results) => {
-    if(error){
-      res.json({ success : false, error : error})
-    }else{
-      res.json({ success : false, results : results });
-    }
-  })
-}
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(connection, () => {
+    const query = 'CALL GetProductsByCategory(?)';
+    connection.query(query, [category], (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, error: error });
+      } else {
+        res.status(200).json({ success: true, results: results[0] });
+      }
+      dbconnector.endConnection(connection);
+    });
+  });
+};
 
 
 exports.getProductsByName = (req, res) => {

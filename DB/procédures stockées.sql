@@ -227,3 +227,13 @@ BEGIN
 END //
 
 DELIMITER ;
+
+--Afficher les produits par catégorie
+DELIMITER //
+
+CREATE PROCEDURE GetProductsByCategory(IN categoryParam VARCHAR(255))
+BEGIN
+  SELECT * FROM products WHERE category = categoryParam;
+END //
+
+DELIMITER ;
