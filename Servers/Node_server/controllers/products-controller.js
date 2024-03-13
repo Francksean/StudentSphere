@@ -2,9 +2,10 @@ const dbconnector = require('../utils/dbconnector');
 
 exports.getAllProducts = (req, res) => {
   const connection = dbconnector.createConnection();
-  dbconnector.initConnection(connection, () => {
+  dbconnector.initConnection(connection, 
+    async () => {
     const query = 'CALL GetAllProducts()';
-    connection.query(query, (error, results) => {
+    await connection.query(query, (error, results) => {
       if (error) {
         res.status(500).json({ success: false, message: 'Problème lors du chargement des produits', error: error });
       } else {

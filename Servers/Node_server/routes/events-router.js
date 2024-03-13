@@ -8,7 +8,8 @@ router.put('/:id',eventsController.validateEvent);
   
 router.delete('/:id', eventsController.deleteEvent)
   
-router.post('/add', multer, eventsController.addEvent);
+// router.post('/add', multer, eventsController.addEvent);
+router.post('/add', eventsController.addEvent);
   
 router.get('/all_past_events', eventsController.getAllPastEvents);
   

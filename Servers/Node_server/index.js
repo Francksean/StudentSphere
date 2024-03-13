@@ -24,7 +24,7 @@ app.use(cors());
 
 app.use('/comments', setter.setReqHeader, auth.verifyToken, commentsRouter);
 app.use('/shop', setter.setReqHeader, auth.verifyToken, productsRouter);
-app.use('/events', setter.setReqHeader, auth.verifyToken, multer, eventsRouter);
+app.use('/events', setter.setReqHeader, auth.verifyToken, eventsRouter);
 app.use('/likes', setter.setReqHeader, auth.verifyToken, likesRouter)
 
 // toute première requête lancée par le client pour récupérer son token
@@ -37,7 +37,7 @@ app.get("/getToken/:userId", (req, res) => {
 
 })
 
-app.listen(3000, () => {
-  console.log("\n\n\n\nServer started on port 3000");
+app.listen(3001, () => {
+  console.log("\n\n\n\nServer started on port 3001");
 });
 

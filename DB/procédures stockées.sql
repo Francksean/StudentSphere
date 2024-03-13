@@ -104,6 +104,23 @@ END //
 
 DELIMITER ;
 
+--Insérer un évènement 
+DELIMITER //
+
+CREATE PROCEDURE InsertEvent(
+  IN authorId INT,
+  IN eventName VARCHAR (255),
+  IN eventDescription VARCHAR (1000),
+  IN poster VARCHAR (255),
+  IN category VARCHAR (255),
+)
+BEGIN
+  INSERT INTO events (authorId, name, description, poster, category)
+  VALUES (authorId, eventName, eventDescription, poster, category)
+END
+
+DELIMITER;
+
 
 --Afficher les évènements passés
 DELIMITER //
@@ -224,6 +241,16 @@ DELIMITER //
 CREATE PROCEDURE GetAllProducts()
 BEGIN
   SELECT * FROM products;
+END //
+
+DELIMITER ;
+
+--Affichage de tout les évènements
+DELIMITER //
+
+CREATE PROCEDURE GetAllPastEvents()
+BEGIN
+  SELECT * FROM events;
 END //
 
 DELIMITER ;
