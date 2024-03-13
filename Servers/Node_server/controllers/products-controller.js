@@ -34,22 +34,20 @@ exports.getProductsByCategory = (req, res) => {
 
 
 exports.getProductsByName = (req, res) => {
-
   const { productName } = req.body;
-
-  const connection = dbconnector.createConnection()
-  dbconnector.initConnection
-
-  const newIdea = connection.query(
-    `SELECT * FROM products WHERE name = '${productName}'`,
-  (error, resuslts) => {
-    if (error) {
-      res.status(500).json({ message: "An error occurred while fetching the product" });
-    } else {
-      res.status(200).json({ message: "product proposed successfully", success : true, results: results });
-    }
-  })
-}
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(connection, () => {
+    const query = 'CALL GetProductsByName(?)';
+    connection.query(query, [productName], (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, error: error });
+      } else {
+        res.status(200).json({ success: true, results: results[0] });
+      }
+      dbconnector.endConnection(connection);
+    });
+  });
+};
 
 exports.getProductsById = (req, res) => {
 

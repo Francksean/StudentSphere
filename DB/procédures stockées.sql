@@ -237,3 +237,13 @@ BEGIN
 END //
 
 DELIMITER ;
+
+--Afficher les produits par Nom
+DELIMITER //
+
+CREATE PROCEDURE GetProductsByName(IN productNameParam VARCHAR(255))
+BEGIN
+  SELECT * FROM products WHERE name = productNameParam;
+END //
+
+DELIMITER ;
