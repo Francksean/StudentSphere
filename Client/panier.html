@@ -6,101 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panier</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        /* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-		 header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+h1 {
+    text-align: center;
+}
 
-        header h1 {
-            margin: 0;
-        }
+.cart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
 
-        .logout-button {
-            background-color: #dc3545;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-		  
-		.logout-button:hover {
-            background-color: #c82333;
-        }
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+}
 
-        .cart-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
 
-        .cart-item {
-            display: flex;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            position: relative;
-        }
+.item-description {
+    flex: 1;
+}
 
-        .item-image {
-            width: 100px;
-            margin-right: 10px;
-        }
+.item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 
-        .item-description {
-            flex: 1;
-        }
+.item-price {
+    font-weight: bold;
+}
 
-        .item-quantity {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
-        }
+.delete-button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        .quantity-label {
-            margin-right: 10px;
-        }
+.checkout-button {
+    display: block;
+    margin: 20px auto;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        .quantity-select {
-            width: 60px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+/* Styles pour les écrans plus petits */
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-        .item-price {
-            font-weight: bold;
-        }
-
-        .delete-button {
-            background-color: #dc3545;
-            color: #fff;
-            border: none;
-            padding: 3px 8px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-        }
-
-        .delete-button:hover {
-            background-color: #c82333;
-        }
-		
+    .item-image {
+        width: 100%;
+        height: auto;
+    }
+}
     </style>
 </head>
 
@@ -109,7 +95,7 @@
         <h1>Panier</h1>
         <button id="logout-button">Déconnexion</button>
     </header>
-    <div class="cart-container">
+    <section class="cart-container">
         <div class="cart-item">
             <img src="product1.jpg" alt="Product 1" class="item-image">
             <div class="item-description">
@@ -161,7 +147,7 @@
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-                        <optionvalue="4">4</option>
+                        <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
                 </div>
@@ -169,21 +155,25 @@
             </div>
             <button class="delete-button">Supprimer</button>
         </div>
-    </div>
+    </section>
+
+    <button id="checkout-button">Commander</button>
 
     <script>
-        function updatePrice(quantityId, priceId) {
-            const quantitySelect = document.getElementById(quantityId);
-            const priceElement = document.getElementById(priceId);
-            const price = parseInt(priceElement.innerText.slice(1)); // Récupère le prix en supprimant le signe dollar ($)
-            const quantity = parseInt(quantitySelect.value);
-            const totalPrice = price * quantity;
-            priceElement.innerText = '$' + totalPrice;
-			
-	  // Ajouter une action au bouton de déconnexion
+        // Ajouter une action au bouton de déconnexion
         const logoutButton = document.getElementById('logout-button');
         logoutButton.addEventListener('click', () => {
-            // Code de déconnexion ici
+            // Code pour la déconnexion de l'utilisateur
+        });
+
+        // Fonction pour mettre à jour le prix total lorsque la quantité change
+        function updatePrice(quantityId, priceId) {
+            const quantitySelect = document.getElementById(quantityId);
+            const priceSpan = document.getElementById(priceId);
+            const price = parseInt(priceSpan.innerText.slice(1)); // Supprime le signe dollar et convertit en nombre entier
+            const quantity = parseInt(quantitySelect.value);
+            const totalPrice = price * quantity;
+            priceSpan.innerText = '$' + totalPrice;
         }
     </script>
 </body>
