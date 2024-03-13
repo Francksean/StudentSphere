@@ -164,3 +164,55 @@ BEGIN
 END
 
 DELIMITER ;
+
+--Suppression d'une idée
+DELIMITER //
+
+CREATE PROCEDURE RemoveIdeaById (IN ideaId INT)
+BEGIN
+  DELETE FROM ideas WHERE id = ideaId;
+END //
+
+DELIMITER ;
+
+--Suppression des likes
+DELIMITER //
+
+CREATE PROCEDURE RemoveLike(IN tableName VARCHAR(255), IN itemId INT)
+BEGIN
+  SET @query = CONCAT('UPDATE ', tableName, ' SET likes = likes - 1 WHERE id = ', itemId);
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
+
+DELIMITER ;
+
+
+--Compter le nombre de likes
+DELIMITER //
+
+CREATE PROCEDURE GetLikeNumber(IN tableName VARCHAR(255), IN itemName VARCHAR(255), OUT likeCount INT)
+BEGIN
+  SET @query = CONCAT('SELECT likes INTO @likeCount FROM ', tableName, ' WHERE name = ''', itemName, '''');
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+  SET likeCount = @likeCount;
+END //
+
+DELIMITER ;
+
+
+--Ajouter des likes
+DELIMITER //
+
+CREATE PROCEDURE AddLike(IN tableName VARCHAR(255), IN itemId INT)
+BEGIN
+  SET @query = CONCAT('UPDATE ', tableName, ' SET likes = likes + 1 WHERE id = ', itemId);
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
+
+DELIMITER ;

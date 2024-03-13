@@ -32,7 +32,7 @@
     </form>
 
     <!-- Lien vers la page d'inscription -->
-    <p>Don't have an account? <a href="#" style="text-decoration: none;">Sign up</a>?</p>
+    <p>Don't have an account? <a href="Inscription.php" style="text-decoration: none;">Sign up</a>?</p>
 </body>
 
 </html>
