@@ -34,15 +34,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-function addEvent() {
-  //récupérer les valeurs des champs
+function addEvent(e) {
+  e.preventDefault()
 
-  // let eventName = document.getElementById("event-name").value;
-  // let eventDescription = document.getElementById("event-description").value;
-  // let eventPoster = document.getElementById("event-poster").value;
-  // let eventBeginDate = document.getElementById("event-begin-date").value;
-  // let eventEndDate = document.getElementById("event-end-date").value;
-  // let eventCategory = document.getElementById("event-category").value;
+  // console.log('ok ok')
+  // récupérer les valeurs des champs
+
+  let eventName = document.getElementById("event-name").value;
+  let eventDescription = document.getElementById("event-description").value;
+  let eventPoster = document.getElementById("event-poster").value;
+  let eventBeginDate = document.getElementById("event-begin-date").value;
+  let eventEndDate = document.getElementById("event-end-date").value;
+  let eventCategory = document.getElementById("event-category").value;
 
   const eventData = {
     // authorId : localStorage.getItem('userId'),
@@ -55,22 +58,23 @@ function addEvent() {
   };
 
   if(userStatus == 1){
-    eventData["beginDate"] = eventBeginDate
-    eventData["endDate"] = eventEndDate
+    eventData["beginDate"] = '2024-02-12'
+    eventData["endDate"] = '2024-02-15'
   }
   // on contacte la route API pour ajouter un évènement
   (async () => {
-    console.log('ok ok')
+    // console.log('ok ok')
     const sendDatas = await fetch('https://student-sphere-server.vercel.app/events/all_past_events', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization' : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNzEwMjkzOTk3LCJleHAiOjE3MTAzODAzOTd9.irT-F-xT2d7sASGDqldjvVeqibVOsgxsCgn41sB5CDY"
       },
       // body: JSON.stringify(eventData)
     });
     const response = await sendDatas.json();
-  
+    
     console.log(response);
   })();
 
