@@ -26,8 +26,8 @@
 
       <div class="icons">
          <!--<a href="" class="fas fa-search"></a>-->
-         <a href="index4.php" class="fas fa-bell"></a>
-         <a href="index4.php" class="fas fa-shopping-cart"></a>
+         <a href="#" class="fas fa-bell"></a>
+         <a href="panier.php" class="fas fa-shopping-cart"></a>
          <a href="index2.php" class="fas fa-user"></a>
       </div>
    </header>

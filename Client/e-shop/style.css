@@ -23,29 +23,12 @@ html{
     overflow-x: hidden;
 }
 
-section{
-    padding:2rem 9%;
-}
-
-.heading{
-    text-align: center;
-    font-size: 4rem;
-    color:var(--noire);
-    padding:1rem;
-    margin:2rem 0;
-    background:var(--blanche) ;
-}
-
-.heading span{
-    color:var(--brown);
-}
-
 .btn{
     display: inline-block;
     margin-top: 1rem;
     border-radius: 5rem;
     background:#333;
-    color:var(--blanche);
+    color:#fff;
     padding:.9rem 3.5rem;
     cursor: pointer;
     font-size: 1.7rem;
@@ -214,13 +197,158 @@ header .fa-bars{
     justify-content: flex-start;
 }
 
-.icons a {
-    margin-right: 20px; 
+
+
+@media (max-width:991px){
+    
+    html{
+        font-size: 55%;
+    }
+
+    header{
+        padding:2rem;
+    }
+
+    section{
+        padding:2rem;
+    }
+
+    .home{
+        background-position: left;
+    }
+
 }
 
-.icons a:last-child {
-    margin-right: 0; 
+@media (max-width:768px){
+
+    header .fa-bars{
+        display: block;
+    }
+
+    header .navbar{
+        position:absolute;
+        top:100%; left:0; right:0;
+        background:#eee;
+        border-top: .1rem solid rgba(0,0,0,.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    header #toggler:checked ~ .navbar{
+        clip-path:polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    header .navbar a{
+        margin:1.5rem;
+        padding:1.5rem;
+        background:rgb(255, 144, 85);
+        border:.1rem solid rgba(0,0,0,.1);
+        display: block;
+    }
+
+    .Acceuil .content h3{
+        font-size: 5rem;
+    }
+
+    .Acceuil .content span{
+        font-size: 2.5rem;
+    }
+
+    .icons-container .icons h3{
+        font-size: 2rem;
+    }
+    
+    .icons-container .icons span{
+        font-size: 1.7rem;
+    }
+    .roww .column .card{
+      display: block;
+    }
+    
 }
+
+@media (max-width:450px){
+    
+    html{
+        font-size: 50%;
+    }
+
+    .heading{
+        font-size: 3rem;
+    }
+
+}
+.roww {
+    display: flex;
+    
+    text-align: center;
+    padding:1rem;
+    margin:2rem 0;
+  }
+  .column {
+    width: 100%;
+    padding: 0.5em 0;
+  }
+  h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 3.5em;
+    padding:1rem;
+    margin:2rem 0;
+    color: #1f003b;
+    background:#ffdad1 ;
+  }
+  h1 span{
+    color: #89260d;
+  }
+  .card {
+    box-shadow: 0 0 2.4em rgba(25, 0, 58, 0.1);
+    padding: 3.5em 1em;
+    border-radius: 0.6em;
+    color: #1f003b;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #ffffff;
+  }
+  .card .img-container {
+    width: 12em;
+    height: 12em;
+    background-color: #ffe1a5;
+    padding: 0.5em;
+    border-radius: 50%;
+    margin: 0 auto 2em auto;
+  }
+  .card img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  .card h3 {
+    font-weight: 500;
+  }
+  .card p {
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0.5em 0 2em 0;
+    letter-spacing: 2px;
+  }
+  .icons {
+    width: 20%;
+    min-width: 180px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .card a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.4em;
+  }
+  .card:hover {
+    background: linear-gradient(#ea6c45, #f8ce8b);
+    color: #ffffff;
+  }
+  .card:hover .img-container {
+    transform: scale(1.15);
+  }
 
 
 

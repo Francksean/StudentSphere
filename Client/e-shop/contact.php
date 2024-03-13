@@ -1,56 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>contact</title>
     <style>
-        .contact .row{
-           display: flex;
-           flex-wrap: wrap-reverse;
-           gap:1.5rem;
-           align-items: center;
-        }
+        body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 1.5rem;
+      }
 
-        .Contact .row form{
-           flex:1 1 40rem;
-           padding:2rem 2.5rem;
-           box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
-           border:.1rem solid rgba(0,0,0,.1);
-           background: var(--blanche);
-           border-radius: .5rem;
-        }
-
-        .Contact .row .image{
-           flex:1 1 40rem;
-        }
-
-        .Contact .row .image img{
-           width: 100%;
-        }
-
-        .Contact .row form .box{
+      .heading{
+           text-align: center;
+           font-size: 3rem;
+           color:rgb(0, 0, 0);
            padding:1rem;
-           font-size: 1.7rem;
-           color:var(--gris);
-           text-transform: none;
-           border:.1rem solid rgba(0,0,0,.1);
-           border-radius: .5rem;
-           margin:.7rem 0;
+           margin:2rem 0;
+           background:#ffdad1 ;
            width: 100%;
-        }
+         }
 
-        .Contact .row form .box:focus{
-           border-color: var(--brown);
-        }
+      .container {
+        width: 80%;
+        margin: 50px auto;
+        padding: 20px;
+        box-sizing: border-box; 
+      }
 
-        .Contact .row form textarea{
-           height: 15rem;
-           resize: none;
-        }
+      h2 {
+        text-align: center;
+      }
+
+      form {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      button:hover {
+        background-color: brown;
+      }
+
     </style>
 </head>
 <body>
-    
+   <div class="container">
+        <h2 class="heading">Contactez nous</h2>
+
+        <form action="submit_form.php" method="POST">
+            <label for="name">Nom:</label>
+            <input type="text" id="name" name="name" required>
+			
+			      <label for="name">Prenom:</label>
+            <input type="text" id="surname" name="surname" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Envoyer</button>
+        </form>
+   </div>
 </body>
 </html>
