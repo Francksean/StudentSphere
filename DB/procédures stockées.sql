@@ -202,3 +202,17 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+--Ajouter des likes
+DELIMITER //
+
+CREATE PROCEDURE AddLike(IN tableName VARCHAR(255), IN itemId INT)
+BEGIN
+  SET @query = CONCAT('UPDATE ', tableName, ' SET likes = likes + 1 WHERE id = ', itemId);
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
+
+DELIMITER ;
