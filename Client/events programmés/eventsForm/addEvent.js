@@ -60,13 +60,14 @@ function addEvent() {
   }
   // on contacte la route API pour ajouter un évènement
   (async () => {
-    const sendDatas = await fetch('http://localhost:3000/events/add', {
-      method: 'POST',
+    console.log('ok ok')
+    const sendDatas = await fetch('https://student-sphere-server.vercel.app/events/all_past_events', {
+      method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(eventData)
+      // body: JSON.stringify(eventData)
     });
     const response = await sendDatas.json();
   
