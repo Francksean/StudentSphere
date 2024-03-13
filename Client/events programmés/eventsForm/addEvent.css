@@ -1,0 +1,49 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+.admin_form input,
+.admin_form textarea {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+}
+.admin_form input:focus,
+.admin_form textarea:focus {
+  outline: none;
+}
+.admin_form textarea {
+  resize : none;
+  height: 200px;
+  width: 100%;
+}
+
+.admin_form button {
+  padding: 10px 20px; 
+  background-color: #4CAF50; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+
+.admin_form button:hover {
+  background-color: #45a049;
+}
