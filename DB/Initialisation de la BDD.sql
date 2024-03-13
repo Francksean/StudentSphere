@@ -113,10 +113,11 @@ CREATE TABLE products (
    category VARCHAR(100) NOT NULL,
    description VARCHAR(1000) NOT NULL,
    quantity INT NOT NULL,
-   sale BOOLEAN DEFAULT 0,
+   discount BOOLEAN DEFAULT 0,
    price INT NOT NULL,
    grade FLOAT,
    likes INT DEFAULT 0,
+   total_sales INT DEFAULT 0,
    PRIMARY KEY (id)
 );
 
