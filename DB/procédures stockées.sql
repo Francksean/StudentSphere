@@ -21,7 +21,7 @@ DELIMITER ;
 -- Inscription d'un étudiant à un événement 
 DELIMITER //
 CREATE PROCEDURE inscriptionEvent (userId INT, eventID INT)
-BEGINss
+BEGIN
     INSERT INTO event_users (userId, eventId)
     VALUES (userId, eventId);
 END //
@@ -244,6 +244,16 @@ DELIMITER //
 CREATE PROCEDURE GetProductsByName(IN productNameParam VARCHAR(255))
 BEGIN
   SELECT * FROM products WHERE name = productNameParam;
+END //
+
+DELIMITER ;
+
+--Aficher les produits par leurs ID
+DELIMITER //
+
+CREATE PROCEDURE GetProductById(IN idParam INT)
+BEGIN
+  SELECT * FROM products WHERE id = idParam;
 END //
 
 DELIMITER ;
