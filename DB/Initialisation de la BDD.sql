@@ -107,17 +107,17 @@ CREATE TABLE image_related_comments (
 -- Création de la table products
 
 CREATE TABLE products (
-   id INT NOT NULL UNIQUE AUTO_INCREMENT,
-   name VARCHAR(200) NOT NULL,
-   poster VARCHAR(200) NOT NULL,
-   category VARCHAR(100) NOT NULL,
-   description VARCHAR(1000) NOT NULL,
-   quantity INT NOT NULL,
-   sale BOOLEAN DEFAULT 0,
-   price INT NOT NULL,
-   grade FLOAT,
-   likes INT DEFAULT 0,
-   PRIMARY KEY (id)
+  id INT NOT NULL UNIQUE AUTO_INCREMENT,
+  name VARCHAR(200) NOT NULL,
+  poster VARCHAR(200) NOT NULL,
+  category VARCHAR(100) NOT NULL,
+  description VARCHAR(1000) NOT NULL,
+  quantity INT NOT NULL,
+  sale BOOLEAN DEFAULT 0,
+  price INT NOT NULL,
+  grade FLOAT,
+  likes INT DEFAULT 0,
+  PRIMARY KEY (id)
 );
 
 -- Création de la table product_comments

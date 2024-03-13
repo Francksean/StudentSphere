@@ -5,7 +5,8 @@ exports.addComment = (req, res) => {
   const { table, relativeIdName, authorId, relativeId, content } = req.body;
 
   const connection = dbconnector.createConnection();
-  dbconnector.initConnection(connection, () => {
+  dbconnector.initConnection(connection)
+  async() => {
     const currentDate = date();
     const query = `CALL InsertComment(${authorId}, ${relativeId}, '${content}', '${date}')`;
 
@@ -17,7 +18,7 @@ exports.addComment = (req, res) => {
         res.status(200).json({ message: "Commentaire ajouté avec succès", success: true, results: results });
       }
     });
-  });
+  };
 };
 
 exports.showComments = (req, res) => {

@@ -37,46 +37,50 @@ document.addEventListener("DOMContentLoaded", function() {
 function addEvent(e) {
   e.preventDefault()
 
-  // console.log('ok ok')
   // récupérer les valeurs des champs
-
-  let eventName = document.getElementById("event-name").value;
-  let eventDescription = document.getElementById("event-description").value;
-  let eventPoster = document.getElementById("event-poster").value;
-  let eventBeginDate = document.getElementById("event-begin-date").value;
-  let eventEndDate = document.getElementById("event-end-date").value;
-  let eventCategory = document.getElementById("event-category").value;
+  var eventName = document.getElementById("event-name").value;
+  var eventDescription = document.getElementById("event-description").value;
+  var eventBeginDate = document.getElementById("event-begin-date").value;
+  var eventEndDate = document.getElementById("event-end-date").value;
+  var eventPoster = document.getElementById("event-poster").value;
+  var eventCategory = document.getElementById("event-category").value;
 
   const eventData = {
-    // authorId : localStorage.getItem('userId'),
     authorId : 2,
-    eventName: "name factice",
-    eventDescription: "descriprtion de test de la fonctionnalité depuis le front",
-    // poster : eventPoster,
-    poster : "image1.jpg",
-    category : "activités"
+    eventName: eventName,
+    eventDescription: eventDescription,
+    poster : "posterTest.png",
+    category : eventCategory
   };
 
   if(userStatus == 1){
-    eventData["beginDate"] = '2024-02-12'
-    eventData["endDate"] = '2024-02-15'
+    eventData["beginDate"] = eventBeginDate
+    eventData["endDate"] = eventEndDate
   }
+
   // on contacte la route API pour ajouter un évènement
-  (async () => {
-    // console.log('ok ok')
-    const sendDatas = await fetch('https://student-sphere-server.vercel.app/events/all_past_events', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization' : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNzEwMjkzOTk3LCJleHAiOjE3MTAzODAzOTd9.irT-F-xT2d7sASGDqldjvVeqibVOsgxsCgn41sB5CDY"
-      },
-      // body: JSON.stringify(eventData)
-    });
-    const response = await sendDatas.json();
+  const fetchData = async () => {
+    console.log(eventData)
+    try {
+      const sendDatas = await fetch('http://localhost:3001/events/add', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization' : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNzEwMjkzOTk3LCJleHAiOjE3MTAzODAzOTd9.irT-F-xT2d7sASGDqldjvVeqibVOsgxsCgn41sB5CDY"
+        },
+        body: JSON.stringify(eventData)
+      });
     
-    console.log(response);
-  })();
+      const response = await sendDatas.json();
+      console.log(response);
+      alert(response.message);
+    } catch (error) {
+      console.error('Erreur lors de l\'ajout de l\'évènement :', error);
+    }  
+  };
+
+  fetchData();
 
   // Réinitialiser les champs de saisie
   eventName = "";
