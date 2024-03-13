@@ -21,7 +21,7 @@ DELIMITER ;
 -- Inscription d'un étudiant à un événement 
 DELIMITER //
 CREATE PROCEDURE inscriptionEvent (userId INT, eventID INT)
-BEGINss
+BEGIN
     INSERT INTO event_users (userId, eventId)
     VALUES (userId, eventId);
 END //
@@ -162,5 +162,98 @@ CREATE PROCEDURE GetAllIdeas ()
 BEGIN
   SELECT * FROM ideas;
 END
+
+DELIMITER ;
+
+--Suppression d'une idée
+DELIMITER //
+
+CREATE PROCEDURE RemoveIdeaById (IN ideaId INT)
+BEGIN
+  DELETE FROM ideas WHERE id = ideaId;
+END //
+
+DELIMITER ;
+
+--Suppression des likes
+DELIMITER //
+
+CREATE PROCEDURE RemoveLike(IN tableName VARCHAR(255), IN itemId INT)
+BEGIN
+  SET @query = CONCAT('UPDATE ', tableName, ' SET likes = likes - 1 WHERE id = ', itemId);
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
+
+DELIMITER ;
+
+
+--Compter le nombre de likes
+DELIMITER //
+
+CREATE PROCEDURE GetLikeNumber(IN tableName VARCHAR(255), IN itemName VARCHAR(255), OUT likeCount INT)
+BEGIN
+  SET @query = CONCAT('SELECT likes INTO @likeCount FROM ', tableName, ' WHERE name = ''', itemName, '''');
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+  SET likeCount = @likeCount;
+END //
+
+DELIMITER ;
+
+
+--Ajouter des likes
+DELIMITER //
+
+CREATE PROCEDURE AddLike(IN tableName VARCHAR(255), IN itemId INT)
+BEGIN
+  SET @query = CONCAT('UPDATE ', tableName, ' SET likes = likes + 1 WHERE id = ', itemId);
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
+
+DELIMITER ;
+
+
+--Affichage de tout les produits
+DELIMITER //
+
+CREATE PROCEDURE GetAllProducts()
+BEGIN
+  SELECT * FROM products;
+END //
+
+DELIMITER ;
+
+--Afficher les produits par catégorie
+DELIMITER //
+
+CREATE PROCEDURE GetProductsByCategory(IN categoryParam VARCHAR(255))
+BEGIN
+  SELECT * FROM products WHERE category = categoryParam;
+END //
+
+DELIMITER ;
+
+--Afficher les produits par Nom
+DELIMITER //
+
+CREATE PROCEDURE GetProductsByName(IN productNameParam VARCHAR(255))
+BEGIN
+  SELECT * FROM products WHERE name = productNameParam;
+END //
+
+DELIMITER ;
+
+--Aficher les produits par leurs ID
+DELIMITER //
+
+CREATE PROCEDURE GetProductById(IN idParam INT)
+BEGIN
+  SELECT * FROM products WHERE id = idParam;
+END //
 
 DELIMITER ;

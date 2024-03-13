@@ -1,43 +1,100 @@
-:root{
-    --blanche: #ffff;
-    --brow:#rgb(237, 147, 1);
-    --noire: #222;
-    --brown:#89260d;
-    --red:#ff0000;
-    --gris:#635e5e;
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #dddddd;
 }
-*{
-    margin:0; padding:0;
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma;
-    outline: none; border:none;
+    outline: none;
+    border: none;
     text-decoration: none;
     text-transform: capitalize;
     transition: .2s linear;
 }
 
-html{
+html {
     font-size: 62.5%;
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
     overflow-x: hidden;
 }
 
-section{
-    padding:2rem 9%;
+h1 {
+    font-size: 3rem;
 }
 
-.heading{
-    text-align: center;
-    font-size: 4rem;
-    color:var(--noire);
-    padding:1rem;
-    margin:2rem 0;
-    background:var(--blanche) ;
+h2 {
+    font-size: 4.8rem; 
 }
 
-.heading span{
-    color:var(--brown);
+h3{
+    
+}
+li {
+    font-size: 2rem;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* header */
+
+.main-head {
+    background-color: rgb(87, 31, 31);
+    color: #fff;
+}
+
+nav {
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    padding: 2rem;
+}
+
+nav ul {
+    display: flex;
+    flex: 5 1 40rem;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-link {
+    margin-right: 20px;
+}
+
+.nav-link:hover {
+    color: brown;
+}
+
+#logo {
+    flex: 1 1 40rem;
+}
+
+.icons {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.icons:first-child.nav-link {
+    margin-right: 10px;
+}
+
+.fas {
+    color: #fff;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.fas:hover {
+    color: brown;
 }
 
 .btn{
@@ -45,7 +102,7 @@ section{
     margin-top: 1rem;
     border-radius: 5rem;
     background:#333;
-    color:var(--blanche);
+    color:#fff;
     padding:.9rem 3.5rem;
     cursor: pointer;
     font-size: 1.7rem;
@@ -53,69 +110,7 @@ section{
 }
 
 .btn:hover{
-    background:var(--brown);
-}
-
-header{
-    position: fixed;
-    top:0; left:0; right:0;
-    background:#89260d;
-    padding:2rem 9%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-    max-height: 90px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
-}
-
-header .logo{
-width: 100px ;
-height: 100px;
-}
-
-
-header .navbar a{
-    font-size: 2rem;
-    padding:0 1.5rem;
-    color:var(--blanche);
-    margin-left: 20px;
-}
-
-header .navbar a:hover{
-    color:var(--brow);
-}
-
-header .icons a{
-    font-size: 2.5rem;
-    color:var(--blanche);
-    margin-left: 1.5rem;
-}
-
-header .icons a:hover{
-    color:var(--red);
-}
-
-header #toggler{
-    display: none;
-}
-
-header .fa-bars{
-    font-size: 3rem;
-    color:#333;
-    border-radius: .5rem;
-    padding:.5rem 1.5rem;
-    cursor: pointer;
-    border:.1rem solid rgba(0,0,0,.3);
-    display: none;
-}
-
-.Acceuil{
-    display: flex;
-    align-items: center;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
+    background: brown;
 }
 
 @keyframes moveImage {
@@ -123,7 +118,7 @@ header .fa-bars{
        transform: translateX(0);
     }
     50% {
-       transform: translateY(25px);
+       transform: translateY(10px);
     }
     100% {
        transform: translateX(0)
@@ -175,92 +170,3 @@ header .fa-bars{
     line-height: 1.5;
     z-index: 1;
 }
-
-.icons-container{
-    background:var(--blanche);
-    display: flex;
-    flex-wrap: wrap;
-    gap:1.5rem;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-}
-
-.icons-container .icons{
-    background:var(--blanche);
-    border:.1rem solid rgba(0,0,0,.1);
-    padding:2rem;
-    display: flex;
-    align-items: center;
-    flex:1 1 25rem;
-}
-
-.icons-container .icons img{
-    height:5rem;
-    margin-right: 2rem;
-}
-
-.icons-container .icons h3{
-    color:var(--gris);
-    padding-bottom: .5rem;
-    font-size: 1.5rem;
-}
-
-.icons-container .icons span{
-    color:var(--gris);
-    font-size: 1.3rem;
-}
-.icons {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.icons a {
-    margin-right: 20px; 
-}
-
-.icons a:last-child {
-    margin-right: 0; 
-}
-
-
-
-/*@media only screen and(max-width: 768px){
-    .navigation{
-        padding: 10px 0;
-    }
-
-    .menu{
-        padding: fixed;
-        top: 0;
-        left: -100;
-        background-color: var(--blanche);
-        height: 100%;
-        max-width: 450px;
-        box-shadow: 0 5px 15px rgb(0, 0, 0, 0.1);
-        transition: all ease-in-out;
-        z-index: 100;
-    }
-
-    .icons1{
-        display: none;
-    }
-
-    .icons{
-        display: block;
-        font-size: 30px;
-        cursor: pointer;
-    }
-    .logo span{
-        color: var(--primaire);
-    }
-modifier la taille du logo
-    .logo a{
-        font-size: 16px;
-        font-weight: 400;
-    }
-
-    .menu.top{
-        display: block;
-    }
-
-}*/

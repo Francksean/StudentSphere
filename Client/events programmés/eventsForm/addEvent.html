@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter un évènement</title>
+  <link rel="stylesheet" href="addEvent.css">
+  <link rel="stylesheet" href="../../general.css">
+</head>
+<body>
+  <div class="content">
+    <div class="container">
+        <div class="admin_form">
+          <h2>Ajouter un événement</h2>
+          <form action="" method="post">
+            <div class="input_elem">
+              <label for="">Event name :</label>
+              <input type="text" id="event-name" placeholder="Nom de l'événement" required>
+            </div>
+            <div class="input_elem">
+              <label for="">Description :</label>
+              <textarea id="event-description" placeholder="Description de l'événement" required ></textarea>
+            </div>
+            <div class="input_elem">
+              <label for="">Poster :</label>
+              <input type="file" id="event-poster" placeholder="Poster de l'évènement" required>
+            </div>
+            <div class="input_elem input_date">
+              <label for="">Begin date :</label>
+              <input type="date" id="event-begin-date" required>
+            </div>
+            <div class="input_elem input_date">
+              <label for="">End date :</label>
+              <input type="date" id="event-end-date" required>
+            </div>
+            <div class="input_elem">
+              <label for="">Category :</label>
+              <select name="" id="event-category">
+                <option value="activités">Activités</option>
+                <option value="manifestation">Manifestation</option>
+              </select>
+            </div>
+            <button id="add-event-button">Ajouter l'événement</button>
+          </form>
+        </div>
+    </div>
+  </div>
+
+  <script src="./addEvent.js"></script> 
+</body>
+</html>
