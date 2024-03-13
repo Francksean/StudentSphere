@@ -1,5 +1,5 @@
 const express = require('express');
-const multer = require('../middlewares/multer-config');
+const multer = require('../middlewares/profils-multer-config');
 
 const app = express();
 const upload = multer({ dest: '../Images' }).single('Image');

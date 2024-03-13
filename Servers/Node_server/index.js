@@ -7,7 +7,7 @@ const setter = require('./middlewares/setter')
 
 const auth = require('./middlewares/auth');
 
-const multer = require('./middlewares/multer-config')
+const multer = require('./middlewares/profils-multer-config')
 
 //import des routers des différentes entités
 const eventsRouter = require('./routes/events-router')

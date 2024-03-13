@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const eventsController = require('../controllers/events-controller')
-const multer = require('../middlewares/multer-config')
+const multer = require('../middlewares/profils-multer-config')
 
   
 router.put('/:id',eventsController.validateEvent);
