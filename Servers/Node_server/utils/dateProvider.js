@@ -5,5 +5,5 @@
 
 const fullDate = new Date()
 
-exports.date = () =>{ return fullDate.toISOString().split("T")[0];c} 
+exports.date = () =>{ return fullDate.toISOString().split("T")[0];} 
 exports.actualMonth = () => { return fullDate.getMonth }
