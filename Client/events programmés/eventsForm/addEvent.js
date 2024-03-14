@@ -1,10 +1,12 @@
+import provider from "../infosProvider"
+
+
 console.log("test test")
 
 // on récupère le statut de l'utilisateur
 
 // const userStatus = localStorage.getItem('status') --Djissou
-const userStatus = 0;
-const eventDateElems = []
+const userStatus = provider.getUserStatus();
 
 //récuperer les éléments à affichage conditionnel --Djissou
 document.addEventListener("DOMContentLoaded", function() {
@@ -65,7 +67,7 @@ function addEvent(e) {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization' : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNzEwMjkzOTk3LCJleHAiOjE3MTAzODAzOTd9.irT-F-xT2d7sASGDqldjvVeqibVOsgxsCgn41sB5CDY"
+          'Authorization' : provider.getToken()
         },
         body: JSON.stringify(eventData)
       });

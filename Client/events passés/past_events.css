@@ -1,0 +1,9 @@
+.past_events_container{
+  height: fit-content;
+  width: 100vw;
+  padding: 5vh 5vw;
+  background-color: aqua;
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  row-gap:10vh;
+}

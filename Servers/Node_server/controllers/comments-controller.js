@@ -21,7 +21,34 @@ exports.addComment = (req, res) => {
   };
 };
 
-exports.showComments = (req, res) => {
+exports.showAllCommentsForElement = (req, res) => {
+  const { table, relativeIdName, relativeId } = req.body;
+  const connection = dbconnector.createConnection();
+  
+  dbconnector.initConnection(connection, async () => {
+    try {
+      const results = await new Promise((resolve, reject) => {
+        connection.query(`SELECT * FROM ${table} WHERE ${relativeIdName} = ?`, [relativeId], (error, results) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        });
+      });
+      
+      res.status(200).json({ message: "Commentaires chargés", success: true, results: results });
+    } catch (error) {
+      console.error(`Error: ${error}`);
+      res.status(500).json({ message: "Une erreur s'est produite lors de la recherche des commentaires", success: false, error: error });
+    } finally {
+      connection.end();
+    }
+  });
+};
+
+
+exports.showCommentById = (req, res) => {
   const { commentId } = req.params;
   const { table } = req.body;
 
