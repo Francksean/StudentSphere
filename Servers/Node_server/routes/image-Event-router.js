@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('../middlewares/Events-multer-config');
 
 const app = express();
-const upload = multer({ dest: '../ImagesEvents' }).single('Image');
+const upload = multer({ dest: './Images/ImagesEvents' }).single('Image');
 
 app.set('view engine', 'ejs');
 
