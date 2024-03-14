@@ -27,7 +27,8 @@ app.use('/events', setter.setReqHeader, auth.verifyToken, eventsRouter);
 app.use('/products', setter.setReqHeader, auth.verifyToken, productsRouter);
 app.use('/comments', setter.setReqHeader, auth.verifyToken, commentsRouter);
 app.use('/likes', setter.setReqHeader, auth.verifyToken, likesRouter);
-app.use('/ImagesProfils', multer)
+app.use('/ImagesProfils', multer);
+app.use('/ImagesEventsPast', multer)
 
 // toute première requête lancée par le client pour récupérer son token
 app.get("/getToken/:userId", (req, res) => {
