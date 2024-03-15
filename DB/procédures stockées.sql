@@ -285,4 +285,13 @@ BEGIN
   SELECT * FROM products WHERE id = idParam;
 END //
 
-DELIMITER ;
+--Rechercher un produit depuis la barre de recherche
+DELIMITER //
+
+CREATE PROCEDURE SearchProducts() 
+
+BEGIN
+    SELECT* FROM products WHERE name LIKE CONCAT('%', param_recherche, '%');
+END //
+
+DELIMITER;
