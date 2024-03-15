@@ -49,7 +49,7 @@ VALUES
 ('Tomate','tomate.jpg','fruits','Donnez une autre saveur à votre repas.',70, false, 150, 5, 521),
 ('Jadida','beurre.jpg','déjeuner','Tartine et cuisson',10,false, 950, 2.5, 50),
 ('Pack Pomme','pomme.jpg','fruits','Grignoter quand vous en avez envie.',50, true, 2000, 4, 339),
-('Tartina','chocolat.jpg','déjeuner','Pâte à tartiner',10,false, 250, 3, 307),
+('Tartina','chocolat.jpg','déjeuner','Pâte à tartiner',10,false, 2500, 3, 307),
 ('Cappuccino','cappuccino.jpg','déjeuner','Café au lait',3,false, 3000, 3, 12),
 ('Papier toilette','papier.jpg','hygiène','Essuie-tout',15,true,1200,3,283),
 ('Fast Charger Iphone','charge-iphone.jpg','goodies','Charge rapide et sécurisée',5,false,10000,3,800),
