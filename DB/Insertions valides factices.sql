@@ -44,17 +44,17 @@ VALUES
 
 
 -- Insertions de la table products
-INSERT INTO products (name, poster, category, description, quantity, sale, price, grade, likes)
+INSERT INTO products (name, poster, category, description, quantity, discount, price, grade, likes)
 VALUES
-('Tomate','tomate.jpg','fruits','Donnez une autre saveur a votr repas.',70, true, 150,5,521),
-('Jadida','beurre.jpg','déjeuner',' Tartine et cuisson',10,false, 950,2.5,50),
-('Pack Pomme','pomme.jpg','fruits','Grignoter quant vous en avez envie.',50, true, 2000,4,339),
-('Tartina','chocolat.jpg','déjeuner',' Pate a tartiner',10,false, 250,3,307),
-('Cappuccino','cappuccino.jpg','déjeuner','Cafe au lait',3,false,3000,3,12),
-('Papier toilette','papier.jpg','hygiène',' Essuie tout',15,true,1200,3,283),
-('Fast Charger Iphone','charge-iphone','goodies','Charge rapide et securisee',5,false,10 000,3,800),
-('Sucre en Poudre','sucre.jpg','déjeuner',' donnez un gout sucre a vos degustation',10,false,1000,5,689),
-('Fast Charger Type-C','charge-typeC',10,false,5000,2.5,100);
+('Tomate','tomate.jpg','fruits','Donnez une autre saveur à votre repas.',70, false, 150, 5, 521),
+('Jadida','beurre.jpg','déjeuner','Tartine et cuisson',10,false, 950, 2.5, 50),
+('Pack Pomme','pomme.jpg','fruits','Grignoter quand vous en avez envie.',50, true, 2000, 4, 339),
+('Tartina','chocolat.jpg','déjeuner','Pâte à tartiner',10,false, 250, 3, 307),
+('Cappuccino','cappuccino.jpg','déjeuner','Café au lait',3,false, 3000, 3, 12),
+('Papier toilette','papier.jpg','hygiène','Essuie-tout',15,true,1200,3,283),
+('Fast Charger Iphone','charge-iphone.jpg','goodies','Charge rapide et sécurisée',5,false,10000,3,800),
+('Sucre en Poudre','sucre.jpg','déjeuner','Donnez un goût sucré à vos dégustations',10,false,1000,5,689),
+('Fast Charger Type-C','charge-typeC.jpg','goodies','Charge rapide et sécurisée',10,false,5000,2.5,100);
 
 
 
