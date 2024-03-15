@@ -21,10 +21,10 @@
       <div class="flex-around">
         <a href="Acceuil.php">Acceuil</a>
         <a href="produits.php">Produits</a>
-        <a href="infos.html">A Propos de Nous</a>
-        <a href="contact.html">Contact</a>
+        <a href="infos.php">A Propos de Nous</a>
+        <a href="contact.php">Contact</a>
         <a href="connextion.html" class="fas fa-user"></a>
-        <a href="panier.html" class="fas fa-shopping-cart"></a>
+        <a href="panier.php" class="fas fa-shopping-cart"></a>
         <a href="notification.html" class="fas fa-bell"></a> 
      </div>
     </nav>
