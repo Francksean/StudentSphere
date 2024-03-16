@@ -215,10 +215,12 @@
         .view-details-button:hover {
             background-color: #062b16;
         }
+
     </style>
 </head>
 
 <body>
+    <!-- En-tête -->
     <div class="header">
         <div class="profile-info">
             <img src="profile.jpg" alt="Profil" class="profile-image">
@@ -232,6 +234,8 @@
             <span></span>
         </div>
     </div>
+
+    <!-- Menu -->
     <div class="menu">
         <div class="menu-item">Mon profil</div>
         <div class="menu-item">Paramètres</div>
@@ -239,9 +243,11 @@
         <div class="menu-item">Déconnexion</div>
     </div>
 
+    <!-- Section des activités -->
     <div class="activity-section">
         <h2>Mes activités</h2>
 
+        <!-- Activité 1 -->
         <div class="activity-container">
             <div class="activity-name">Activité 1</div>
             <div class="activity-description">Description de l'activité 1.</div>
@@ -249,9 +255,10 @@
                 <div class="activity-date">Date: 10 mars 2024</div>
                 <div class="activity-time">Heure: 15h00</div>
             </div>
-            <button class="unsubscribe-button">Me désinscrire</button>
+            <button class="unsubscribe-button" onclick="removeActivityContainer(this)">Me désinscrire</button>
         </div>
 
+        <!-- Activité 2 -->
         <div class="activity-container">
             <div class="activity-name">Activité 2</div>
             <div class="activity-description">Description de l'activité 2.</div>
@@ -259,33 +266,52 @@
                 <div class="activity-date">Date: 15 mars 2024</div>
                 <div class="activity-time">Heure: 18h30</div>
             </div>
-            <button class="unsubscribe-button">Me désinscrire</button>
+            <button class="unsubscribe-button" onclick="removeActivityContainer(this)">Me désinscrire</button>
         </div>
 
-        <div class="activity-section">
-            <h2>Mes commandes</h2>
+        
 
-            <div class="order-container">
-                <div class="order-number">Numéro de commande: 12345</div>
-                <div class="order-date">Date: 20 mars 2024</div>
-                <button class="view-details-button">Voir détails</button>
-            </div>
+    </div>
 
-            <div class="order-container">
-                <div class="order-number">Numéro de commande: 67890</div>
-                <div class="order-date">Date: 25 mars 2024</div>
-                <button class="view-details-button">Voir détails</button>
-            </div>
+    <!-- Section des commandes -->
+    <div class="activity-section">
+        <h2>Mes commandes</h2>
 
-            <script>
-                const menuIcon = document.querySelector('.menu-icon');
-                const menu = document.querySelector('.menu');
+        <!-- Commande 1 -->
+        <div class="order-container">
+            <div class="order-number">Numéro de commande: 12345</div>
+            <div class="order-date">Date: 20 mars 2024</div>
+            <button class="view-details-button">Voir détails</button>
+        </div>
 
-                menuIcon.addEventListener('click', () => {
-                    menuIcon.classList.toggle('active');
-                    menu.classList.toggle('active');
-                });
-            </script>
+        <!-- Commande 2 -->
+        <div class="order-container">
+            <div class="order-number">Numéro de commande: 67890</div>
+            <div class="order-date">Date: 25 mars 2024</div>
+            <button class="view-details-button">Voir détails</button>
+        </div>
+
+    
+
+    </div>
+
+
+    <script>
+        // Fonction pour supprimer un conteneur d'activité
+        function removeActivityContainer(button) {
+            const activityContainer = button.parentNode;
+            activityContainer.remove();
+        }
+
+        // Gestionnaire d'événement pour le menu
+        const menuIcon = document.querySelector('.menu-icon');
+        const menu = document.querySelector('.menu');
+
+        menuIcon.addEventListener('click', () => {
+            menuIcon.classList.toggle('active');
+            menu.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>
