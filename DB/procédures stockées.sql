@@ -301,4 +301,12 @@ BEGIN
     DELETE FROM products WHERE id = productId;
 END //
 
+DELIMITER //
+
+CREATE PROCEDURE GetAllProduct_comments ()
+BEGIN
+    SELECT * FROM product_comments;
+
+END //
+
 DELIMITER;
