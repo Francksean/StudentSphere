@@ -44,7 +44,7 @@ VALUES
 
 
 -- Insertions de la table products
-INSERT INTO products (name, poster, category, description, quantity, sale, price, grade, likes)
+INSERT INTO products (name, poster, category, description, quantity, discount, price, grade, likes)
 VALUES
 ('Tomate','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWA2r1QM8bWyC6QVHdCjlPA-vYaXOi0bSFdIItv2SFp7XuRCgUwze87Af7JM0q7yF23n0&usqp=CAU','fruits','Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis iusto quibusdam, voluptas odit illo dolore.',70,true,150,4,521),
 ('Pâte à tartiner Tartina','https://boulangerielapaix.com/wp-content/uploads/2021/01/ChocolatsPlan-de-travail-2.jpg','déjeuner','Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis iusto quibusdam, voluptas odit illo dolore.',50,false,1600,3.5,1150),

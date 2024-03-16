@@ -5,7 +5,7 @@ const getUserStatus = () => {
 }
 
 const getToken = () => { 
-  return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNzEwMzk3ODExLCJleHAiOjE3MTA0ODQyMTF9.xI8_99q5Xrf62WFTiOClKNwjqugo3D2BWhGjsJm6hJE"
+  return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNzEwNDg3MjY5LCJleHAiOjE3MTA1NzM2Njl9.UUX99W7txYkRwtk9btzvg4wUFjxpvzh8gZqYO_GZfOo"
 }
 
 export { getToken, getUserStatus }

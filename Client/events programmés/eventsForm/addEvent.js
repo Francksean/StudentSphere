@@ -1,4 +1,4 @@
-import provider from "../infosProvider"
+import { getUserStatus } from "../../infosProvider.js"
 
 
 console.log("test test")
@@ -6,7 +6,7 @@ console.log("test test")
 // on récupère le statut de l'utilisateur
 
 // const userStatus = localStorage.getItem('status') --Djissou
-const userStatus = provider.getUserStatus();
+const userStatus = getUserStatus();
 
 //récuperer les éléments à affichage conditionnel --Djissou
 document.addEventListener("DOMContentLoaded", function() {

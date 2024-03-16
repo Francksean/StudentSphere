@@ -4,20 +4,29 @@
   padding: 5vh 5vw;
   display: grid;
   grid-template-columns: repeat(2, 48%);
-  row-gap:10vh;
+  row-gap:5vh;
   column-gap: 2vw;
 }
-
+.past_event_item_link{
+  text-decoration: none;
+}
 .past_event_item{
-  height: fit-content;
+  color: black;
+  height: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   column-gap:1vw;
   border: 2px solid gainsboro;
-  border-radius: 2em;
+  border-radius: 1em;
   padding: 2vh 1vw;
+  transition: 0.2s;
+}
+.past_event_item:hover{
+  box-shadow: 2px 10px 10px 5px gainsboro;
+  scale: 1.005;
+  background-color: rgb(255, 255, 80, 0.5);
 }
 .event_details{
   display: flex;
@@ -29,5 +38,5 @@
 .comment_like_container{
   display: flex;
   flex-direction: row;
-  column-gap: 20pxs;
+  column-gap: 20px;
 }
