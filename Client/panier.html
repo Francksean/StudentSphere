@@ -1,215 +1,113 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panier</title>
     <style>
-        /* Styles généraux */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+        /* Styles CSS */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-h1 {
-    text-align: center;
-}
+        .item-image {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
 
-.cart-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-}
+        .item-description {
+            flex-grow: 1;
+        }
 
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
-}
+        .quantity-select {
+            width: 50px;
+        }
 
-.item-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 5px;
-}
+        .item-price {
+            font-weight: bold;
+        }
 
-.item-description {
-    flex: 1;
-}
-
-.item-quantity {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.item-price {
-    font-weight: bold;
-}
-
-.delete-button {
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.checkout-button {
-    display: block;
-    margin: 20px auto;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Styles pour les écrans plus petits */
-@media (max-width: 768px) {
-    .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .item-image {
-        width: 100%;
-        height: auto;
-    }
-}
+        #total-price {
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
-
 <body>
-    <header>
-        <h1>Panier</h1>
-        <button id="logout-button">Déconnexion</button>
-    </header>
-    <section class="cart-container">
-        <div class="cart-item">
-            <img src="product1.jpg" alt="Product 1" class="item-image">
-            <div class="item-description">
-                <h3>Nom du produit 1</h3>
-                <p>Description du produit 1</p>
-                <div class="item-quantity">
-                    <label for="quantity1" class="quantity-label">Quantité:</label>
-                    <select id="quantity1" class="quantity-select" onchange="updatePrice('quantity1', 'price1')">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                <p class="item-price">Prix: <span id="price1">$10</span></p>
+    <h1>Panier</h1>
+
+    <!-- Premier article du panier -->
+    <div class="cart-item">
+        <img src="product1.jpg" alt="Product 1" class="item-image">
+        <div class="item-description">
+            <h3>Nom du produit 1</h3>
+            <p>Description du produit 1</p>
+            <div class="item-quantity">
+                <label for="quantity1" class="quantity-label">Quantité:</label>
+                <select id="quantity1" class="quantity-select" data-price-id="price1" onchange="updatePrice('quantity1', 'price1', 1)">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
             </div>
-            <button class="delete-button">Supprimer</button>
+            <p class="item-price">Prix: <span id="price1" class="initial-price">1</span>$</p>
         </div>
+        <button class="delete-button" onclick="removeCartItem(this)">Supprimer</button>
+    </div>
 
-        <div class="cart-item">
-            <img src="product2.jpg" alt="Product 2" class="item-image">
-            <div class="item-description">
-                <h3>Nom du produit 2</h3>
-                <p>Description du produit 2</p>
-                <div class="item-quantity">
-                    <label for="quantity2" class="quantity-label">Quantité:</label>
-                    <select id="quantity2" class="quantity-select" onchange="updatePrice('quantity2', 'price2')">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                <p class="item-price">Prix: <span id="price2">$15</span></p>
+    <!-- Deuxième article du panier -->
+    <div class="cart-item">
+        <img src="product2.jpg" alt="Product 2" class="item-image">
+        <div class="item-description">
+            <h3>Nom du produit 2</h3>
+            <p>Description du produit 2</p>
+            <div class="item-quantity">
+                <label for="quantity2" class="quantity-label">Quantité:</label>
+                <select id="quantity2" class="quantity-select" data-price-id="price2" onchange="updatePrice('quantity2', 'price2', 15)">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
             </div>
-            <button class="delete-button">Supprimer</button>
+            <p class="item-price">Prix: <span id="price2" class="initial-price">15</span>$</p>
         </div>
+        <button class="delete-button" onclick="removeCartItem(this)">Supprimer</button>
+    </div>
 
-        <div class="cart-item">
-            <img src="product3.jpg" alt="Product 3" class="item-image">
-            <div class="item-description">
-                <h3>Nom du produit 3</h3>
-                <p>Description du produit 3</p>
-                <div class="item-quantity">
-                    <label for="quantity3" class="quantity-label">Quantité:</label>
-                    <select id="quantity3" class="quantity-select" onchange="updatePrice('quantity3', 'price3')">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                <p class="item-price">Prix: <span id="price3">$20</span></p>
-            </div>
-            <button class="delete-button">Supprimer</button>
-        </div>
-    </section>
-
-    <p id="total-price" class="item-price">Total: $0</p>
-    
-
-    <button id="checkout-button">Commander</button>
+    <!-- Prix total du panier -->
+    <p>Prix total: <span id="total-price">0</span>$</p>
 
     <script>
-        // Ajouter une action au bouton de déconnexion
-        const logoutButton = document.getElementById('logout-button');
-        logoutButton.addEventListener('click', () => {
-            // Code pour la déconnexion de l'utilisateur
-        });
+        // Fonction pour supprimer un article du panier
+        function removeCartItem(button) {
+            const cartItem = button.parentNode;
+            cartItem.remove();
+            updateTotalPrice(); // Met à jour le prix total après la suppression
+        }
 
-        // Fonction pour mettre à jour le prix total lorsque la quantité change
-        function updatePrice(quantityId, priceId) {
+        // Fonction pour mettre à jour le prix d'un article en fonction de la quantité sélectionnée
+        function updatePrice(quantityId, priceId, price) {
             const quantitySelect = document.getElementById(quantityId);
-            const priceSpan = document.getElementById(priceId);
-            const price = parseInt(priceSpan.innerText.slice(1)); // Supprime le signe dollar et convertit en nombre entier
             const quantity = parseInt(quantitySelect.value);
             const totalPrice = price * quantity;
-            priceSpan.innerText = '$' + totalPrice;
+            document.getElementById(priceId).innerText = totalPrice;
+            updateTotalPrice(); // Met à jour le prix total après la modification
         }
-        // Fonction pour mettre à jour le prix total lorsque la quantité change
-function updatePrice(quantityId, priceId) {
-    const quantitySelect = document.getElementById(quantityId);
-    const priceSpan = document.getElementById(priceId);
-    const price = parseInt(priceSpan.innerText.slice(1)); // Supprime le signe dollar et convertit en nombre entier
-    const quantity = parseInt(quantitySelect.value);
-    const totalPrice = price * quantity;
-    priceSpan.innerText = '$' + totalPrice;
 
-    // Mettre à jour le prix total
-    updateTotalPrice();
-}
-
-// Fonction pour mettre à jour le prix total
-function updateTotalPrice() {
-    const priceSpans = document.querySelectorAll('.item-price span');
-    let totalPrice = 0;
-
-    priceSpans.forEach((priceSpan) => {
-        const price = parseInt(priceSpan.innerText.slice(1)); // Supprime le signe dollar et convertit en nombre entier
-        totalPrice += price;
-    });
-
-    const totalPriceSpan = document.getElementById('total-price');
-    totalPriceSpan.innerText = '$' + totalPrice;
-}
-
-
-
-// Appeler la fonction updateTotalPrice au chargement de la page
-window.addEventListener('load', updateTotalPrice);
+        // Fonction pour mettre à jour le prix total en additionnant les prix de tous les articles
+        function updateTotalPrice() {
+            let totalPrice = 0;
+            const prices = document.getElementsByClassName('initial-price');
+            for (let i = 0; i < prices.length; i++) {
+                totalPrice += parseInt(prices[i].innerText);
+            }
+            document.getElementById('total-price').innerText = totalPrice;
+        }
     </script>
 </body>
-
 </html>
