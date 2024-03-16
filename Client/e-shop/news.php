@@ -5,7 +5,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produits de la boutique</title>
+    <title>Les plus vendus</title>
     <style>
 .flex-around {
   display: flex;
@@ -35,31 +35,28 @@ section > img:last-child {
     animation: none;
 }
 
-nav {
-  border-bottom: 1px solid grey;
-  border-top: 1px solid grey;
-  background-color: beige;
-  margin-bottom: 1.5rem;
-  height: 70px;
+div {
+  height: 100px;
+  margin-right: 80px;
 }
-nav > div {
-  height: 50px;
-}
-nav > div > a {
-  display: flex;
+
+div > a {
+  display: block;
   justify-content: center;
-  align-items: center;
   text-decoration: none;
   font-size: 25px;
   color: black;
-  flex: 1;
-  width: 20%;
-  height: 50px;
-  margin: 8px
 }
 
-nav > div > a:hover{
-    color: brown;
+div > a >button{
+    background-color: beige;
+    border-color: black;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+div > a > button:hover{
+    background-color: brown;
 }
 
 .flex-around {
@@ -193,8 +190,8 @@ nav > div > a:hover{
 }
 
     </style>
+    <?php require_once "Index2.php" ?>
 </head>
-<?php require_once "Affiche.php" ?>
 <body>
 <section class="flex-around">
       <img src="Images/offre.png" alt=" logo">
@@ -203,20 +200,12 @@ nav > div > a:hover{
         StudentSphere
       </h1>
       <img src="Images/Blade1.jpg" alt=" image">
-   </section>
+</section>
 <nav>
-      <div class="flex-around">
-        <a href="Acceuil.php">Acceuil</a>
-        <a href="categories.php">Categories</a>
-        <a href="news.php">Bestselling</a>
-        <a href="Connexion.php" class="fas fa-shopping-cart"></a>
-        <form class="d-flex"  action="Recherche.php" method="post">
-            <input class="form-control me-2" name="search" type="search" placeholder="Search" list="search_bar" id="search_bar" aria-label="Search">
-            <datalist id='search_bar'></datalist>
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-     </div>
-    </nav>
+    <div class="flex-around">
+        <a href="produits.php"><button class="btn"> Previous</button></a> 
+    </div>
+</nav>
 
 <?php
 foreach ($products as $produit) {
@@ -234,5 +223,8 @@ foreach ($products as $produit) {
     </div>";
 }
 ?>
+</body>
+</html>
+
 </body>
 </html>

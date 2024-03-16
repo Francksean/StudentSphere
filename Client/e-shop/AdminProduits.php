@@ -5,7 +5,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produits de la boutique</title>
+    <title>Administrateur de produits</title>
     <style>
 .flex-around {
   display: flex;
@@ -209,6 +209,8 @@ nav > div > a:hover{
         <a href="Acceuil.php">Acceuil</a>
         <a href="categories.php">Categories</a>
         <a href="news.php">Bestselling</a>
+        <a href="AjoutProduits.php">Ajouter</a>
+        <a href="supprimer.php">Supprimer</a>
         <a href="Connexion.php" class="fas fa-shopping-cart"></a>
         <form class="d-flex"  action="Recherche.php" method="post">
             <input class="form-control me-2" name="search" type="search" placeholder="Search" list="search_bar" id="search_bar" aria-label="Search">
