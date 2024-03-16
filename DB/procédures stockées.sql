@@ -288,10 +288,17 @@ END //
 --Rechercher un produit depuis la barre de recherche
 DELIMITER //
 
-CREATE PROCEDURE SearchProducts() 
-
+CREATE PROCEDURE SearchProducts(IN param_recherche VARCHAR(255))
 BEGIN
-    SELECT* FROM products WHERE name LIKE CONCAT('%', param_recherche, '%');
+    SELECT * FROM products WHERE champ_recherche = param_recherche;
+END //
+
+--Supprimer un produit par son ID
+DELIMITER //
+
+CREATE PROCEDURE DeleteProduct(IN productId INT)
+BEGIN
+    DELETE FROM products WHERE id = productId;
 END //
 
 DELIMITER;

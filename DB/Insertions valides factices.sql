@@ -46,8 +46,8 @@ VALUES
 -- Insertions de la table products
 INSERT INTO products (name, poster, category, description, quantity, discount, price, grade, likes)
 VALUES
-('Tomate','tomate.jpg','fruits','Donnez une autre saveur à votre repas.',70, false, 150, 5, 521),
-('Jadida','beurre.jpg','déjeuner','Tartine et cuisson',10,false, 950, 2.5, 50),
+('Tomate','tomate.jpg','fruits','Donnez une autre saveur à votre repas.',70, false, 100, 5, 521),
+('Jadida','beurre250.jpg','déjeuner','Tartine et cuisson',10,false, 950, 2.5, 50),
 ('Pack Pomme','pomme.jpg','fruits','Grignoter quand vous en avez envie.',50, true, 2000, 4, 339),
 ('Tartina','chocolat.jpg','déjeuner','Pâte à tartiner',10,false, 2500, 3, 307),
 ('Cappuccino','cappuccino.jpg','déjeuner','Café au lait',3,false, 3000, 3, 12),
