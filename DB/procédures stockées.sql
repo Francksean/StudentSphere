@@ -285,6 +285,61 @@ BEGIN
   SELECT * FROM products WHERE id = idParam;
 END //
 
+--Ajouter un commentaire concernant un produit 
+DELIMITER //
+
+CREATE PROCEDURE AddComment(
+  IN authorId INT,
+  IN productId INT,
+  IN datePosted DATE,
+  IN content VARCHAR(1000),
+)
+BEGIN
+    INSERT INTO product_comments (authorId, productId, datePosted, content)
+    VALUES( authorId, productId, datePosted, content);
+END //
+
+
+--Ajouter un produit
+DELIMITER //
+
+CREATE PROCEDURE Addproducts(
+  IN param_nom VARCHAR (225),
+  IN param_poster VARCHAR (225),
+  IN param_category VARCHAR (225),
+  IN param_description VARCHAR(1000),
+  IN param_quantity INT,
+  IN param_price INT
+)
+BEGIN
+    INSERT INTO products (name, poster, category, description, quantity, price)
+    VALUES( param_nom, param_poster, param_category, param_description, param_quantity, param_price);
+END //
+
+--Ajouter un utilisateur
+DELIMITER //
+
+CREATE PROCEDURE Addusers(
+  IN param_nom VARCHAR (225),
+  IN param_prenom VARCHAR(225),
+  IN param_email VARCHAR(225),
+  IN param_localisation VARCHAR (225),
+  IN param_password VARCHAR(225),
+  IN param_image VARCHAR(225)
+)
+BEGIN
+    INSERT INTO users (firstname, secondname, email, localisation, password, profilPic)
+    VALUES( param_nom, param_prenom, param_email, param_localisation, param_password, param_image);
+END //
+
+--Afficher les produits les plus vendus
+DELIMITER //
+
+CREATE PROCEDURE GetBestseller()
+BEGIN
+    SELECT * FROM products WHERE grade=4 AND grade=5;
+END //
+
 --Rechercher un produit depuis la barre de recherche
 DELIMITER //
 
@@ -301,6 +356,7 @@ BEGIN
     DELETE FROM products WHERE id = productId;
 END //
 
+--afficher tout les commentaires des produits
 DELIMITER //
 
 CREATE PROCEDURE GetAllProduct_comments ()
@@ -308,5 +364,7 @@ BEGIN
     SELECT * FROM product_comments;
 
 END //
+
+
 
 DELIMITER;
