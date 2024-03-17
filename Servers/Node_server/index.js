@@ -16,6 +16,7 @@ const multer3 = require('./middlewares/Events-multer-config')
 //import des routers des différentes entités
 const eventsRouter = require('./routes/events-router')
 const productsRouter = require('./routes/products-router');
+const usersRouter = require('./routes/users-router');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(cors());
 // mon "contrôlleur" pour les différentes routes
 
 
+app.use('/users', setter.setReqHeader, auth.verifyToken, usersRouter);
 app.use('/events', setter.setReqHeader, auth.verifyToken, eventsRouter);
 app.use('/products', setter.setReqHeader, auth.verifyToken, productsRouter);
 app.use('/ImagesProfils', multer1);
@@ -35,7 +37,7 @@ app.use('/ImagesEvents', multer3);
 app.get("/getToken/:userId", (req, res) => {
   const { userId } = req.params;
   const token = jwt.sign({ userId : userId },'your-secret-key', {
-    "expiresIn" : "1d"
+    "expiresIn" : "5d"
   })
   res.json(token)
 

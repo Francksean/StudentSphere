@@ -1,11 +1,15 @@
 //juste le fichier qui diffuse le token dans toute l'application
 
 const getUserStatus = () => {
-  return 1
+  return 0
+}
+
+const getUserId = () => {
+  return 2
 }
 
 const getToken = () => { 
-  return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNzEwNDg3MjY5LCJleHAiOjE3MTA1NzM2Njl9.UUX99W7txYkRwtk9btzvg4wUFjxpvzh8gZqYO_GZfOo"
+  return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNzEwNTc1MDUxLCJleHAiOjE3MTEwMDcwNTF9.k6D-agfPWYUTFijNiUSIqhJxyiP0SAjs_tbzU7Myawg"
 }
 
-export { getToken, getUserStatus }
+export { getToken, getUserStatus, getUserId }

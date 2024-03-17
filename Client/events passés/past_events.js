@@ -1,19 +1,11 @@
 import { getToken, getUserStatus } from "../infosProvider.js"
 
   //l'élément HTML racine
-  const root = document.getElementById('past_event_container')
+  const root = document.getElementById('event_container')
 
   let eventComponent;
 
-  const eventComponentTemplate = ( item ) => {
-
-    let nbrOfComments;
-
-    const requestBody = {
-      table : "event_comments",
-      relativeIdName : "eventId",
-      relativeId : item.id
-    }
+  const eventComponentTemplate = async ( item ) => {
     const fetchNbrOfComments = async () => {
       try {
         const sendRequest = await fetch(`http://localhost:3000/events/showComments/${item.id}`, {
@@ -26,14 +18,14 @@ import { getToken, getUserStatus } from "../infosProvider.js"
         });
       
         const response = await sendRequest.json();
-        item["nbrOfComments"] = response.results[0].length
+        return response.results[0].length
       } catch (error) {
         console.error('Erreur lors de la recherche des commentaire :', error);
       }  
-      return nbrOfComments
     };
 
-    fetchNbrOfComments()
+    const nbrOfComments = await fetchNbrOfComments()
+    item['nbrOfComments'] = nbrOfComments
 
     eventComponent =
     `<a href=${"./past-event-details/past_event_details.html?itemId=" + item.id} class="past_event_item_link"><div class="past_event_item">
@@ -56,11 +48,6 @@ import { getToken, getUserStatus } from "../infosProvider.js"
             ${item.likes} likes
           </p>
         </div>
-        <div class="comments-section" style="display: none;">
-          <textarea class="comment-input" placeholder="Commentaire"></textarea>
-          <h3>Commentaires</h3>
-          <ul class="comments-list"></ul>
-        </div>
       </div>
     </div></a>`
 
@@ -69,6 +56,8 @@ import { getToken, getUserStatus } from "../infosProvider.js"
   }
 
   
+
+
 
 const fetchPastEvents = async () => {
   let eventFeed = []
@@ -86,8 +75,8 @@ const fetchPastEvents = async () => {
     eventFeed = response.results[0]
     console.log(eventFeed)
     
-    eventFeed.map((item) => {
-      let eventCreated = eventComponentTemplate(item);
+    eventFeed.map(async (item) => {
+      let eventCreated = await eventComponentTemplate(item);
       root.innerHTML = root.innerHTML + eventCreated 
     })
   } catch (error) {
@@ -96,35 +85,3 @@ const fetchPastEvents = async () => {
 };
 
 fetchPastEvents()
-
-// const commentButtons = document.querySelectorAll('.comment_button');
-
-
-// commentButtons.forEach((button) => {
-//     button.addEventListener('click', afficherCommentaires);
-// });
-
-// // Fonction pour afficher la section des commentaires
-// function afficherCommentaires() {
-//     const sectionCommentaires = this.parentNode.nextElementSibling;
-//     sectionCommentaires.style.display = 'block';
-// }
-
-// const postCommentButtons = document.querySelectorAll('.post_comment_button');
-
-// postCommentButtons.forEach(button => {
-//   button.addEventListener('click', posterCommentaire);
-// });
-
-// function posterCommentaire() {
-//   const commentaireInput = this.parentNode.previousElementSibling.previousElementSibling;
-//   const commentaire = commentaireInput.value;
-
-//   if (commentaire !== '') {
-//     const listeDeCommentaires = this.parentNode.nextElementSibling.querySelector('.comments_list');
-//     const nouvelElementCommentaire = document.createElement('li');
-//     nouvelElementCommentaire.textContent = commentaire;
-//     listeDeCommentaires.appendChild(nouvelElementCommentaire);
-//     commentaireInput.value = '';
-//   }
-// }

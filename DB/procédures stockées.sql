@@ -39,6 +39,7 @@ BEGIN
     VALUES (userId, name, description, poster);
 END |
 
+
 -- Ajouter une photo à un événement passé
 DELIMITER |
 CREATE PROCEDURE addPhoto (authorId INT, eventId INT, poster VARCHAR(255), datePosted DATE)
@@ -70,7 +71,7 @@ CREATE PROCEDURE addEventComment(
   )
 BEGIN
   INSERT INTO event_comments (authorId, eventId, datePosted, content)
-  VALUES (authorId, productId, datePosted, content );
+  VALUES (authorId, eventId, datePosted, content );
 END |
 
 --Ajout commentaire idées
@@ -139,7 +140,7 @@ CREATE PROCEDURE ValidateEvent(
 )
 BEGIN
   UPDATE events
-  SET beginDate = beginDate, endDate = endDate, state = 'scheduled'
+  SET beginDate = beginDate, endDate = endDate, state = 'validé'
   WHERE id = eventId;
 END |
 
@@ -153,11 +154,12 @@ CREATE PROCEDURE InsertEventBDE(
   IN beginDate DATE,
   IN endDate DATE,
   IN poster VARCHAR(255),
-  IN category VARCHAR(255)
+  IN category VARCHAR(255),
+  IN state VARCHAR(20)
 )
 BEGIN
-  INSERT INTO events (authorId, name, description, datePosted, beginDate, endDate, poster, category)
-  VALUES (authorId, eventName, eventDescription, datePosted, beginDate, endDate, poster, category);
+  INSERT INTO events (authorId, name, description, datePosted, beginDate, endDate, poster, category, state)
+  VALUES (authorId, eventName, eventDescription, datePosted, beginDate, endDate, poster, category, state);
 END |
 
 --Insérer un évènement
@@ -182,6 +184,15 @@ BEGIN
   SELECT *
   FROM events
   WHERE endDate < CURDATE();
+END |
+
+--Afficher les évènements programmés
+DELIMITER |
+CREATE PROCEDURE GetAllScheduledEvents()
+BEGIN
+  SELECT *
+  FROM events
+  WHERE beginDate > CURDATE() AND state = 'proposé';
 END |
 
 --Effacer un évènement
@@ -276,9 +287,9 @@ END |
 
 --Affichage de tout les évènements
 DELIMITER |
-CREATE PROCEDURE GetAllEvents()
+CREATE PROCEDURE GetAllValidatedEvents()
 BEGIN
-  SELECT * FROM events;
+  SELECT * FROM events WHERE state != "proposé";
 END |
 
 --Afficher les produits par catégorie

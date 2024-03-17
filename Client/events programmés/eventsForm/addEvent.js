@@ -8,26 +8,26 @@ console.log("test test")
 // const userStatus = localStorage.getItem('status') --Djissou
 const userStatus = getUserStatus();
 
+let url;
+
 //récuperer les éléments à affichage conditionnel --Djissou
 document.addEventListener("DOMContentLoaded", function() {
   const eventDateElems = Array.from(document.querySelectorAll(".input_date"));
   console.log(eventDateElems);
   
   switch(userStatus){
-    case 0 :
+    case 0:
+    case 2:
       eventDateElems.forEach((item) => {
         item.hidden = true;
       });
+      url = 'http://localhost:3000/events/add'
     break;
     case 1 :
       eventDateElems.forEach((item) => {
         item.hidden = false;
       });
-    break;
-    case 2 :
-      eventDateElems.forEach((item) => {
-        item.hidden = true;
-      });
+      url = 'http://localhost:3000/events/addBdeEvent'
     break;
   }
 });
@@ -62,7 +62,7 @@ function addEvent(e) {
   const fetchData = async () => {
     console.log(eventData)
     try {
-      const sendDatas = await fetch('http://localhost:3000/events/add', {
+      const sendDatas = await fetch(url, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -90,8 +90,6 @@ function addEvent(e) {
   eventBeginDate  = ""
   eventEndDate = ""
   
-  // Afficher un message de succès ou effectuer d'autres actions nécessaires
-
   // Mettre le focus sur le champ de saisie du nom de l'événement
   document.getElementById("event-name").focus();
 }

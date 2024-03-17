@@ -16,7 +16,6 @@ exports.createConnection = () => {
 exports.initConnection = (connection, next) =>  {
   connection.connect((err) => {
     if (err) throw err;
-    console.log("\n\n\n\nConnected to the database");
     next()
   });
 }

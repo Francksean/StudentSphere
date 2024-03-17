@@ -6,4 +6,7 @@
 const fullDate = new Date()
 
 exports.date = () =>{ return fullDate.toISOString().split("T")[0];} 
-exports.actualMonth = () => { return fullDate.getMonth }
+exports.actualMonth = () => { 
+  console.log(fullDate)
+  return fullDate.toISOString().split('-')[1] 
+}

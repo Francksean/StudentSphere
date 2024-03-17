@@ -1,4 +1,4 @@
-import { getToken, getUserId, getUserStatus } from "../../infosProvider.js"
+import { getToken, getUserId, getUserStatus } from "../../../infosProvider.js"
 
 const comment_wrapper = document.getElementById('comments_wrapper')
 const itemId = new URLSearchParams(window.location.search).get("itemId")
@@ -132,6 +132,7 @@ try {
     },
   })
   const response = await sendRequest.json();
+  console.log(response)
   eventElem = response.results[0]
   infosFiller(eventElem)
 } catch (error) {

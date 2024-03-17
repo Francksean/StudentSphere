@@ -31,8 +31,7 @@ exports.addBdeEvent = (req, res)=>{
   dbconnector.initConnection(connection,
   async () => {
     await connection.query(
-      `INSERT INTO events (authorId, name, description, datePosted, poster, beginDate, endDate category, state) 
-      VALUES (${authorId}, "${eventName}", "${eventDescription}", '${dateProvider.date()}', '${poster}', '${beginDate}', '${endDate}', '${category}', 'proposed')`,
+      `CALL InsertEventBDE(${authorId}, "${eventName}", "${eventDescription}", '${dateProvider.date()}', '${beginDate}', '${endDate}', '${poster}', '${category}', 'scheduled')`,
       (error, results) => {
         if (error) {
           res.status(500).json({ message: "An error occurred while registering the event" });
@@ -65,6 +64,25 @@ exports.validateEvent = (req, res) => {
   });
 };
 
+exports.getAllScheduledEvent = async (req, res) => {
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(connection,
+  async () => {
+    await connection.query(
+      'CALL GetAllScheduledEvents()',
+      (error, results) => {
+        if (error) {
+          console.error(`Error: ${error}`);
+          res.status(500).send({ message: 'An error occurred while fetching events', success: false });
+        } else {
+          res.status(200).send({ message: 'Scheduled events are available', success: true, results: results });
+        }
+      }
+    );
+  });
+};
+
+
 exports.getAllPastEvents = async (req, res) => {
   const connection = dbconnector.createConnection();
   dbconnector.initConnection(connection,
@@ -82,6 +100,25 @@ exports.getAllPastEvents = async (req, res) => {
     );
   });
 };
+
+exports.getAllValidatedEvents = async (req, res) => {
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(connection,
+  async () => {
+    await connection.query(
+      'CALL GetAllValidatedEvents()',
+      (error, results) => {
+        if (error) {
+          console.error(`Error: ${error}`);
+          res.status(500).send({ message: 'An error occurred while fetching events', success: false });
+        } else {
+          res.status(200).send({ message: 'Events are available', success: true, results: results });
+        }
+      }
+    );
+  });
+};
+
 
 
 exports.deleteEvent = (req, res) => {
@@ -150,6 +187,46 @@ exports.getAllComments = (req, res) => {
   });
 }
 
+exports.addComment = (req, res) => {
+  const { eventId, authorId, content } = req.body
+
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(connection,
+  async () => {
+    await connection.query(
+      `CALL addEventComment(${authorId}, ${eventId},'${dateProvider.date()}', "${content}")`,
+      (error, results) => {
+        if (error) {
+          res.status(401).json({ success: false, message: "Problem while adding the comment", results: results, error: error });
+        } else {
+          res.status(200).json({ success: true, message: "comment added successfully", results: results });
+        }
+      }
+    );
+  })
+}
+
+exports.removeComment = (req, res) => {
+  const { commentId } = req.params;
+  
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(connection,
+  async () => {
+    await connection.query(
+      `DELETE FROM event_comments WHERE id = ${commentId}`,
+      [commentId],
+      (error, results) => {
+        if (error) {
+          res.status(401).json({ success: false, message: "Problem while deleting the comment", results: results, error: error });
+        } else {
+          res.status(200).json({ success: true, message: "comment deleted successfully", results: results });
+        }
+      }
+    );
+  })
+};
+
+
 exports.addEventLike = (req, res) => {
   const { id } = req.params;
   
@@ -190,6 +267,25 @@ exports.removeEventLike = (req, res) => {
   })
 
 };
+
+exports.getMonthEvents = (req, res) => {
+  const connection = dbconnector.createConnection();
+  dbconnector.initConnection(connection,
+  async () => {
+    await connection.query(
+      `SELECT * FROM events WHERE (SELECT MONTH (beginDate) = "${dateProvider.actualMonth()}") AND state = "validé"`,
+      (error, results) => {
+        if (error) {
+          console.error(`Error: ${error}`);
+          res.status(500).send({ message: 'An error occurred while fetching the event', success: false });
+        } else {
+          console.log(results)
+          res.status(200).send({ message: 'event is available', success: true, results: results });
+        }
+      }
+    );
+  });
+}
 
 exports.getLikeNumber = (req, res) => {
   const { id } = req.params;
