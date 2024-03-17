@@ -112,9 +112,9 @@ END |
 
 --Suppression d'un commentaire d'un event
 DELIMITER |
-CREATE PROCEDURE DeleteEventComment (IN id INT)
+CREATE PROCEDURE DeleteEventComment (IN commentId INT)
 BEGIN
-  DELETE FROM event_comments WHERE id = id;
+  DELETE FROM event_comments WHERE id = commentId;
 END |
 
 --Suppression d'un commentaire d'un produit

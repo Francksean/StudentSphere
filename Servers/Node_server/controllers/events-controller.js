@@ -213,7 +213,7 @@ exports.removeComment = (req, res) => {
   dbconnector.initConnection(connection,
   async () => {
     await connection.query(
-      `DELETE FROM event_comments WHERE id = ${commentId}`,
+      `CALL DeleteEventComment(${commentId})`,
       [commentId],
       (error, results) => {
         if (error) {

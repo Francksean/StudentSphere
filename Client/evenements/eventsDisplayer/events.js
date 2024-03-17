@@ -28,28 +28,31 @@ import { getToken, getUserStatus } from "../../infosProvider.js"
     item['nbrOfComments'] = nbrOfComments
 
     eventComponent =
-    `<a href=${"./event-details/event_details.html?itemId=" + item.id} class="event_item_link"><div class="event_item">
-      <div class="event_image">
-        <img src='${item.poster}' alt="Évènement">
-      </div>
-      <div class="event_details">
-        <h2 class="event_name">${item.name}</h2>
-        <p class="event_description"> </p>
-        <p class="event_date">Du ${item.beginDate.split("T")[0]} - ${item.endDate.split("T")[0]}</p>
-        <p>Description : ${item.description}</p>
+    `<a href=${"./event-details/event_details.html?itemId=" + item.id} class="event_item_link">
+      <div class="event_item">
+        <div class="event_image">
+          <img src='${item.poster}' alt="Évènement">
+        </div>
+        <div class="event_details">
+          <p>${item.state}</p>
+          <h2 class="event_name">${item.name}</h2>
+          <p class="event_description"> </p>
+          <p class="event_date">Du ${item.beginDate.split("T")[0]} - ${item.endDate.split("T")[0]}</p>
+          <p>Description : ${item.description}</p>
 
-        <div class="comment_like_container">
-          <p class="comment_button">
-            <img src="chat.png" alt="Icon" class="comment_icon">
-            ${item.nbrOfComments} commentaires
-          </p>
-          <p class="like_button">
-            <img src="like.png" alt="Icon" class="like_icon">
-            ${item.likes} likes
-          </p>
+          <div class="comment_like_container">
+            <p class="comment_button">
+              <img src="chat.png" alt="Icon" class="comment_icon">
+              ${item.nbrOfComments} commentaires
+            </p>
+            <p class="like_button">
+              <img src="like.png" alt="Icon" class="like_icon">
+              ${item.likes} likes
+            </p>
+          </div>
         </div>
       </div>
-    </div></a>`
+    </a>`
 
     return eventComponent 
     
