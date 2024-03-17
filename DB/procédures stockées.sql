@@ -1,138 +1,96 @@
--- Procédure inscription étudiant
-DELIMITER |
+-- Procédure inscription d'un étudiant 
+DELIMITER //
 CREATE PROCEDURE inscriptionEtudiant (nom VARCHAR(100), prenom VARCHAR(100), localisation VARCHAR(100), email VARCHAR(100), password VARCHAR(255))
 BEGIN
     INSERT INTO users (firstname, secondname, localisation, email, password_hash)
     VALUES (nom, prenom, localisation, email, password);
-END |
+END //
+DELIMITER ;
+-- Procédure Connexion d'un étudiant
+DELIMITER //
 
--- Procédure Connexion étudiant
-
-DELIMITER |
 CREATE PROCEDURE authenticateUser (IN p_email VARCHAR(255), IN p_password VARCHAR(255))
 BEGIN
     DECLARE users_id INT;
-    SELECT id INTO users_id FROM users WHERE email = p_email AND password_hash = p_password;
+    SELECT id INTO users_id FROM users WHERE email = p_email AND password = p_password;
     SELECT users_id;
-END |
+END//
 
--- Inscription étudiant à un événement
-DELIMITER |
+DELIMITER ;
+
+-- Inscription d'un étudiant à un événement 
+DELIMITER //
 CREATE PROCEDURE inscriptionEvent (userId INT, eventID INT)
 BEGIN
     INSERT INTO event_users (userId, eventId)
-    VALUES (userId, eventID);
-END |
+    VALUES (userId, eventId);
+END //
+DELIMITER ;
 
--- Incrémenter le nombre de votes/likes sur un évènement
-DELIMITER |
+-- Incrémenter le nombre de votes/likes sur un évènement 
+DELIMITER //
 CREATE PROCEDURE ajouterVote (eventId INT)
 BEGIN
     UPDATE events SET likes = likes + 1 WHERE id = eventId;
-END |
+END //
+DELIMITER ;
 
--- Proposer un évènement
-DELIMITER |
+-- Proposer un évènement 
+DELIMITER //
 CREATE PROCEDURE suggestEvent (userId INT, name VARCHAR(255), description VARCHAR(500), poster VARCHAR(200) )
 BEGIN
     INSERT INTO events (authorId, name, description, poster)
     VALUES (userId, name, description, poster);
-END |
-
+END //
+DELIMITER ;
 
 -- Ajouter une photo à un événement passé
-DELIMITER |
+DELIMITER //
 CREATE PROCEDURE addPhoto (authorId INT, eventId INT, poster VARCHAR(255), datePosted DATE)
 BEGIN
     INSERT INTO images_related (authorId, eventId, poster, datePosted)
     VALUES (authorId, eventId, poster, datePosted);
-END |
+END //
+DELIMITER ;
 
---Ajout commentaire produits
-DELIMITER |
-CREATE PROCEDURE addProductComment(
-    IN authorId INT,
-    IN productId INT,
-    IN datePosted DATE,
-    IN content VARCHAR(1000)
-  )
+--Ajout d'un commentaire
+DELIMITER //
+CREATE PROCEDURE InsertComment(authorId INT, relativeId INT, content VARCHAR(255), datePosted DATE)
 BEGIN
-  INSERT INTO product_comments (authorId, productId, datePosted, content)
-  VALUES (authorId, productId, datePosted, content );
-END |
+    INSERT INTO comments (authorId, relativeId, content, datePosted)
+    VALUES (authorId, relativeId, content, datePosted);
+END //
+DELIMITER ;
 
---Ajout commentaire events
-DELIMITER |
-CREATE PROCEDURE addEventComment(
-    IN authorId INT,
-    IN eventId INT,
-    IN datePosted DATE,
-    IN content VARCHAR(1000)
-  )
+--Affichage des commentaires
+DELIMITER //
+
+CREATE PROCEDURE ShowComment(IN tableName VARCHAR(255), IN recordId VARCHAR(255))
 BEGIN
-  INSERT INTO event_comments (authorId, eventId, datePosted, content)
-  VALUES (authorId, eventId, datePosted, content );
-END |
+  SET @query = CONCAT('SELECT * FROM ', tableName, ' WHERE id = ''', recordId, '''');
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
 
---Ajout commentaire idées
-DELIMITER |
-CREATE PROCEDURE addIdeaComment(
-    IN authorId INT,
-    IN ideaId INT,
-    IN datePosted DATE,
-    IN content VARCHAR(1000)
-  )
+DELIMITER ;
+
+--Suppression d'un commentaire
+DELIMITER //
+
+CREATE PROCEDURE DeleteComment(IN tableName VARCHAR(255), IN recordId VARCHAR(255))
 BEGIN
-  INSERT INTO idea_comments (authorId, ideaId, datePosted, content)
-  VALUES (authorId, ideaId, datePosted, content );
-END |
+  SET @query = CONCAT('DELETE FROM ', tableName, ' WHERE id = ''', recordId, '''');
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
 
-
-
---Affichage des commentaires event
-DELIMITER |
-CREATE PROCEDURE ShowEventComments(IN id INT)
-BEGIN
-  SELECT * FROM event_comments WHERE eventId = id;
-END |
-
---Affichage des commentaires produit
-DELIMITER |
-CREATE PROCEDURE ShowProductComments(IN id INT)
-BEGIN
-  SELECT * FROM product_comments WHERE eventId = id;
-END |
-
---Affichage des commentaires idée
-DELIMITER |
-CREATE PROCEDURE ShowIdeaComments(IN id INT)
-BEGIN
-  SELECT * FROM idea_comments WHERE eventId = id;
-END |
-
---Suppression d'un commentaire d'un event
-DELIMITER |
-CREATE PROCEDURE DeleteEventComment (IN commentId INT)
-BEGIN
-  DELETE FROM event_comments WHERE id = commentId;
-END |
-
---Suppression d'un commentaire d'un produit
-DELIMITER |
-CREATE PROCEDURE DeleteProductComment (IN id INT)
-BEGIN
-  DELETE FROM product_comments WHERE id = id;
-END |
-
---Suppression d'un commentaire d'une idée
-DELIMITER |
-CREATE PROCEDURE DeleteIdeaComment (IN id INT)
-BEGIN
-  DELETE FROM idea_comments WHERE id = id;
-END |
+DELIMITER ;
 
 --Validation d'un évènement
-DELIMITER |
+DELIMITER //
+
 CREATE PROCEDURE ValidateEvent(
   IN eventId INT,
   IN beginDate DATE,
@@ -140,30 +98,15 @@ CREATE PROCEDURE ValidateEvent(
 )
 BEGIN
   UPDATE events
-  SET beginDate = beginDate, endDate = endDate, state = 'validé'
+  SET beginDate = beginDate, endDate = endDate, state = 'scheduled'
   WHERE id = eventId;
-END |
+END //
 
---Insérer un évènement
-DELIMITER |
-CREATE PROCEDURE InsertEventBDE(
-  IN authorId INT,
-  IN eventName VARCHAR(255),
-  IN eventDescription VARCHAR(1000),
-  IN datePosted DATE,
-  IN beginDate DATE,
-  IN endDate DATE,
-  IN poster VARCHAR(255),
-  IN category VARCHAR(255),
-  IN state VARCHAR(20)
-)
-BEGIN
-  INSERT INTO events (authorId, name, description, datePosted, beginDate, endDate, poster, category, state)
-  VALUES (authorId, eventName, eventDescription, datePosted, beginDate, endDate, poster, category, state);
-END |
+DELIMITER ;
 
---Insérer un évènement
-DELIMITER |
+--Insérer un évènement 
+DELIMITER //
+
 CREATE PROCEDURE InsertEvent(
   IN authorId INT,
   IN eventName VARCHAR(255),
@@ -175,35 +118,38 @@ CREATE PROCEDURE InsertEvent(
 BEGIN
   INSERT INTO events (authorId, name, description, datePosted, poster, category)
   VALUES (authorId, eventName, eventDescription, datePosted, poster, category);
-END |
+END //
+
+DELIMITER ;
+
+
 
 --Afficher les évènements passés
-DELIMITER |
+DELIMITER //
+
 CREATE PROCEDURE GetAllPastEvents()
 BEGIN
   SELECT *
   FROM events
   WHERE endDate < CURDATE();
-END |
+END //
 
---Afficher les évènements programmés
-DELIMITER |
-CREATE PROCEDURE GetAllScheduledEvents()
-BEGIN
-  SELECT *
-  FROM events
-  WHERE beginDate > CURDATE() AND state = 'proposé';
-END |
+DELIMITER ;
 
 --Effacer un évènement
-DELIMITER |
+DELIMITER //
+
 CREATE PROCEDURE DeleteEvent(IN eventId INT)
 BEGIN
   DELETE FROM events WHERE id = eventId;
-END |
+END //
+
+DELIMITER ;
+
 
 --Ajout d'une idée
-DELIMITER |
+DELIMITER //
+
 CREATE PROCEDURE InsertIdea (
   IN authorId INT,
   IN title VARCHAR(255),
@@ -213,124 +159,198 @@ CREATE PROCEDURE InsertIdea (
 BEGIN
   INSERT INTO ideas (authorId, title, content, datePosted)
   VALUES (authorId, title, content, datePosted);
-END |
+END //
+
+DELIMITER ;
 
 --Retrouver l'idée par son ID
-DELIMITER |
+DELIMITER //
+
 CREATE PROCEDURE GetIdeaById (IN ideaId INT)
 BEGIN
   SELECT * FROM ideas WHERE id = ideaId;
-END |
+END
 
---Afficher toutes les idées
-DELIMITER |
+DELIMITER //
+
+
+--Afficher toutes les idées 
+DELIMITER //
+
 CREATE PROCEDURE GetAllIdeas ()
 BEGIN
   SELECT * FROM ideas;
-END |
+END
+
+DELIMITER ;
 
 --Suppression d'une idée
-DELIMITER |
+DELIMITER //
+
 CREATE PROCEDURE RemoveIdeaById (IN ideaId INT)
 BEGIN
   DELETE FROM ideas WHERE id = ideaId;
-END |
+END //
 
---Suppression des likes d'un event
-DELIMITER |
-CREATE PROCEDURE RemoveEventLike(IN itemId INT)
+DELIMITER ;
+
+--Suppression des likes
+DELIMITER //
+
+CREATE PROCEDURE RemoveLike(IN tableName VARCHAR(255), IN itemId INT)
 BEGIN
-  UPDATE events SET likes = likes - 1 WHERE id = itemId;
-END |
+  SET @query = CONCAT('UPDATE ', tableName, ' SET likes = likes - 1 WHERE id = ', itemId);
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
 
---Suppression des likes d'un produit
-DELIMITER |
-CREATE PROCEDURE RemoveProductLike(IN itemId INT)
+DELIMITER ;
+
+
+--Compter le nombre de likes
+DELIMITER //
+
+CREATE PROCEDURE GetLikeNumber(IN tableName VARCHAR(255), IN itemName VARCHAR(255), OUT likeCount INT)
 BEGIN
-  UPDATE products SET likes = likes - 1 WHERE id = itemId;
-END |
+  SET @query = CONCAT('SELECT likes INTO @likeCount FROM ', tableName, ' WHERE name = ''', itemName, '''');
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+  SET likeCount = @likeCount;
+END //
 
---Suppression des likes d'une idée
-DELIMITER |
-CREATE PROCEDURE RemoveIdeaLike(IN itemId INT)
+DELIMITER ;
+
+
+--Ajouter des likes
+DELIMITER //
+
+CREATE PROCEDURE AddLike(IN tableName VARCHAR(255), IN itemId INT)
 BEGIN
-  UPDATE ideas SET likes = likes - 1 WHERE id = itemId;
-END |
+  SET @query = CONCAT('UPDATE ', tableName, ' SET likes = likes + 1 WHERE id = ', itemId);
+  PREPARE stmt FROM @query;
+  EXECUTE stmt;
+  DEALLOCATE PREPARE stmt;
+END //
 
---Ajouter des likes d'un évènement
-DELIMITER |
-CREATE PROCEDURE AddEventLike(IN itemId INT)
-BEGIN
-  UPDATE events SET likes = likes + 1 WHERE id = itemId;
-END |
+DELIMITER ;
 
---Ajouter des likes d'un produit
-DELIMITER |
-CREATE PROCEDURE AddProductLike(IN itemId INT)
-BEGIN
-  UPDATE products SET likes = likes + 1 WHERE id = itemId;
-END |
 
---Ajouter des likes d'une idée
-DELIMITER |
-CREATE PROCEDURE AddIdeaLike(IN itemId INT)
-BEGIN
-  UPDATE ideas SET likes = likes + 1 WHERE id = itemId;
-END |
+--Affichage de tout les produits
+DELIMITER //
 
---Affichage de tous les produits
-DELIMITER |
 CREATE PROCEDURE GetAllProducts()
 BEGIN
   SELECT * FROM products;
-END |
+END //
+
+DELIMITER ;
 
 --Affichage de tout les évènements
-DELIMITER |
-CREATE PROCEDURE GetAllValidatedEvents()
+DELIMITER //
+
+CREATE PROCEDURE GetAllPastEvents()
 BEGIN
-  SELECT * FROM events WHERE state != "proposé";
-END |
+  SELECT * FROM events;
+END //
+
+DELIMITER ;
 
 --Afficher les produits par catégorie
-DELIMITER |
+DELIMITER //
+
 CREATE PROCEDURE GetProductsByCategory(IN categoryParam VARCHAR(255))
 BEGIN
   SELECT * FROM products WHERE category = categoryParam;
-END |
+END //
+
+DELIMITER ;
 
 --Afficher les produits par Nom
-DELIMITER |
+DELIMITER //
+
 CREATE PROCEDURE GetProductsByName(IN productNameParam VARCHAR(255))
 BEGIN
   SELECT * FROM products WHERE name = productNameParam;
-END |
+END //
 
---Aficher les produits par leur ID
-DELIMITER |
+DELIMITER ;
+
+--Aficher les produits par leurs ID
+DELIMITER //
+
 CREATE PROCEDURE GetProductById(IN idParam INT)
 BEGIN
   SELECT * FROM products WHERE id = idParam;
-END |
+END //
 
---Récupérer le nombre de likes d'un event
-DELIMITER |
-CREATE PROCEDURE GetEventLikeNumber(IN id INT)
+--Ajouter un produit
+DELIMITER //
+
+CREATE PROCEDURE Addproducts(
+  IN param_nom VARCHAR (225),
+  IN param_poster VARCHAR (225),
+  IN param_category VARCHAR (225),
+  IN param_description VARCHAR(1000),
+  IN param_quantity INT,
+  IN param_price INT
+)
 BEGIN
-  SELECT likes FROM events WHERE id = id;
-END |
+    INSERT INTO products (name, poster, category, description, quantity, price)
+    VALUES( param_nom, param_poster, param_category, param_description, param_quantity, param_price);
+END //
 
---Récupérer le nombre de likes d'un produit
-DELIMITER |
-CREATE PROCEDURE GetProductLikeNumber(IN id INT)
+--Ajouter un utilisateur
+DELIMITER //
+
+CREATE PROCEDURE Addusers(
+  IN param_nom VARCHAR (225),
+  IN param_prenom VARCHAR(225),
+  IN param_email VARCHAR(225),
+  IN param_localisation VARCHAR (225),
+  IN param_password VARCHAR(225),
+  IN param_image VARCHAR(225),
+  IN param_image INT
+)
 BEGIN
-  SELECT likes FROM products WHERE id = id;
-END |
+    INSERT INTO users (firstname, secondname, email, localisation, password, profilPicm status)
+    VALUES( param_nom, param_prenom, param_email, param_localisation, param_password, param_image, param_status);
+END //
 
---Récupérer le nombre de likes d'une idée
-DELIMITER |
-CREATE PROCEDURE GetIdeaLikeNumber(IN id INT)
+
+--Rechercher un produit depuis la barre de recherche
+DELIMITER //
+
+CREATE PROCEDURE SearchProducts(IN param_recherche VARCHAR(255))
 BEGIN
-  SELECT likes FROM ideas WHERE id = id;
-END |
+    SELECT * FROM products WHERE champ_recherche = param_recherche;
+END //
 
+--Supprimer un produit par son ID
+DELIMITER //
+
+CREATE PROCEDURE DeleteProduct(IN productId INT)
+BEGIN
+    DELETE FROM products WHERE id = productId;
+END //
+
+--afficher tout les commentaires des produits
+DELIMITER //
+
+CREATE PROCEDURE GetAllProduct_comments ()
+BEGIN
+    SELECT * FROM product_comments;
+
+END //
+
+--afficher les produits les plus vendus
+DELIMITER //
+
+CREATE PROCEDURE GetBestseller ()
+BEGIN
+    SELECT * FROM products WHERE total_sales > 40;
+
+END //
+
+DELIMITER;
