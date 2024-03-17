@@ -8,6 +8,24 @@
 
     </style>
     <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+    <script>
+        function addToCart(productName, productPrice) {
+            // Créer un objet contenant les informations du produit
+            var product = {
+                name: productName,
+                price: productPrice
+            };
+
+            // Convertir l'objet en chaîne JSON
+            var productJSON = JSON.stringify(product);
+
+            // Stocker la chaîne JSON dans le stockage local
+            localStorage.setItem('cartProduct', productJSON);
+
+            // Rediriger vers la page panier.html
+            window.location.href = 'panier.html';
+        }
+    </script>
 </head>
 <body>
     <div class="box-container">
@@ -18,7 +36,7 @@
                 <img src="images/11.png" alt="">
                 <div class="icons">
                     <a href="index4.php" class="fas fa-heart"></a>
-                    <a href="index4.php" class="cart-btn">add to cart</a>
+                    <a href="javascript:void(0);" onclick="addToCart('Green lemon cake', '5.99');" class="cart-btn">add to cart</a>
                     <a href="index1.php" class="fas fa-share"></a>
                 </div>
             </div>
@@ -34,7 +52,7 @@
                 <img src="images/2.png" alt="">
                 <div class="icons">
                     <a href="index4.php" class="fas fa-heart"></a>
-                    <a href="index4.php" class="cart-btn">add to cart</a>
+                    <a href="javascript:void(0);" onclick="addToCart('Sweet strawberry', '1.99');" class="cart-btn">add to cart</a>
                     <a href="index1.php" class="fas fa-share"></a>
                 </div>
             </div>
@@ -50,7 +68,7 @@
                 <img src="images/3.png" alt="">
                 <div class="icons">
                     <a href="index4.php" class="fas fa-heart"></a>
-                    <a href="index4.php" class="cart-btn">add to cart</a>
+                    <a href="javascript:void(0);" onclick="addToCart('Cheesecake', '2.99');" class="cart-btn">add to cart</a>
                     <a href="index1.php" class="fas fa-share"></a>
                 </div>
             </div>
@@ -66,7 +84,7 @@
                 <img src="images/4.png" alt="">
                 <div class="icons">
                     <a href="index4.php" class="fas fa-heart"></a>
-                    <a href="index4.php" class="cart-btn">add to cart</a>
+                    <a href="javascript:void(0);" onclick="addToCart('Banana and vanilla', '12.99');" class="cart-btn">add to cart</a>
                     <a href="index1.php" class="fas fa-share"></a>
                 </div>
             </div>
@@ -82,7 +100,7 @@
                 <img src="images/5.png" alt="">
                 <div class="icons">
                     <a href="index4.php" class="fas fa-heart"></a>
-                    <a href="index4.php" class="cart-btn">add to cart</a>
+                    <a href="javascript:void(0);" onclick="addToCart('Nespresso', '10.99');" class="cart-btn">add to cart</a>
                     <a href="index1.php" class="fas fa-share"></a>
                 </div>
             </div>
@@ -98,7 +116,7 @@
                 <img src="images/6.png" alt="">
                 <div class="icons">
                     <a href="index4.php" class="fas fa-heart"></a>
-                    <a href="index4.php" class="cart-btn">add to cart</a>
+                    <a href="javascript:void(0);" onclick="addToCart('Breakfast', '15.99');" class="cart-btn">add to cart</a>
                     <a href="index1.php" class="fas fa-share"></a>
                 </div>
             </div>
@@ -114,7 +132,7 @@
                 <img src="images/7.png" alt="">
                 <div class="icons">
                     <a href="index4.php" class="fas fa-heart"></a>
-                    <a href="index4.php" class="cart-btn">add to cart</a>
+                    <a href="javascript:void(0);" onclick="addToCart('Pistachio Ice Cream Cone', '10.99');" class="cart-btn">add to cart</a>
                     <a href="index1.php" class="fas fa-share"></a>
                 </div>
             </div>
@@ -130,12 +148,12 @@
                 <img src="images/8.png" alt="">
                 <div class="icons">
                     <a href="index4.php" class="fas fa-heart"></a>
-                    <a href="index4.php" class="cart-btn">add to cart</a>
+                    <a href="javascript:void(0);" onclick="addToCart('Orange Juice', '10.99');" class="cart-btn">add to cart</a>
                     <a href="index1.php" class="fas fa-share"></a>
                 </div>
             </div>
             <div class="content">
-                <h3>Jus Orange</h3>
+                <h3>Orange Juice</h3>
                 <div class="price"> mad10.99 <span>mad15.99</span> </div>
             </div>
         </div>
@@ -146,7 +164,7 @@
                 <img src="images/9.png" alt="">
                 <div class="icons">
                     <a href="index4.php" class="fas fa-heart"></a>
-                    <a href="index4.php" class="cart-btn">add to cart</a>
+                    <a href="javascript:void(0);" onclick="addToCart('Ice Cream Sundae', '13.99');" class="cart-btn">add to cart</a>
                     <a href="index1.php" class="fas fa-share"></a>
                 </div>
             </div>
@@ -159,3 +177,4 @@
     </div>
 </body>
 </html>
+              
