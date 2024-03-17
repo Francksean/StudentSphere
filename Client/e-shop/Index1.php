@@ -11,7 +11,7 @@ $prix=$_POST['price'];
 
 
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$requete=$bdd->prepare('INSERT INTO products(name, poster, category, description, quantity, price) VALUES(:param_nom, :param_poster, :param_category, :param_description, :param_quantity, :param_prix)');
+$requete=$bdd->prepare('CALL Addproducts (:param_nom, :param_poster, :param_category, :param_description, :param_quantity, :param_prix)');
 
 $requete->bindValue(':param_nom', $nom, PDO::PARAM_STR);
 $requete->bindValue(':param_poster', $poster, PDO::PARAM_STR);

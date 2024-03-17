@@ -9,7 +9,7 @@ $Password=$_POST['password'];
 $profilePic=$_FILES['image']['name'];
 
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$requete=$bdd->prepare('INSERT INTO users (firstname, secondname, email, localisation, password) VALUES (:param_nom, :param_prenom, :param_email, :param_localisation, :param_password, :param_image)');
+$requete=$bdd->prepare('CALL Addusers (:param_nom, :param_prenom, :param_email, :param_localisation, :param_password, :param_image)');
 
 $requete->bindValue(':param_nom', $Firstname, PDO::PARAM_STR);
 $requete->bindValue(':param_prenom', $Secondname, PDO::PARAM_STR);

@@ -203,5 +203,6 @@ button:hover{
             </div>
     </div>
 <script src="panier.js"></script>
+<script src = "script.js" ></script>
 </body>
 </html>

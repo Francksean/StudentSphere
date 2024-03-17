@@ -8,6 +8,7 @@
     <title>BDE Shop</title>
     <style>
  body {
+  background-color: beige;
   margin: 0;
   padding: 0;
 }
@@ -17,6 +18,16 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 2rem;
+  background-color: darkolivegreen;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .logo-titre {
@@ -24,11 +35,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2.5em;
   color: rgb(238, 122, 122);
-}
-
-div {
-  height: 100px;
-  margin-right: 80px;
 }
 
 div > a {
@@ -44,6 +50,7 @@ div > a >button{
     border-color: black;
     cursor: pointer;
     font-size: 25px;
+    transform: translateY(50px);
 }
 
 div > a > button:hover{
@@ -68,37 +75,40 @@ section > img:last-child {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
+    flex-direction: column;
+    display: inline;
 }
 
 .car {
-    height: 250px;
+    height: 150px;
+    width: 40%;
     align-items: center;
-    display: flex;
+    display: inline-block;
     flex-direction: column;
     background-color: #fff;
     border-radius: 5px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 20px;
+    margin-left: 60px;
+    margin-right: 20px;
+    margin-bottom: -10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    right: 30%;
+    transform: translateY(70px);
 }
-
-.car img {
-    width: 250px;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    transform: translateY(-270px);
-}
-
-.car h2 {
-    margin-bottom: 10px;
-    margin-left: -80%;
+        
+.car h1 {
+    margin-left: 10px;
+    margin-bottom: -10px;
+    display: inline;
 }
 
 .car p {
     margin-bottom: 10px;
-    margin-left: -80%;
+    font-size: 25px;
 }
+
 
     </style>
 </head>
@@ -113,16 +123,17 @@ section > img:last-child {
       <img src="Images/Blade1.jpg" alt=" image">
    </section>
 
-    <div class="flex-around">
+    <div class="flex">
         <a href="Acceuil.php"><button class="btn"> Previous</button></a> 
+        <a href="AddComment.php"><button class="btn"> Ajouter</button></a> 
     </div>
 
   <?php
     foreach ($product_comments as $comment) {
     echo "<div class='container'>
         <div class='car'>
-            <h2>". $comment['authorId'] . "</h2> 
-            <h2>" . $comment['productId'] . "</h2>
+            <h1>". $comment['authorId'] . "</h1> 
+            <h1>" . $comment['productId'] . "</h1>
             <p>". $comment['content'] . "</p>
             <p>". $comment['datePosted'] . "</p>
         </div>  

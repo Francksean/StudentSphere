@@ -81,7 +81,7 @@ nav > div > a:hover{
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     margin-left: 1rem;
     background-color: beige;
 }

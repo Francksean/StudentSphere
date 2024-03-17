@@ -42,9 +42,11 @@ nav {
   margin-bottom: 1.5rem;
   height: 70px;
 }
+
 nav > div {
   height: 50px;
 }
+
 nav > div > a {
   display: flex;
   justify-content: center;
@@ -54,6 +56,19 @@ nav > div > a {
   color: black;
   flex: 1;
   width: 20%;
+  height: 50px;
+  margin: 8px;
+}
+
+nav > div > select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  flex: 1;
+  width: 40%;
   height: 50px;
   margin: 8px
 }
@@ -81,7 +96,7 @@ nav > div > a:hover{
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     margin-left: 1rem;
     background-color: beige;
 }
@@ -207,7 +222,13 @@ nav > div > a:hover{
 <nav>
       <div class="flex-around">
         <a href="Acceuil.php">Acceuil</a>
-        <a href="categories.php">Categories</a>
+        <select name="categories">
+	        <option value="" >Categories</option>
+            <option value="dejeuner">déjeuner</option>
+	        <option value="fruits">Fruits</option>
+	        <option value="googies">goodies</option>
+	        <option value="hygiene">hygiene</option>
+        </select>
         <a href="news.php">Bestselling</a>
         <a href="Connexion.php" class="fas fa-shopping-cart"></a>
         <form class="d-flex"  action="Recherche.php" method="post">
