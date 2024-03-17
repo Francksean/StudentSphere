@@ -17,7 +17,6 @@ VALUES
 (3, 'Event 4', 'Description of Event 4', '2024-03-01', '2024-03-20', '2024-03-22', 'poster4.jpg', 'Webinar', 15, 'Active'),
 (4, 'Event 5', 'Description of Event 5', '2024-03-05', '2024-03-25', '2024-03-27', 'poster5.jpg', 'Exhibition', 12, 'Active');
 
--- Insertions de la table event_users
 -- Insertions dans la table event_users
 INSERT INTO event_users (eventId, userId) 
 VALUES
@@ -32,29 +31,34 @@ VALUES
 INSERT INTO event_comments (authorId, eventId, datePosted, content, likes)
 VALUES
 (1, 1, '2024-03-06', 'Super événement, j''ai passé un bon moment!', 200),
-(3, 2, '2024-03-06', 'Très bien organisé, merci aux organisateurs.', 180),
+(3, 3, '2024-03-06', 'Très bien organisé, merci aux organisateurs.', 180),
 (2, 2, '2024-03-05', 'J''ai adoré cet événement, à refaire!', 250),
-(4, 1, '2024-03-05', 'Très intéressant, j''ai beaucoup appris.', 280),
-(5, 2, '2024-03-04', 'Ambiance géniale, je recommande.', 210),
+(4, 5, '2024-03-05', 'Très intéressant, j''ai beaucoup appris.', 280),
+(5, 4, '2024-03-04', 'Ambiance géniale, je recommande.', 210),
 (3, 1, '2024-03-04', 'C''était sympa, mais un peu trop de monde.', 190),
-(1, 1, '2024-03-03', 'Bonne ambiance, mais les prix étaient un peu élevés.', 170),
+(1, 3, '2024-03-03', 'Bonne ambiance, mais les prix étaient un peu élevés.', 170),
 (4, 2, '2024-03-03', 'Excellent événement, j''ai passé un moment inoubliable.', 300),
-(2, 2, '2024-03-02', 'Je suis ravi d''avoir participé, à l''année prochaine!', 220),
-(5, 1, '2024-03-02', 'Très belle expérience, je recommande.', 260);
+(2, 5, '2024-03-02', 'Je suis ravi d''avoir participé, à l''année prochaine!', 220),
+(5, 4, '2024-03-02', 'Très belle expérience, je recommande.', 260);
 
 
 -- Insertions de la table products
-INSERT INTO products (name, poster, category, description, quantity, discount, price, grade, likes)
+INSERT INTO products (name, poster, category, description, quantity, discount, price, grade, likes, total_sales)
 VALUES
-('Tomate','tomate.jpg','fruits','Donnez une autre saveur à votre repas.',70, false, 100, 5, 521),
-('Jadida','beurre250.jpg','déjeuner','Tartine et cuisson',10,false, 950, 2.5, 50),
-('Pack Pomme','pomme.jpg','fruits','Grignoter quand vous en avez envie.',50, true, 2000, 4, 339),
-('Tartina','chocolat.jpg','déjeuner','Pâte à tartiner',10,false, 2500, 3, 307),
-('Cappuccino','cappuccino.jpg','déjeuner','Café au lait',3,false, 3000, 3, 12),
-('Papier toilette','papier.jpg','hygiène','Essuie-tout',15,true,1200,3,283),
-('Fast Charger Iphone','charge-iphone.jpg','goodies','Charge rapide et sécurisée',5,false,10000,3,800),
-('Sucre en Poudre','sucre.jpg','déjeuner','Donnez un goût sucré à vos dégustations',10,false,1000,5,689),
-('Fast Charger Type-C','charge-typeC.jpg','goodies','Charge rapide et sécurisée',10,false,5000,2.5,100);
+('Tomate','tomate.jpg','fruits','Donnez une autre saveur à votre repas.',70, false, 100, 5, 521,36),
+('Gourde','gourde.jpg','goodies','conserver vos boissons',10,false, 4500, 4, 208, 43),
+('Jadida','beurre250.jpg','déjeuner','Tartine et cuisson',10,false, 950, 2.5, 50, 6),
+('Pack Pomme','pomme.jpg','fruits','Grignoter quand vous en avez envie.',50, true, 2000, 4, 339, 27),
+('Tartina','chocolat.jpg','déjeuner','Pâte à tartiner',10,false, 2500, 3, 307, 39),
+('Alveole d oeufs','oeufs.jpg','déjeuner','omelettes',18,false, 3000, 5, 428, 47),
+('Papier toilette','papier.jpg','hygiène','Essuie-tout',15,true,1200,3,283, 11),
+('Combo Poulet','chiken.jpg','alimentation','bon appetit',11,false, 9500, 5, 936, 19),
+('Fast Charger Iphone','charge-iphone.jpg','goodies','Charge rapide et sécurisée',5,false,10000,3,800, 3),
+('Sucre en Poudre','sucre.jpg','déjeuner','Donnez un goût sucré à vos dégustations',10,false,1000,5,689, 9),
+('Combo burger','burger.jpg','alimentation','bon appetit', 30,false, 3500, 5, 751, 48),
+('Fast Charger Type-C','charge-typeC.jpg','goodies','Charge rapide et sécurisée',10,false,5000,2.5,100, 5),
+('Cappuccino','cappuccino.jpg','déjeuner','Café au lait',3,false, 3000, 3, 12, 5),
+('Totebag','totebag.jpg','goodies','transporter vos effets personnels',30,false, 3500, 5, 917, 67);
 
 
 
