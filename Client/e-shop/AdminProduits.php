@@ -216,11 +216,7 @@ nav > div > a:hover{
         <a href="Connexion.php" class="fas fa-shopping-cart"></a>
         <form class="d-flex"  action="Recherche.php" method="post">
             <input class="form-control me-2" name="search" type="search" placeholder="Search" list="search_bar" id="search_bar" aria-label="Search" autocomplete="on">
-            <datalist id='search_bar'>
-                @for(products of products; track products.name){
-                    <option value=""></option>
-                }
-            </datalist>
+            <datalist id='search_bar'></datalist>
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
      </div>
