@@ -21,7 +21,6 @@
       <div class="flex-around">
         <a href="Acceuil.php">Acceuil</a>
         <a href="produits.php">Produits</a>
-        <a href="Commentaires.php">Commentaires</a>
         <a href="contact.php">Contact</a>
         <a href="Connexion.php" class="fas fa-user"></a>
      </div>

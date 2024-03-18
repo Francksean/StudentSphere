@@ -13,9 +13,9 @@ $requete->execute();
 
 $produit = $requete->fetch(PDO::FETCH_ASSOC);
 
-echo "Suppression reussie.";
-header("refresh:1;url=AdminProduits.php");
-exit;
+
+echo "<script>alert('Le produit a ete supprime de la boutique'); window.location.href='AdminProduits.php';</script>"; 
+
 } else {
     echo "Erreur : ID de produit manquant.";
 }

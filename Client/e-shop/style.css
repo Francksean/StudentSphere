@@ -64,22 +64,3 @@ nav > div > a:hover{
     justify-content: center;
     align-items: center;
 }
-
-img {
-    width: 100%;
-    height: auto; 
-    border: 1px solid black;
-    animation: moveImage 5s linear infinite;
-}
-
-@keyframes moveImage {
-    0% {
-       transform: translateX(0);
-    }
-    50% {
-       transform: translateY(10px);
-    }
-    100% {
-       transform: translateX(0)
-    }
-}

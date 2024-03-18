@@ -94,7 +94,7 @@
 <body>
    <div class="container">
 
-        <form action="send.php" method="POST">
+        <form action="" method="POST">
            <h2> Contactez nous </h2>
             <label for="name">Nom:</label>
             <input type="text" id="name" name="name" required>
@@ -110,6 +110,9 @@
 
             <button type="submit">Envoyer</button>
         </form>
+        <?php 
+        echo "<script>alert('Message envoyer'); window.location.href='Acceuil.php';</script>";
+        ?>
 
    </div>
 

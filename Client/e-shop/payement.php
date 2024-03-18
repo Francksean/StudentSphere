@@ -4,260 +4,277 @@
     <meta charset="UTF-8">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>payement</title>
     <style>
-        *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  letter-spacing: 1px;
-}
-body{
-  background: #89260d;
-  padding: 0 10px;
-  filter: drop-shadow(10px 10px 10px);
-}
-.wrapper{
-  max-width: 500px;
-  width: 100%;
-  background: beige;
-  margin: 20px auto;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
-  padding: 30px;
+     * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.wrapper .title{
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  color: #89260d;
-  text-transform: uppercase;
-  text-align: center;
-  -webkit-text-stroke: 0.1vw #000000 ;
-  letter-spacing:5px;
+body {
+    background-color: #d7f7ff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.wrapper .form{
-  width: 100%;
+.wrapper {
+    background-color: #fff;
+    width: 500px;
+    padding: 25px;
+    margin: 25px auto 0;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
 
-.wrapper .form .inputfield{
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
+.wrapper h2 {
+    background-color: #fcfcfc;
+    color: #21cdd3;
+    font-size: 24px;
+    padding: 10px;
+    margin-bottom: 8px;
+    text-align: center;
+    border: 1px dashed #21cdd3;
 }
 
-.wrapper .form .inputfield label{
-   width: 200px;
-   color: #757575;
-   margin-right: 10px;
-  font-size: 14px;
+.wrapper h4 {
+    padding-bottom: 5px;
+    color: #21cdd3;
 }
 
-.wrapper .form .inputfield .input,
-.wrapper .form .inputfield .textarea{
-  width: 100%;
-  outline: none;
-  border: 1px solid #d5dbd9;
-  font-size: 15px;
-  padding: 8px 10px;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.wrapper .form .inputfield .textarea{
-  width: 100%;
-  height: 125px;
-  resize: none;
-}
-
-.wrapper .form .inputfield .custom_select{
-  position: relative;
-  width: 100%;
-  height: 37px;
-  
-}
-
-.wrapper .form .inputfield .custom_select:before{
-  content: "";
-  position: absolute;
-  top: 12px;
-  right: 10px;
-  border: 8px solid;
-  border-color: #d5dbd9 transparent transparent transparent;
-  pointer-events: none;
-}
-
-.wrapper .form .inputfield .custom_select select{
-  -webkit-appearance: none;
-  -moz-appearance:   none;
-  appearance:        none;
-  cursor: pointer;
-  outline: none;
-  width: 100%;
-  height: 100%;
-  border: 0px;
-  padding: 8px 10px;
-  font-size: 15px;
-  border: 1px solid #d5dbd9;
-  border-radius: 3px;
-}
-
-
-.wrapper .form .inputfield .input:focus,
-.wrapper .form .inputfield .textarea:focus,
-.wrapper .form .inputfield .custom_select select:focus{
-  border: 1px solid #89260d;
-}
-
-.wrapper .form .inputfield p{
-   font-size: 14px;
-   color: #757575;
-}
-.wrapper .form .inputfield .check{
-  width: 15px;
-  height: 15px;
-  position: relative;
-  display: block;
-  cursor: pointer;
-}
-.wrapper .form .inputfield .check input[type="checkbox"]{
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-}
-.wrapper .form .inputfield .check .checkmark{
-  width: 15px;
-  height: 15px;
-  border: 1px solid #89260d;
-  display: block;
-  position: relative;
-}
-.wrapper .form .inputfield .check .checkmark:before{
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 2px;
-  width: 5px;
-  height: 2px;
-  border: 2px solid;
-  border-color: transparent transparent #fff #fff;
-  transform: rotate(-45deg);
-  display: none;
-}
-.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark{
-  background: #89260d;
-}
-
-.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark:before{
-  display: block;
-}
-
-.wrapper .form .inputfield .btn{
-  width: 100%;
-   padding: 8px 10px;
-  font-size: 15px; 
-  border: 0px;
-  background:  #89260d;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 3px;
-  outline: none;
-}
-
-.wrapper .form .inputfield .btn:hover{
-  background: gray;
-}
-
-.wrapper .form .inputfield:last-child{
-  margin-bottom: 0;
-}
-
-@media (max-width:420px) {
-  .wrapper .form .inputfield{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .wrapper .form .inputfield label{
-    margin-bottom: 5px;
-  }
-  .wrapper .form .inputfield.terms{
+.input_group {
+    margin-bottom: 8px;
+    width: 100%;
+    position: relative;
+    display: flex;
     flex-direction: row;
-  }
+    padding: 5px 0;
 }
+
+.input_box {
+    width: 100%;
+    margin-right: 12px;
+    position: relative;
+}
+
+.input_box:last-child {
+    margin-right: 0;
+}
+
+.input_box .name {
+    padding: 14px 10px 14px 50px;
+    width: 100%;
+    background-color: #fcfcfc;
+    border: 1px solid #0003;
+    outline: none;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    border-radius: 3px;
+    color: #333;
+}
+
+.input_box .name:focus, .dob:focus {
+    -webkit-box-shadow: 0 0 2px 1px #21cdd3;
+    -moz-box-shadow: 0 0 2px 1px #21cdd3;
+    box-shadow: 0 0 2px 1px #21cdd3;
+    border: 1px solid #21cdd3;
+}
+
+.input_box .icon {
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    color: #333;
+    background-color: #f1f1f1;
+    border-radius: 2px 0 0 2px;
+    transition: 0.3s;
+    font-size: 20px;
+    pointer-events: none;
+    border: 1px solid #00000003;
+    border-right: none;
+}
+
+.name:focus+.icon {
+    background-color: #21cdd3;
+    color: #fff;
+    border-right: 1px solid #21cdd3;
+    border: none;
+    transition: 1s;
+}
+
+.dob {
+    width: 30%;
+    padding: 14px;
+    text-align: center;
+    background-color: #fcfcfc;
+    transition: 0.3s;
+    outline: none;
+    border: 1px solid #c0bfbf;
+    border-radius: 3px;
+}
+
+.radio {
+    display: none;
+}
+
+.input_box label {
+    width: 50%;
+    padding: 13px;
+    background-color: #fcfcfc;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    border: 1px solid #c0bfbf;
+}
+
+.input_box label:first-of-type {
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-right: none;
+}
+
+.input_box label:last-of-type {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.radio:checked+label {
+    background-color: #21cdd3;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.input_box button {
+    width: 100%;
+    background-color: #21cdd3;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    border-right: 4px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.input_box button:hover {
+    cursor: pointer;
+    background-color: #05b1a3;
+}
+        
     </style>
 </head>
 <body>
-    
-</body>
-</html>
 
 <div class="wrapper">
-    <div class="title">
-      Payment file
-    </div>
-    <div class="form">
-       <div class="inputfield">
-          <label>First Name</label>
-          <input type="text" class="input">
-       </div>  
-        <div class="inputfield">
-          <label>Last Name</label>
-          <input type="text" class="input">
-       </div>  
-       <div class="inputfield">
-          <label>Password</label>
-          <input type="password" class="input">
-       </div>  
-      <div class="inputfield">
-          <label>Confirm Password</label>
-          <input type="password" class="input">
-       </div> 
-        <div class="inputfield">
-          <label>Email Address</label>
-          <input type="email" class="input">
-       </div> 
-      <div class="inputfield">
-          <label>Phone Number</label>
-          <input type="text" class="input">
-       </div> 
-      <div class="inputfield">
-          <label>Delivery Address</label>
-          <textarea class="textarea"></textarea>
-       </div> 
-      <div class="inputfield">
-          <label>Montant</label>
-          <input type="number" class="input">
-       </div> 
-      <div class="inputfield terms">
-          <label class="check">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-          </label>
-          <p>Agreed to terms and conditions</p>
-       </div> 
-      <div class="inputfield">
-        <button class="btn"> Valider</button>
-       
-        <script> 
-         var btn = document.querySelector("button");
-         
-         btn.onclick =() => window.print();
-  /*btn.onclick = function() {
-    // Envoyer la notification à notif.php
-    var notification = "Votre commande a bien été reçue. Nous vous contacterons ultérieurement pour votre livraison";
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "notification.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("notification=" + encodeURIComponent(notification));
+        <h2>Payment Form</h2>
+        <form action="" method="post">
+          <br>
+          <!--Payment Details Start-->
+          <div class="input_group">
+                <div class="input_box">
+                    <h4>Payment Details</h4>
+                    <input type="radio" name="pay" class="radio" id="bc1" checked>
+                    <label for="bc1"><span>
+                            <i class="fa fa-cc-visa"></i>Credit Card</span></label>
+                    <input type="radio" name="pay" class="radio" id="bc2">
+                    <label for="bc2"><span>
+                            <i class="fa fa-cc-paypal"></i>Paypal</span></label>
+                </div>
+            </div>
+            <div class="input_group">
+                <div class="input_box">
+                    <input type="tel" name="" class="name" placeholder="Card Number 1111-2222-3333-4444" required>
+                    <i class="fa fa-credit-card icon"></i>
+                </div>
+            </div>
+            <div class="input_group">
+                <div class="input_box">
+                    <input type="tel" name="" class="name" placeholder="Card CVC 632" required>
+                    <i class="fa fa-user icon"></i>
+                </div>
+            </div>
+            <div class="input_group">
+                <div class="input_box">
+                    <div class="input_box">
+                        <input type="number" placeholder="Exp Month" required class="name">
+                        <i class="fa fa-calendar icon" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="input_box">
+                    <input type="number" placeholder="Exp Year" required class="name">
+                    <i class="fa fa-calendar-o icon" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="input_box">
+                <input type="number" placeholder="Enter Amount" required class="name">
+                <i class="fa fa-money icon" aria-hidden="true"></i>
+            </div>
+            <!--Payment Details End-->
 
-    // Afficher la notification dans la console (optionnel)
-    console.log("Notification envoyée : " + notification);
-  };*/
-        </script>
-      </div>
+            <!--Account Information Start-->
+            <br>
+            <h4>Informations</h4>
+            <div class="input_group">
+                <div class="input_box">
+                    <input type="text" placeholder="Full Name" required class="name">
+                    <i class="fa fa-user icon"></i>
+                </div>
+                <div class="input_box">
+                    <input type="text" placeholder="Name on Card" required class="name">
+                    <i class="fa fa-user icon"></i>
+                </div>
+            </div>
+            <div class="input_group">
+                <div class="input_box">
+                    <input type="email" placeholder="Email Address" required class="name">
+                    <i class="fa fa-envelope icon"></i>
+                </div>
+            </div>
+            <div class="input_group">
+                <div class="input_box">
+                    <input type="text" placeholder="Phone number" required class="name">
+                    <i class="fa fa-phone icon"></i>
+                </div>
+            </div>
+            <div class="input_group">
+                <div class="input_box">
+                    <input type="text" placeholder="Delivery Address" required class="name">
+                    <i class="fa fa-map-marker icon" aria-hidden="true"></i>
+                </div>
+            </div>
+
+            <!--DOB & Gender Start-->
+            <div class="input_group">
+                <div class="input_box">
+                    <h4>Gender</h4>
+                    <input type="radio" name="gender" class="radio" id="b1" checked>
+                    <label for="b1">Male</label>
+                    <input type="radio" name="gender" class="radio" id="b2">
+                    <label for="b2">Female</label>
+                </div>
+            </div>
+            <!--DOB & Gender End-->
+            <!--Account Information End-->
+
+            <div class="input_group">
+                <div class="input_box">
+                    <button type="submit">Validate</button>
+                </div>
+            </div>
+
+        </form>
     </div>
-</div>	
+    <script>
+      var submit = document.querySelector("button");
+         
+         submit.onclick =() => window.location.href='produits.php';
+    </script>
+  </body>
+
+</html>

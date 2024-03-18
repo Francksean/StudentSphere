@@ -89,6 +89,7 @@ nav > div > a:hover{
     justify-content: center;
     align-items: center;
 }
+
 .box {
     display: inline-block;
     width: 310px;
@@ -222,17 +223,10 @@ nav > div > a:hover{
 <nav>
       <div class="flex-around">
         <a href="Acceuil.php">Acceuil</a>
-        <select name="categories">
-	        <option value="" >Categories</option>
-            <option value="dejeuner">déjeuner</option>
-	        <option value="fruits">Fruits</option>
-	        <option value="googies">goodies</option>
-	        <option value="hygiene">hygiene</option>
-        </select>
         <a href="news.php">Bestselling</a>
         <a href="Connexion.php" class="fas fa-shopping-cart"></a>
         <form class="d-flex"  action="Recherche.php" method="post">
-            <input class="form-control me-2" name="search" type="search" placeholder="Search" list="search_bar" id="search_bar" aria-label="Search">
+            <input class="form-control me-2" name="search" type="search" placeholder="Search" list="search_bar" id="search_bar" aria-label="Search" autocomplete="on">
             <datalist id='search_bar'></datalist>
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>

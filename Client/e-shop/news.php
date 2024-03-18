@@ -73,14 +73,16 @@ div > a > button:hover{
 }
 .box {
     display: inline-block;
-    width: 310px;
+    width: 320px;
     height: auto;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    margin-left: 1rem;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
+    margin-left: 4rem;
     background-color: beige;
+    margin-top: 1.5rem;
 }
 
 .box:hover {
@@ -92,7 +94,9 @@ div > a > button:hover{
     text-align: center;
     padding-top: 0.5rem;
     padding-left: 0px;
-    padding-right: 0px;
+    padding-right: 150px;
+    width: 305px;
+    height: auto;
     overflow: hidden;
 }
 
@@ -105,9 +109,10 @@ div > a > button:hover{
 
 .box .image .icons {
     position: absolute;
-    bottom: -7rem;
+    bottom: -4rem;
     left: 0;
     right: 0;
+    margin-bottom: 0;
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -148,6 +153,7 @@ div > a > button:hover{
     font-size: 1.8rem;
     color: rgb(0, 0, 0);
     margin-bottom: 0.2rem;
+    margin-right: -3rem;
 }
 
 .box .content .price {
@@ -156,7 +162,9 @@ div > a > button:hover{
     font-weight: bolder;
     margin-top: 0.2rem;
     margin-bottom: 0;
+    margin-right: -4rem;
 }
+
 
 .d-flex {
         display: flex;
@@ -190,7 +198,7 @@ div > a > button:hover{
 }
 
     </style>
-    <?php require_once "Index2.php" ?>
+    <?php require_once "Index9.php" ?>
 </head>
 <body>
 <section class="flex-around">

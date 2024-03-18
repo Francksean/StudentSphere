@@ -17,17 +17,13 @@ $resultat = $query->fetch();
         $status = $resultat['status'];
 
         if ($status == 1) {
-            header("Location: AdminProduits.php");
-            exit();
+            echo "<script>alert('Connexion reussie'); window.location.href='AdminProduits.php';</script>";
         } else {
-            echo "Connexion reussie ";
-            header("refresh:1;url=panier.php");
-            exit;
+            echo "<script>alert('Connexion reussie'); window.location.href='panier.php';</script>";
         }
     } else {
-        echo "Adresse email ou mot de passe incorrect. Veuillez reesayer";
-        header("refresh:2;url=Connexion.php");
-        exit;
+        echo "<script>alert('Adresse email ou mot de passe incorrect. Veuillez reesayer'); window.location.href='Connexion.php';</script>";
+       
     }
 }
 ?>

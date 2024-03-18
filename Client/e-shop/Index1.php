@@ -21,8 +21,6 @@ $requete->bindValue(':param_quantity', $quantity, PDO::PARAM_STR);
 $requete->bindValue(':param_prix', $prix, PDO::PARAM_STR);
 $requete->execute();
 
-echo "Produit Ajouter.";
-header("refresh:1;url=AdminProduits.php");
-exit; 
+echo "<script>alert('Le produit a ete ajoute a la boutique'); window.location.href='AdminProduits.php';</script>"; 
 
 ?>

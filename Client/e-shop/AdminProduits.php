@@ -41,6 +41,7 @@ nav {
   background-color: beige;
   margin-bottom: 1.5rem;
   height: 70px;
+  transform: translateY(8px);
 }
 nav > div {
   height: 50px;
@@ -81,7 +82,7 @@ nav > div > a:hover{
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     margin-left: 1rem;
     background-color: beige;
 }
@@ -103,7 +104,7 @@ nav > div > a:hover{
     height: 20rem;
     object-fit: cover;
     border: none;
-    transition: transform 0.3s ease
+    transition: transform 0.3s ease;
 }
 
 .box .image .icons {
@@ -114,6 +115,7 @@ nav > div > a:hover{
     display: flex;
     justify-content: center;
     gap: 1rem;
+    transform: translateY(-50px);
 }
 
 .box:hover .image .icons {
@@ -161,6 +163,7 @@ nav > div > a:hover{
     margin-bottom: 0;
 }
 
+
 .d-flex {
         display: flex;
         justify-content: center;
@@ -207,14 +210,17 @@ nav > div > a:hover{
 <nav>
       <div class="flex-around">
         <a href="Acceuil.php">Acceuil</a>
-        <a href="categories.php">Categories</a>
         <a href="news.php">Bestselling</a>
         <a href="AjoutProduits.php">Ajouter</a>
         <a href="supprimer.php">Supprimer</a>
         <a href="Connexion.php" class="fas fa-shopping-cart"></a>
         <form class="d-flex"  action="Recherche.php" method="post">
-            <input class="form-control me-2" name="search" type="search" placeholder="Search" list="search_bar" id="search_bar" aria-label="Search">
-            <datalist id='search_bar'></datalist>
+            <input class="form-control me-2" name="search" type="search" placeholder="Search" list="search_bar" id="search_bar" aria-label="Search" autocomplete="on">
+            <datalist id='search_bar'>
+                @for(products of products; track products.name){
+                    <option value=""></option>
+                }
+            </datalist>
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
      </div>

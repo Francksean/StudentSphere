@@ -157,21 +157,24 @@
 			text-decoration: beige;
 		}
 
-		.links a:hover,
-		.links a:nth-child(2) {
-			color: #89260d;
+		.links a:hover {
+			color: black;
 		}
 
 		input[type="submit"] {
 			border: none;
 			outline: none;
 			padding: 11px 25px;
-			background: #89260d;
+			background: grey;
 			cursor: pointer;
 			border-radius: 4px;
 			font-weight: 600;
 			width: 100px;
 			margin-top: 10px;
+		}
+
+		input[type="submit"]:hover{
+			background-color: #89260d;
 		}
 
 		input[type="submit"]:active {
@@ -199,7 +202,7 @@
 				<i></i>
 			</div>
 			<div class="links">
-				<a href="Index2.php">Forgot Password ?</a>
+				<a href="forgot.php">Forgot Password ?</a>
 				<a href="Inscription.php">Signup</a>
 			</div>
 
