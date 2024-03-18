@@ -19,19 +19,19 @@ body {
 }
 
 section > img:first-child {
-  width: 300px;
+  width: 270px;
   height: auto;
   border-radius: 5px;
   animation: none;
-  transform: translate(-200px);
+  transform: translate(-700px);
 }
 
 section > img:last-child {
-  width: 300px;
+  width: 270px;
   height: auto;
   border-radius: 5px;
   animation: none;
-  transform: translate(200px);
+  transform: translate(700px);
 }
 
 section{
@@ -72,8 +72,7 @@ nav > div > a:hover{
     align-items: center;
 }
 
-div content img{
-  display: block;
+img {
   position: absolute;
   width: 100%;
   border: 1px solid black;
@@ -89,8 +88,10 @@ div content img{
   flex-direction: row-reverse;
 }
 
-.icons-container h1{
+ h1{
   margin-bottom: 20px;
+  text-align: center;
+  transform: translate(10x);
 }
 
 .icons {
@@ -109,4 +110,87 @@ div content img{
   width: 200px;
   display: block; 
   text-align: center;
+}
+
+/* Styles pour les petits écrans */
+@media screen and (max-width: 768px) {
+  section > img:first-child,
+  section > img:last-child {
+    width: 100%;
+    transform: none;
+  }
+  
+  img {
+    position: static;
+    width: auto;
+    transform: none;
+  }
+  
+  h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .icons-container {
+    flex-direction: row;
+  }
+  
+  .icons {
+    margin: 5px;
+  }
+  
+  nav > div > a {
+    font-size: 18px;
+    width: 30%;
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section > img:first-child,
+  section > img:last-child {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    animation: none;
+    transform: none;
+  }
+
+  img {
+    position: relative;
+    width: 100%;
+    border: 1px solid black;
+    transform: none;
+  }
+
+  h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .icons-container {
+    flex-direction: row;
+  }
+
+  .icons {
+    margin: 5px;
+  }
+
+  nav > div > a {
+    font-size: 18px;
+    width: 30%;
+    margin: 5px;
+  }
+}
+/* Styles pour les grands écrans */
+@media screen and (min-width: 1200px) {
+  section {
+    padding: 2rem 20%;
+  }
+
+  nav > div > a {
+    font-size: 30px;
+    width: 15%;
+   margin: 10px;
+  }
 }
