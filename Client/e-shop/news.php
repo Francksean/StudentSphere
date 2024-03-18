@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les plus vendus</title>
     <style>
+        body{
+            background-color: bisque;
+        }
 .flex-around {
   display: flex;
   flex-wrap: wrap;
@@ -17,22 +20,24 @@
 .logo-titre {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 2.5em;
-  color: rgb(238, 122, 122);
+  font-size: 4em;
+  color: black;
 }
 
 section > img:first-child {
-    width: 150px;
-    height: auto;
-    border-radius: 5px;
-    animation: none;
-}
-  
-section > img:last-child {
     width: 200px;
     height: auto;
     border-radius: 5px;
     animation: none;
+    transform: translate(-50px);
+}
+  
+section > img:last-child {
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+    animation: none;
+    transform: translate(50px);
 }
 
 div {
@@ -86,7 +91,7 @@ div > a > button:hover{
 }
 
 .box:hover {
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 5px 0px black;
 }
 
 .box .image {
@@ -202,12 +207,12 @@ div > a > button:hover{
 </head>
 <body>
 <section class="flex-around">
-      <img src="Images/offre.png" alt=" logo">
+      <img src="Images/logo.jpg" alt=" logo">
       <h1 class="logo-titre">
         Shop with <br />
         StudentSphere
       </h1>
-      <img src="Images/Blade1.jpg" alt=" image">
+      <img src="Images/logo2.jpg" alt=" image">
 </section>
 <nav>
     <div class="flex-around">

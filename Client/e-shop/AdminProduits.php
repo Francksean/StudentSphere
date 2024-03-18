@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrateur de produits</title>
     <style>
+        body{
+            background-color: beige;
+        }
 .flex-around {
   display: flex;
   flex-wrap: wrap;
@@ -17,22 +20,24 @@
 .logo-titre {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 2.5em;
-  color: rgb(238, 122, 122);
+  font-size: 4em;
+  color: black;
 }
 
 section > img:first-child {
-    width: 150px;
-    height: auto;
-    border-radius: 5px;
-    animation: none;
-}
-  
-section > img:last-child {
     width: 200px;
     height: auto;
     border-radius: 5px;
     animation: none;
+    transform: translate(-50px);
+}
+  
+section > img:last-child {
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+    animation: none;
+    transform: translate(50px);
 }
 
 nav {
@@ -42,6 +47,7 @@ nav {
   margin-bottom: 1.5rem;
   height: 70px;
   transform: translateY(8px);
+  color: white;
 }
 nav > div {
   height: 50px;
@@ -79,16 +85,16 @@ nav > div > a:hover{
     display: inline-block;
     width: 310px;
     height: auto;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-radius: 5px;
     padding: 0.5rem;
     margin-bottom: 2rem;
     margin-left: 1rem;
-    background-color: beige;
+    background-color: white;
 }
 
 .box:hover {
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 5px 0px black;
 }
 
 .box .image {
@@ -200,12 +206,12 @@ nav > div > a:hover{
 <?php require_once "Affiche.php" ?>
 <body>
 <section class="flex-around">
-      <img src="Images/offre.png" alt=" logo">
+      <img src="Images/logo.jpg" alt=" logo">
       <h1 class="logo-titre">
         Shop with <br />
         StudentSphere
       </h1>
-      <img src="Images/Blade1.jpg" alt=" image">
+      <img src="Images/logo2.jpg" alt=" image">
    </section>
 <nav>
       <div class="flex-around">

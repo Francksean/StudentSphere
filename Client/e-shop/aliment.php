@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produits de la boutique</title>
     <style>
-        body{
-            background-color: beige;
-        }
 .flex-around {
   display: flex;
   flex-wrap: wrap;
@@ -20,24 +17,22 @@
 .logo-titre {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 4em;
-  color: black;
+  font-size: 2.5em;
+  color: rgb(238, 122, 122);
 }
 
 section > img:first-child {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+    animation: none;
+}
+  
+section > img:last-child {
     width: 200px;
     height: auto;
     border-radius: 5px;
     animation: none;
-    transform: translate(-50px);
-}
-  
-section > img:last-child {
-    width: 250px;
-    height: auto;
-    border-radius: 5px;
-    animation: none;
-    transform: translate(50px);
 }
 
 nav {
@@ -99,16 +94,16 @@ nav > div > a:hover{
     display: inline-block;
     width: 310px;
     height: auto;
-    border: 1px solid black;
+    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 0.5rem;
     margin-bottom: 1rem;
     margin-left: 1rem;
-    background-color: white;
+    background-color: beige;
 }
 
 .box:hover {
-    box-shadow: 0px 0px 5px 0px black;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
 }
 
 .box .image {
@@ -215,30 +210,26 @@ nav > div > a:hover{
 
     </style>
 </head>
-<?php require_once "Affiche.php" ?>
 <body>
-<section class="flex-around">
-      <img src="Images/logo.jpg" alt=" logo">
-      <h1 class="logo-titre">
-        Shop with <br />
-        StudentSphere
-      </h1>
-      <img src="Images/logo2.jpg" alt=" image">
-   </section>
-<nav>
-      <div class="flex-around">
-        <a href="Acceuil.php">Acceuil</a>
-        <a href="news.php">Bestselling</a>
-        <a href="Connexion.php" class="fas fa-shopping-cart"></a>
-        <form class="d-flex"  action="Recherche.php" method="post">
-            <input class="form-control me-2" name="search" type="search" placeholder="Search" list="search_bar" id="search_bar" aria-label="Search" autocomplete="on">
-            <datalist id='search_bar'></datalist>
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-     </div>
-    </nav>
+   
+<?php
+$bdd = new PDO('mysql:host=localhost;dbname=projet;charset=utf8', 'root', '');
+
+if(isset($_POST['fruits']) && !empty($_POST['fruits'])){
+    $category = $_POST['fruits'];
+
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$requete=$bdd->prepare('CALL GetProductsByCategory (:category)');
+
+$requete->bindParam(':category', $category, PDO::PARAM_INT);
+$requete->execute();
+
+$produit = $requete->fetch(PDO::FETCH_ASSOC);
+}
+?>
 
 <?php
+
 foreach ($products as $produit) {
     echo "<div class='box'>
         <div class='image'>
@@ -253,6 +244,7 @@ foreach ($products as $produit) {
         </div>
     </div>";
 }
+
 ?>
 </body>
 </html>

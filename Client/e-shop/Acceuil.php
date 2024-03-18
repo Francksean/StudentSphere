@@ -10,12 +10,12 @@
 </head>
 <body>
    <section class="flex-around">
-      <img src="Images/offre.png" alt=" logo">
+      <img src="Images/logo.jpg" alt=" logo">
       <h1 class="logo-titre">
         Shop with <br />
         StudentSphere
       </h1>
-      <img src="Images/Blade1.jpg" alt=" image">
+      <img src="Images/logo2.jpg" alt=" image">
    </section>
     <nav>
       <div class="flex-around">
@@ -28,5 +28,30 @@
     <div class="content">
       <img src="Images/shop.png" alt="hummm" />
     </div>
+
+<section class="icons-container">
+  <h1>PARCOUREZ LES DIFFERENTES CATEGORIE DE PRODUITS</h1>
+
+<div class="icons">
+    <a href="fruits.php" class="bouton">FRUITS</a>
+</div>
+
+<div class="icons">
+    <a href="dej.php" class="bouton">DEJEUNER</a>
+</div>
+
+<div class="icons">
+    <a href="goodies.php" class="bouton">GOODIES</a>
+</div>
+
+<div class="icons">
+    <a href="aliment.php" class="bouton">ALIMENTATION</a>
+</div>
+<div class="icons">
+    <a href="hygiene.php" class="bouton">HYGIENE</a>
+</div>
+
+</section>
+
 </body>
 </html>

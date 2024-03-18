@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: rgb(182, 176, 176);
 }
 
 .flex-around {
@@ -13,22 +14,28 @@ body {
 .logo-titre {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 2.5em;
-  color: rgb(238, 122, 122);
+  font-size: 4em;
+  color: black;
 }
 
 section > img:first-child {
-    width: 150px;
-    height: auto;
-    border-radius: 5px;
-    animation: none;
+  width: 300px;
+  height: auto;
+  border-radius: 5px;
+  animation: none;
+  transform: translate(-200px);
 }
-  
+
 section > img:last-child {
-    width: 200px;
-    height: auto;
-    border-radius: 5px;
-    animation: none;
+  width: 300px;
+  height: auto;
+  border-radius: 5px;
+  animation: none;
+  transform: translate(200px);
+}
+
+section{
+  padding:2rem 9%;
 }
 
 nav {
@@ -63,4 +70,43 @@ nav > div > a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+div content img{
+  display: block;
+  position: absolute;
+  width: 100%;
+  border: 1px solid black;
+  transform: translateY(50px);
+}
+
+.icons-container {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+  flex-direction: row-reverse;
+}
+
+.icons-container h1{
+  margin-bottom: 20px;
+}
+
+.icons {
+  display: inline-block;
+  margin: 10px; 
+}
+
+.bouton {
+  background-color: #007bff; 
+  color: #fff; 
+  padding: 10px 20px;
+  border-radius: 5px; 
+  text-decoration: none; 
+  margin-bottom: 100px;
+  margin: 5px; 
+  width: 200px;
+  display: block; 
+  text-align: center;
 }

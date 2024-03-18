@@ -270,11 +270,11 @@ body {
 
         </form>
     </div>
-    <script>
-      var submit = document.querySelector("button");
-         
-         submit.onclick =() => window.location.href='produits.php';
-    </script>
+    <?php
+   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    echo "<script>alert('commande valide'); window.location.href='produits.php';</script>"; 
+   }
+   ?>
   </body>
 
 </html>

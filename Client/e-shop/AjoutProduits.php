@@ -10,15 +10,15 @@
          body {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size: 1.5rem;
-        background-color: beige;
+        background-color: black;
       }
       .container {
         position: absolute;
         top: 7%;
         left: 30%;
-			  width: 800px;
+			  width: 600px;
 			  height: auto;
-			  background: white;
+			  background: beige;
 			  border-radius: 8px;
         overflow: hidden; 
         transform: translateY(-50%, -50%);
@@ -88,6 +88,20 @@
       button:hover {
         background-color: brown;
       }
+
+      @media only screen and (max-width: 1200px) {
+    .container {
+        width: 70%;
+        left: 15%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+        left: 5%;
+    }
+}
 
     </style>
  </head>

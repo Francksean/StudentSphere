@@ -10,15 +10,15 @@
         body {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size: 1.5rem;
-        background-color: beige;
+        background-color: black;
       }
       .container {
         position: absolute;
         top: 10%;
         left: 30%;
-			  width: 800px;
+			  width: 600px;
 			  height: auto;
-			  background: white;
+			  background: beige;
 			  border-radius: 8px;
         overflow: hidden; 
         transform: translateY(-50%, -50%);
@@ -110,11 +110,13 @@
 
             <button type="submit">Envoyer</button>
         </form>
-        <?php 
-        echo "<script>alert('Message envoyer'); window.location.href='Acceuil.php';</script>";
-        ?>
 
    </div>
+   <?php
+   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    echo "<script>alert('Message envoye'); window.location.href='Acceuil.php';</script>"; 
+   }
+   ?>
 
 </body>
 </html>

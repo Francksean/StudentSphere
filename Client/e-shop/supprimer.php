@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: beige;
+            background-color: grey;
         }
 
         .container {
@@ -21,7 +21,7 @@
         }
 
         .car {
-            height: 250px;
+            height: 270px;
             align-items: center;
             display: flex;
             flex-direction: column;
@@ -37,7 +37,7 @@
             height: auto;
             border-radius: 5px;
             margin-bottom: 10px;
-            transform: translateY(-270px);
+            transform: translateY(-290px);
         }
 
         .car h2 {
@@ -59,10 +59,30 @@
             text-decoration: none;
         }
 
-        .car .cartn:hover{
-            background-color: blue;
-        }
+   /* @media only screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
 
+    .car img {
+        width: 200px;
+    }
+
+    .car{
+        height: 550;
+    }
+
+    .car h2,
+    .car p {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .car .cartn {
+        margin-right: 0;
+        transform: translateY(0);
+    }
+} */
     </style>
     <?php require_once "Index3.php" ?>
 </head>

@@ -35,8 +35,9 @@ body{
     padding: 15px;
 }
 .header .logo{
-    width: 100px ;
-    height: 100px;
+    width: 150px ;
+    height: 110px;
+    transform: translate(-20px);
 }
 .cart{
     display: flex;
@@ -181,11 +182,65 @@ button:hover{
     color: #333;
 }
 
+/* Vos styles CSS ici */
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    #root {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .sidebar {
+        width: 90%;
+        margin-left: 0;
+        transform: none;
+    }
+
+    .box {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        transform: none;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .cart {
+        transform: none;
+        margin-top: 20px;
+    }
+
+    .cart p {
+        font-size: 14px;
+        height: 18px;
+        width: 18px;
+    }
+
+    .sidebar {
+        padding: 10px;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
+
+
     </style>
 </head>
 <body>
     <div class="header">
-        <img class="logo" src="./Images/logo.png" alt=""> </a>
+        <img class="logo" src="./Images/logo.jpg" alt=""> </a>
         <h3 class="ee"></h3>
         <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p id="count">0</p></div>
     </div>
