@@ -21,6 +21,6 @@ $requete->bindValue(':param_image', $profilePic, PDO::PARAM_STR);
 $requete->bindValue(':param_status', $status, PDO::PARAM_STR);
 $requete->execute();
 
-echo "<script>alert('Inscription reussie'); window.location.href='Acceuil.php';</script>";
+echo "<script>alert('Inscription reussie. Veuillez vous connecter a present'); window.location.href='Connexion.php';</script>";
 
 ?>

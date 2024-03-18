@@ -19,7 +19,7 @@ $resultat = $query->fetch();
         if ($status == 1) {
             echo "<script>alert('Connexion reussie'); window.location.href='AdminProduits.php';</script>";
         } else {
-            echo "<script>alert('Connexion reussie'); window.location.href='panier.php';</script>";
+            echo "<script>alert('Connexion reussie'); window.location.href='produits.php';</script>";
         }
     } else {
         echo "<script>alert('Adresse email ou mot de passe incorrect. Veuillez reesayer'); window.location.href='Connexion.php';</script>";
